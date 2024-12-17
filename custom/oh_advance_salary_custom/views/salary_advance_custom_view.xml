@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+          <record id="view_salary_advance_custom_form" model="ir.ui.view">
+            <field name="name">salary.advance.rule.form</field>
+            <field name="model">salary.advance.rule</field>
+            <field name="arch" type="xml">
+                <form string="Salary Advance Rule">
+                    <sheet>
+                        <div class="oe_title oe_left">
+                            <h2>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="mount_limit"/>
+                            <field name="no_limit"/>
+                            <field name="from_day"/>
+                            <field name="to_day"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_salary_advance_custom_tree">
+            <field name="name">salary.advance.rule.tree</field>
+            <field name="model">salary.advance.rule</field>
+            <field name="arch" type="xml">
+                <tree string="Salary Advance Rule">
+                    <field name="name"/>
+                    <field name="mount_limit"/>
+                    <field name="no_limit"/>
+                    <field name="from_day"/>
+                    <field name="to_day"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_my_salary_advance_rules" model="ir.actions.act_window">
+            <field name="name">Salary Advance Rule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salary.advance.rule</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="search_view_id" ref="view_salary_advance_filter"/> -->
+            <!-- <field name="context">{'search_default_approved':1}</field> -->
+            <!-- <field name="domain">[('employee_id.user_id', '=', uid)]</field> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create Salary Advance Rules.
+                </p>
+            </field>
+        </record>
+
+        <record id="view_hr_employee_contract_advance_customn_form" model="ir.ui.view">
+            <field name="name">hr_employee_contract_advance_custom.view.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_shifts_custom.view_hr_employee_contract_customn_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='structure_type_id']" position='after'>
+                    <field name="salary_adv_rule" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

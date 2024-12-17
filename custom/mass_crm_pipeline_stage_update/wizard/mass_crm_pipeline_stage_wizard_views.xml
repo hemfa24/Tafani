@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="custom_mass_pipeline_stage_wizard_form" model="ir.ui.view">
+        <field name="name">Mass Update CRM Pipeline Stage Wizard Form</field>
+        <field name="model">custom.mass.crm.stage.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <p>This wizard allows you to update selected record(s) stage in bulk for the same team.</p>
+                    <group>
+                        <group>
+                            <field name="team_id"/>
+                            <field name="stage_id" widget="selection"/>
+                        </group>
+                    </group>
+                </sheet> 
+                <footer>
+                    <button name="custom_update_stage_crm" string="Update Now" type="object" class="oe_highlight" confirm="Are you sure you want to update stage for selected CRM records?"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>    
+            </form>
+        </field>
+    </record>
+
+
+    <record id="custom_action_mass_crm_pipeline_stage" model="ir.actions.act_window">
+        <field name="name">Mass Update Stage</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custom.mass.crm.stage.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="custom_mass_pipeline_stage_wizard_form"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="crm.model_crm_lead"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_less_price" model="res.groups">
+        <field name="name">Product less price</field>
+    </record>
+</odoo>

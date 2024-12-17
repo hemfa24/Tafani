@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+  
+   <!-- Form View of Time slot -->
+    <record id="time_slot_form_view" model="ir.ui.view">
+        <field name="name">time.slot.form</field>
+        <field name="model">time.slot</field>
+        <field name="arch" type="xml">
+            <form string="Time Slot Form View">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name" />
+                        <field name="start_time"  widget="float_time" required="1"/>
+                        <field name="end_time"  widget="float_time" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Tree view of TIme Slot -->
+    <record id="time_slot_tree_view" model="ir.ui.view">
+        <field name="name">time_slot.room.tree</field>
+        <field name="model">time.slot</field>
+        <field name="arch" type="xml">
+            <tree string="Time Slot Tree View">
+                <field name="start_time"/>
+                <field name="end_time"/>
+            </tree>
+       </field>
+    </record>
+
+    <!-- Action of Time Slot -->
+    <record id="action_time_slot" model="ir.actions.act_window">
+        <field name="name">Time Slot</field>
+        <field name="res_model">time.slot</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+  </data>
+</odoo>
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+
+
+        <record id="group_show_op_in_partner" model="res.groups">
+            <field name="name">Show Opening Balance In Partners</field>
+        </record>
+
+
+    </data>
+</odoo>

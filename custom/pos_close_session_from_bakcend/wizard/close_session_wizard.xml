@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_pos_session_form_inherit_ext" model="ir.ui.view">
+            <field name="name">close.session.wizard</field>
+            <field name="model">close.session.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="total_orders" readonly="True" />
+                        </group>
+                        <group>
+                            <field name="total_amount" readonly="True" />
+                        </group>
+                    </group>
+                    <field name="payment_method_ids">
+                        <tree editable="bottom" create="0">
+                            <field name="is_default" invisible="1" />
+                            <field name="payment_type" invisible="1" />
+                            <field name="payment_method_id" readonly="True" />
+                            <field name="expected_counted" readonly="1" />
+                            <field
+                                name="counted"
+                                attrs="{'readonly': [('is_default', '=', False), ('payment_type', '!=', 'bank')]}"
+                            />
+                            <field name="differences" readonly="True" />
+                        </tree>
+                    </field>
+                    <group>
+                        <field name="note" placeholder="Add a closing note..." />
+                    </group>
+                    <footer>
+                        <button
+                            name="action_close_session"
+                            string="Close Session"
+                            type="object"
+                            class="btn-primary"
+                            data-hotkey="q"
+                        />
+                        <button
+                            string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"
+                            data-hotkey="z"
+                        />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_close_session_wizard" model="ir.actions.act_window">
+            <field name="name">Action Clode Session</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">close.session.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_pos_session_form_inherit_ext" />
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_payment_form_whatsapp" model="ir.ui.view">
+        <field name="name">account.payment.whatsapp.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="priority">22</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header//button[last()]" position="after">
+                <button type="action"
+                    name="%(whatsapp_all_in_one.send_whatsapp_msg_template_action)d"
+                    string="  Send By WhatsApp"
+                    class="btn-primary"
+                    aria-label="Send By WhatsApp"
+                    title="Send By WhatsApp"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="student_profile">
+        <t t-call="aht_education_core.page_container_1">
+            <t t-set="title" t-value="'Student Dashboard'"/>
+            <t t-set="description" t-value="'This is Student Dashboard'"/>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-md-12 grid-margin">
+                            <div class="row">
+                                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                    <h2 class="font-weight-bold">
+                                        <span>
+                                            Student Profile
+                                        </span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="card"
+                                 style="border-radius: 10px !important; min-height: 40px !important; background-color: #FFCA59;">
+                            </div>
+                            <div style="background-color: white;">
+                                <div class="grid-margin">
+                                    <!-- Student Profile -->
+                                    <div class="student-profile py-4">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="card shadow-sm">
+                                                        <div class="bg-transparent text-center">
+                                                            <div style="overflow:hidden;">
+                                                                <img style="border-radius:100%; height:200px; width:170px; overflow:hidden;"
+                                                                     class=""
+                                                                     t-att-src="image_data_uri(student.image_1920)"
+                                                                     alt=""/>
+                                                            </div>
+                                                            <h3>
+                                                                <span t-esc="student.complete_name"/>
+                                                            </h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p class="mb-0">
+                                                                <strong class="pr-1">Student ID:</strong>
+                                                                <span t-esc="student.complete_name"/>
+                                                            </p>
+                                                            <p class="mb-0">
+                                                                <strong class="pr-1">Academic Year:</strong>
+                                                                <span t-esc="student.academic_year.name"/>
+                                                            </p>
+                                                            <p class="mb-0">
+                                                                <strong class="pr-1">Department:</strong>
+                                                                <span t-esc="student.department_id.name"/>
+                                                            </p>
+                                                            <p class="mb-0">
+                                                                <strong class="pr-1">Class:</strong>
+                                                                <span t-esc="student.class_id.complete_name"/>
+                                                            </p>
+                                                            <p class="mb-0">
+                                                                <strong class="pr-1">Section:</strong>
+                                                                <span t-esc="student.class_id.section_id.name"/>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 shadow-sm">
+                                                    <div class="" style="overflow-x: auto;">
+                                                        <div class="bg-transparent border-0">
+                                                            <h3 class="mb-3 ml-3"><i class="far fa-clone pr-1"></i>General
+                                                                Information
+                                                            </h3>
+                                                        </div>
+                                                        <div class="card-body pt-0">
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <th width="30%">Nationality</th>
+                                                                    <!--  <td width="2%">:</td> -->
+                                                                    <td>
+                                                                        <span t-esc="student.nationality.name"/>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="30%">Gender</th>
+                                                                    <!-- <td width="2%">:</td> -->
+                                                                    <td>
+                                                                        <span t-esc="student.gender"/>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <th width="30%">Blood Group</th>
+                                                                    <!-- <td width="2%">:</td> -->
+                                                                    <td>
+                                                                        <span t-esc="student.blood_group"/>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="30%">DOB</th>
+                                                                    <!-- <td width="2%">:</td> -->
+                                                                    <td>
+                                                                        <span t-esc="student.dob"/>
+                                                                    </td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <th width="30%">Phone</th>
+                                                                    <!-- <td width="2%">:</td> -->
+                                                                    <td>
+                                                                        <span t-esc="student.phone"/>
+                                                                    </td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <th width="30%">Email</th>
+                                                                    <!-- <td width="2%">:</td> -->
+                                                                    <td>
+                                                                        <span t-esc="student.email"/>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <!--                <footer class="footer">-->
+                <!--                    <div class="d-sm-flex justify-content-center justify-content-sm-between">-->
+                <!--                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©-->
+                <!--                            2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap-->
+                <!--                                admin template-->
+                <!--                            </a> from BootstrapDash. All rights reserved.-->
+                <!--                        </span>-->
+                <!--                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted-->
+                <!--                            and-->
+                <!--                            made with-->
+                <!--                            <i class="ti-heart text-danger ml-1"/>-->
+                <!--                        </span>-->
+                <!--                    </div>-->
+                <!--                    <div class="d-sm-flex justify-content-center justify-content-sm-between">-->
+                <!--                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed-->
+                <!--                            by-->
+                <!--                            <a href="https://www.themewagon.com/" target="_blank">Themewagon</a>-->
+                <!--                        </span>-->
+                <!--                    </div>-->
+                <!--                </footer>-->
+                <!-- partial -->
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="print_product_label_template_add_view_form" model="ir.ui.view">
+        <field name="name">print.product.label.template.add.view.form</field>
+        <field name="model">print.product.label.template.add</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="6" colspan="2">
+                        <group string="Specifications" col="4" colspan="4">
+                            <field name="paper_format" widget="radio" options="{'horizontal': true}" colspan="4"/>
+                            <field name="orientation" widget="radio" options="{'horizontal': true}" colspan="4"/>
+                            <field name="width" string="Label Width, mm"/>
+                            <field name="height" string="Label Height, mm"/>
+
+                            <separator string="Page Layout" colspan="4" attrs="{'invisible': [('paper_format', '=', 'custom')]}"/>
+                            <field name="cols" title="Cols" attrs="{'invisible': [('paper_format', '=', 'custom')]}"/>
+                            <field name="rows" title="Rows" attrs="{'invisible': [('paper_format', '=', 'custom')]}"/>
+                        </group>
+                        <group string="Page Margins, mm" col="2" colspan="2">
+                            <field name="margin_top" string="Top"/>
+                            <field name="margin_bottom" string="Bottom"/>
+                            <field name="margin_left" string="Left"/>
+                            <field name="margin_right" string="Right"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_create"
+                            string="Create Template"
+                            type="object"
+                            icon="fa-plus"
+                            class="btn-primary"/>
+                    <button special="cancel" class="oe_link" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

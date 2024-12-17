@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_crm_stage_form_inherit" model="ir.ui.view">
+        <field name="name">crm.stage.form.inherit</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_form"/>
+        <field name="arch" type="xml">
+            <sheet position="inside">
+                <group string="Auto Activity">
+                    <field name="auto_activity"/>
+                    <field name="auto_activity_amount"/>
+                    <field name="auto_activity_unit"/>
+                    <field name="auto_activity_type_ids" widget="many2many_tags"/>
+                    <field name="auto_activity_user_ids" widget="many2many_tags"/>
+                </group>
+            </sheet>
+        </field>
+    </record>
+</odoo>

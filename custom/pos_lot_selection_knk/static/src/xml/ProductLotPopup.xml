@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductLotPopup" t-inherit="point_of_sale.EditListPopup" t-inherit-mode="extension" owl="1">
+        <!-- <xpath expr="//div[hasclass('popup-text')]" position="attributes">
+            <attribute name="style">max-width: 922px;</attribute>
+        </xpath> -->
+        <xpath expr="//main[hasclass('list-lines')]" position="attributes">
+            <attribute name="style"></attribute>
+        </xpath>
+        <xpath expr="//t[@t-foreach]" position="after">
+            <div >
+                <table class="sh_pos_table_one">
+                    <t t-if="props.tracking === 'lot'">
+                        <colgroup>
+                            <col width='65%' />
+                            <col width='10%' />
+                            <col width='15%' />
+                            <col width='10%' />
+
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Lot/Serial</th>
+                                <th></th>
+                                <th>Qty</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select class="popup-input list-line-input" name="lot_id" t-on-change="captureChange">                                        
+
+                                        <t t-foreach="props.product_quants" t-as="quant" t-key="quant.lot_id[0]">
+                                            <option t-att-value="quant.lot_id[0]" t-att-selected="((state.array[0].text === quant.lot_id[1]) ? true : undefined)">
+                                                <t t-esc="quant.lot_id[1]" />
+                                            </option>
+                                        </t>
+                                    </select>
+                                    
+                                </td>
+                                <td>
+                                   <i class="fa fa-minus-square decrease_lot_qty" aria-hidden="true" t-on-click="decreaseLotQty"></i>
+                                </td>
+                                <td class="entered_item_qty">
+                                    <input type="text" t-att-data-lot="state.array[0].text" class="input_qty" t-att-value="state.default_lot_qty" t-on-change="check_updated_qty" style="text-align:center;"/>
+                                    <span id="qty_limit_warning" class="d-none" style="font-size: 11px;color: red;display:none;">Maximum value reached!</span>
+                                </td>
+                                <td>
+                                   <i class="fa fa-plus-square increase_lot_qty" aria-hidden="true" t-on-click="increaseLotQty"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </t>
+                    <t t-elif="props.tracking === 'serial'">
+                        <colgroup>
+                            <col width='50%' />
+                            <col width='30%' />
+
+                        </colgroup>
+                        <tbody>
+
+                            <t t-foreach="props.product_quants" t-as="quant" t-key="quant.lot_id[0]">
+                                <tr class="lot-line">
+                                    <td>
+                                        <span t-esc="quant.lot_id[1]"/>
+                                    </td>
+                                    <td class="entered_item_qty" t-att-data-serial="quant.lot_id[1]" style="width: 244px;margin-right: 47px;">
+                                        <t t-set="exist" t-value="CheckExisting(quant.lot_id[1])"/>
+                                        <span id="remove_serial_product" class="button" t-attf-style="color: red; display: {{ exist ? 'block' : 'none' }};" t-on-click="() => this.trigger('remove-serial_product', quant.lot_id[1])">Remove <i class="fa fa-trash" style="display:none;"/></span>
+                                        <span id="add_serial_product" class="button"  t-on-click="() => this.trigger('add-serial_product', quant.lot_id[1])" t-attf-style="display: {{ exist ? 'none' : 'block' }};">Add</span>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </t>
+                </table>
+                <t t-if="props.tracking === 'lot'">
+                    <div class="sh_list_view_div">
+                        <table class="mobile-table sh_pos_table_two">
+                            <colgroup>
+                                <col width='20%' />
+                                <col width='20%' />
+                                <col width='20%' />
+                                <col width='20%' />
+                                <col width='20%' />
+
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Lot/Serial</th>
+                                    <th>Available Qty</th>
+                                    <th>Expiration Date</th>
+                                    <th>Removal Date</th>
+                                    <th>Use Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <t t-foreach="props.product_lots" t-as="lot" t-key="lot.id"> 
+
+                                    <tr>
+                                        <td>
+                                            <span t-esc="lot.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="FormatValue(lot.quantity) or 0"/>
+                                        </td>
+                                        <td>
+                                            <t t-if="lot.expiration_date">
+                                                <span t-esc="lot.expiration_date.split(' ')[0]"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span>———</span>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <t t-if="lot.expiration_date">
+                                                <span t-esc="lot.removal_date.split(' ')[0]"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span>———</span>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <t t-if="lot.expiration_date">
+                                                <span t-esc="lot.use_date.split(' ')[0]"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span>———</span>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </t>
+    <t t-name="InhEditListInput" t-inherit="point_of_sale.EditListInput" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div style="display:none;">
+                <input type="text" t-model="props.item.text" class="popup-input list-line-input" placeholder="Serial/Lot Number" t-on-keyup="onKeyup" />
+                <i class="oe_link_icon fa fa-trash-o" role="img" aria-label="Remove" title="Remove" t-on-click="() => this.trigger('remove-item', props.item)"></i>
+            </div>
+        </xpath>
+    </t>
+</templates>

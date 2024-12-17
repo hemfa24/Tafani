@@ -1,0 +1,30 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="purchase_order_form">
+      <field name="name">purchase.order</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='currency_id']" position="after">
+          <field name="register_amount_limit" invisible="1"/>
+          <field name="partner_is_purchase_order_payment" invisible="1"/>
+        </xpath>
+        <xpath expr="//button[@name='action_create_invoice']" position="after">
+
+          <button name="%(action_account_payment_purchase)d" 
+          attrs="{'invisible':['|',('state','=','draft'),'|',('invoice_count','&gt;',0),'|',('register_amount_limit','&lt;=',0),('partner_is_purchase_order_payment','=',False)]}" string="Create Payment" type="action" class="oe_highlight" context="{'default_purchase_id':active_id,'default_company_id':company_id,'default_partner_id':partner_id,
+           'default_payment_type':'outbound','default_partner_type':'supplier','default_currency_id':currency_id,
+           'default_amount':register_amount_limit,'default_register_amount_limit':register_amount_limit
+           }" 
+           groups="hemfa_payment_from_sale_purchase.group_purchase_order_payment_register"
+           />
+
+        </xpath>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

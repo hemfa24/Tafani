@@ -1,0 +1,5 @@
+<!ELEMENT templates (t)>
+<!ATTLIST templates id NMTOKEN #REQUIRED>
+<!ELEMENT t (#PCDATA)>
+<!ATTLIST t t-name NMTOKEN #REQUIRED>
+<!ATTLIST t owl NMTOKEN #REQUIRED>

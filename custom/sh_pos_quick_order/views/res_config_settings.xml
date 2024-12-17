@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sh_pos_quick_order_configurations" model="ir.ui.view">
+        <field name="name">sh.pos.quick.order.config.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <div id="pos_interface_section" position="after">
+                <h2 class="mt16">Quick Order Configuration</h2>
+                <div class="row mt16 o_settings_container" id="sh_pos_quick_order_config">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="mt10 o_setting_left_pane">
+                            <field name="pos_sh_is_enable_quick_order" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="pos_sh_is_enable_quick_order" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" style="margin-top: 30px" attrs="{'invisible': [('pos_sh_is_enable_quick_order', '=', False)]}">
+                        <div class="mt10 o_setting_left_pane">
+                            <field name="pos_sh_is_enable_quick_invoice" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="pos_sh_is_enable_quick_invoice" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row o_settings_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('pos_sh_is_enable_quick_order', '=', False)]}">
+                        <div class="mt10 o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="pos_sh_is_quick_payment_method" />
+                            <field name="pos_sh_is_quick_payment_method" attrs="{'invisible': [('pos_sh_is_enable_quick_order', '=', False)], 'required': [('pos_sh_is_enable_quick_order', '=', True)]}" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('pos_sh_is_enable_quick_order', '=', False)]}">
+                        <div class="mt10 o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="pos_sh_quick_customer" />
+                            <field name="pos_sh_quick_customer" attrs="{'required': [('pos_sh_is_enable_quick_invoice', '=', True)]}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

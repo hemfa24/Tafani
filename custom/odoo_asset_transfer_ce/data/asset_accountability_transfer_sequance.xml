@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    
+        <record id="asset_accountability_transfer_seq" model = "ir.sequence">
+            <field name="name">asset.accountability.transfer.seq</field>
+            <field name="code">asset.accountability.transfer</field>
+            <field name="prefix">TRANSFER/</field>
+            <field name="padding">4</field>
+        </record>
+        
+    </data>
+</odoo>
+ 

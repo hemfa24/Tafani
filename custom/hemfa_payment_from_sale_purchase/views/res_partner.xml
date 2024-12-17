@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="res_partner_view_team">
+      <field name="name">res.partner</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="sales_team.res_partner_view_team"/>
+      <field name="arch" type="xml">
+       <xpath expr="//page[@name='sales_purchases']//field[@name='user_id']" position="before">
+          <field name="is_sale_order_payment" />
+        </xpath>
+
+
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_partner_property_form">
+      <field name="name">res.partner</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="account.view_partner_property_form"/>
+      <field name="arch" type="xml">
+        
+
+        <xpath expr="//field[@name='property_supplier_payment_term_id']" position="before">
+          <field name="is_purchase_order_payment" />
+        </xpath>
+
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

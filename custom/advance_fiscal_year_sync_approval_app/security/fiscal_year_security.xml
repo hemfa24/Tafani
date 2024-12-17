@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+
+        <record model="ir.module.category" id="module_fiscal_year_settings">
+            <field name="name">Fiscal Year Approval Settings</field>
+            <field name="sequence">110</field>
+        </record>
+
+        <record model="ir.module.category" id="module_fiscal_year_period_settings">
+            <field name="name">Fiscal Year Period Approval Settings</field>
+            <field name="sequence">115</field>
+        </record>
+
+	    <record id="group_period_approval_closing" model="res.groups">
+	        <field name="name">Period Approval For Closing</field>
+	        <field name="category_id" ref="module_fiscal_year_period_settings"/>
+	    </record>
+
+	    <record id="group_period_approval_reopen" model="res.groups">
+	        <field name="name">Period Approval For Re-Opening</field>
+	        <field name="category_id" ref="module_fiscal_year_period_settings"/>
+	    </record>
+
+	    <record id="group_fiscal_approval_closing" model="res.groups">
+	        <field name="name">Fiscal Year Approval for Closing</field>
+	        <field name="category_id" ref="module_fiscal_year_settings"/>
+	    </record>
+
+	    <record id="group_fiscal_approval_reopen" model="res.groups">
+	        <field name="name">Fiscal Year Approval for Re-Opening</field>
+	        <field name="category_id" ref="module_fiscal_year_settings"/>
+	    </record>
+
+	</data>
+</odoo>

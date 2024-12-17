@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="student_portal_scripts_1">
+            <script type="text/javascript" src="/web/static/lib/jquery/jquery.js"/>
+            <script src="/aht_education_core/static/src/js/vendor.bundle.base.js"/>
+            <script src="/aht_education_core/static/src/vendors/chart.js/Chart.min.js"/>
+            <!--            <script src="/aht_education_core/static/src/vendors/datatables.net/jquery.dataTables.js"/>-->
+            <!--            <script src="/aht_education_core/static/src/vendors/datatables.net-bs4/dataTables.bootstrap4.js"/>-->
+            <script src="/aht_education_core/static/src/js/dataTables.select.min.js"/>
+            <script src="/aht_education_core/static/src/js/off-canvas.js"/>
+            <script src="/aht_education_core/static/src/js/hoverable-collapse.js"/>
+            <script src="/aht_education_core/static/src/js/template.js"/>
+            <script src="/aht_education_core/static/src/js/settings.js"/>
+            <script src="/aht_education_core/static/src/js/todolist.js"/>
+            <script src="/aht_education_core/static/src/js/dashboard.js"/>
+            <script src="/aht_education_core/static/src/js/Chart.roundedBarCharts.js"/>
+            <script src="/aht_education_core/static/src/js/lecture_notes.js"/>
+            <script src="/aht_education_core/static/src/js/education_core_general.js"/>
+            <script src="/aht_education_core/static/src/js/assignment.js"/>
+            <script type="text/javascript" src="/aht_education_core/static/src/js/sweetalert2.all.min.js"/>
+        </template>
+
+        <template id="student_portal_links_1">
+            <link rel="stylesheet" href="/aht_education_core/static/src/vendors/feather/feather.css"/>
+            <link rel="stylesheet" href="/aht_education_core/static/src/vendors/ti-icons/css/themify-icons.css"/>
+            <link rel="stylesheet" href="/aht_education_core/static/src/vendors/css/vendor.bundle.base.css"/>
+            <link rel="stylesheet"
+                  href="/aht_education_core/static/src/css/sweetalert2.min.css"/>
+            <link rel="stylesheet"
+                  href="/aht_education_core/static/src/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>
+            <link rel="stylesheet" href="/aht_education_core/static/src/vendors/ti-icons/css/themify-icons.css"/>
+            <link rel="stylesheet" type="text/css" href="/aht_education_core/static/src/js/select.dataTables.min.css"/>
+            <link rel="stylesheet" href="/aht_education_core/static/src/css/vertical-layout-light/style.css"/>
+            <link rel="stylesheet" href="/aht_education_core/static/src/css/vertical-layout-light/styles2.css?v=1.2"/>
+            <link rel="shortcut icon" href="/aht_education_core/static/src/images/favicon.png"/>
+        </template>
+
+        <template id="student_profile">
+            <link rel="stylesheet" href="/aht_education_core/static/src/css/student_profile_portal.css"/>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,282 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_attendance_summary_report_custom
+# 	* hr_attendance_summary_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-04 07:57+0000\n"
+"PO-Revision-Date: 2022-08-04 07:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+msgid "<strong>From:</strong>"
+msgstr "<strong>من:</strong>"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+msgid "<strong>To:</strong>"
+msgstr "<strong>الى:</strong>"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Absent"
+msgstr "غياب"
+
+#. module: hr_attendance_summary_report_custom
+#: model:ir.model,name:hr_attendance_summary_report_custom.model_report_hr_attendance_summary_report_employee_attendance_view
+msgid "Account report with payment lines"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.ui.menu,name:hr_attendance_summary_report.menu_attendance_report
+msgid "Attendance Report"
+msgstr "تقرير الحضور/ الإنصراف"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.hr_attendance_report_wizard_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Color"
+msgstr "اللون"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Color Key Map"
+msgstr "خريطة  الألوان"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__create_date
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__department_id
+#: model:ir.model.fields.selection,name:hr_attendance_summary_report.selection__hr_attendance_report_wizard__select_type__department
+msgid "Department"
+msgstr "القسم"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Description"
+msgstr "الوصف"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__display_name
+#: model:ir.model.fields,field_description:hr_attendance_summary_report_custom.field_hr_attendance_report_wizard__display_name
+#: model:ir.model.fields,field_description:hr_attendance_summary_report_custom.field_report_hr_attendance_summary_report_employee_attendance_view__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Employee"
+msgstr "الموظف"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: model:ir.actions.act_window,name:hr_attendance_summary_report.hr_attendance_report_wizard_action
+#: model:ir.actions.report,name:hr_attendance_summary_report.report_employee_attendance
+#: model:ir.actions.report,name:hr_attendance_summary_report_custom.report_employee_attendance
+msgid "Employee Attendance Report"
+msgstr "تقرير الحضور /الإنصراف"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: model:ir.actions.report,print_report_name:hr_attendance_summary_report.report_employee_attendance
+#: model:ir.actions.report,print_report_name:hr_attendance_summary_report_custom.report_employee_attendance
+msgid "Employee Attendance Report'"
+msgstr "تقرير الحضور والانصراف"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Employee Attendance Summary Report"
+msgstr "تقرير الحضور والانصراف التجميعي"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+msgid "Employee Attendance Summary with HoursReport"
+msgstr "تقرير الحضور والانصراف التجميعي بالساعات"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__employee_id
+#: model:ir.model.fields.selection,name:hr_attendance_summary_report.selection__hr_attendance_report_wizard__select_type__employee
+msgid "Employees"
+msgstr "الموظفين"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.hr_attendance_report_wizard_form
+msgid "Export to Excel"
+msgstr "تصدير الى إكسل"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.hr_attendance_report_wizard_form
+msgid "Export to PDF"
+msgstr "تصدير الى PDF"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__file
+msgid "File"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__file_name
+msgid "File Name"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__from_date
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: hr_attendance_summary_report_custom
+#: model:ir.model,name:hr_attendance_summary_report_custom.model_hr_attendance_report_wizard
+msgid "HR Attendance Report wizard"
+msgstr "تقرير الحضور والانصراف"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__id
+#: model:ir.model.fields,field_description:hr_attendance_summary_report_custom.field_hr_attendance_report_wizard__id
+#: model:ir.model.fields,field_description:hr_attendance_summary_report_custom.field_report_hr_attendance_summary_report_employee_attendance_view__id
+msgid "ID"
+msgstr ""
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report____last_update
+#: model:ir.model.fields,field_description:hr_attendance_summary_report_custom.field_hr_attendance_report_wizard____last_update
+#: model:ir.model.fields,field_description:hr_attendance_summary_report_custom.field_report_hr_attendance_summary_report_employee_attendance_view____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_generate_excel_report__write_date
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Leave"
+msgstr "إجازة"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__report_options
+msgid "Options"
+msgstr "الخيارات"
+
+#. module: hr_attendance_summary_report
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+msgid "PH"
+msgstr ""
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Present"
+msgstr "حاضر"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__select_type
+msgid "Print report by"
+msgstr "طباعة التقرير بواسطة"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Public Holiday"
+msgstr "إجازة عامة"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Rest"
+msgstr "راحة"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields.selection,name:hr_attendance_summary_report.selection__hr_attendance_report_wizard__report_options__summary_with_horurs
+msgid "Summary with Hours"
+msgstr "تجميع مع الساعات"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields.selection,name:hr_attendance_summary_report.selection__hr_attendance_report_wizard__report_options__summary
+msgid "Summery"
+msgstr "المجموع"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model.fields,field_description:hr_attendance_summary_report.field_hr_attendance_report_wizard__to_date
+msgid "To Date"
+msgstr "إلى تاريخ"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Total Absent"
+msgstr "مجموع الغياب"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Total Hour"
+msgstr "مجموع الساعات"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Total Present"
+msgstr "مجموع الحضور"
+
+#. modules: hr_attendance_summary_report_custom, hr_attendance_summary_report
+#: code:addons/hr_attendance_summary_report_custom/wizard/hr_attendance_report_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_summary_report.employee_attendance_view
+#, python-format
+msgid "Weekend"
+msgstr "إجازة نهاية اسبوع"
+
+#. module: hr_attendance_summary_report
+#: model:ir.model,name:hr_attendance_summary_report.model_generate_excel_report
+msgid "generate excel"
+msgstr ""

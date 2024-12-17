@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <record id="field_data_export_wizard_form" model="ir.ui.view">
+            <field name="name">field.data.export.wizard.form</field>
+            <field name="model">field.data.export.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <div class="oe_title">
+                        <field name="name" invisible="1"/>
+                        <h4>
+                            <field name="query_str" placeholder="Write a query" style="background:Blue;" />
+                        </h4>
+                    </div>
+                    <separator/>
+                    <div class="btn-group">
+                        <button name="action_show" type="object" string="Show" icon="fa-list"
+                                class="btn btn-success" style="width: 250px; margin : 10px;"/>
+                        <button name="action_export" type="object" string="Export" icon="fa-download"
+                                class="btn btn-primary" style="width: 250px; margin : 10px"/>
+                        <button name="action_reload" type="object" string="Reload" icon="fa-refresh"
+                                class="btn btn-danger" style="width: 250px; margin : 10px"/>
+                    </div>
+                    <separator/>
+                    <group>
+                        <group>
+                            <field name="show_file" invisible="1" />
+                            <field name="excel_file" readonly="1" filename="file_name"
+                                   attrs="{'invisible': [('show_file', '=', False)]}"/>
+                            <field name="file_name" invisible="1" />
+                        </group>
+                        <group></group>
+                    </group>
+                    <separator/>
+                    <field name="report_preview" readonly="1" force_save="1"/>
+                </form>
+            </field>
+        </record>
+
+        <!--Action View-->
+        <record id="action_field_data_export" model="ir.actions.act_window">
+            <field name="name">Data Export</field>
+            <field name="res_model">field.data.export.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem
+                name="Data Export"
+                id="menu_field_data_export"
+                parent="base.next_id_9"
+                action="action_field_data_export"
+        />
+    </data>
+</odoo>

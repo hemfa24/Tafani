@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="paperformat_lowmargin_sale_margin" model="report.paperformat">
+	    <field name="name">European A4 low margin</field>
+	    <field name="default" eval="True" />
+	    <field name="format">A4</field>
+	    <field name="page_height">0</field>
+	    <field name="page_width">0</field>
+	    <field name="orientation">Landscape</field>
+	    <field name="margin_top">45</field>
+	    <field name="margin_bottom">10</field>
+	    <field name="margin_left">8</field>
+	    <field name="margin_right">8</field>
+	    <field name="header_line" eval="False" />
+	    <field name="header_spacing">40</field>
+	    <field name="dpi">90</field>
+	</record>
+
+    <record id="sales_margin_report_pdf" model="ir.actions.report">
+        <field name="name">Sales Margin Report</field>
+        <field name="model">sale.margin</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bi_sale_margin_report.sales_margin_template</field>
+        <field name="report_file">bi_sale_margin_report.sales_margin_template</field>
+        <field name="binding_model_id" ref="model_sale_margin"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="bi_sale_margin_report.paperformat_lowmargin_sale_margin"/>
+    </record>
+</odoo>

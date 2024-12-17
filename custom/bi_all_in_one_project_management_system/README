@@ -1,0 +1,41 @@
+
+Version 16.0.0.1 :
+		- Update some UI and fields not set proper fixed it and.
+		
+Version 16.0.0.2 :
+Date : 28-12-22
+FIX:
+	- fix the realtime timer field issue.
+	- fix the checklist progress field issue.
+	- fix the task update email issue as email is sending to the new user also which has not create & assigned in any task.
+	- add the code for the sample download files (csv/xls) in import task wizard.
+
+Version 16.0.0.3 :
+Date : 05-01-23
+FIX:
+	-- fix the project field views.
+
+Version 16.0.0.4 :
+Date : 06-01-23
+FIX:
+	-- fix the timer duration field issue.
+
+Version 16.0.0.5:
+Date : 06-01-23
+FIX:
+	-- fix the issue of the end task traceback.
+
+
+Version 16.0.0.6:
+Date : 11-01-23
+FIX:
+	-- Fixed unsupported operand error while creating subtasks
+    -- Hide our subtask pag tag if  default Sub-task is enabled
+
+Version 16.0.0.7:
+Date : 12-01-23
+FIX:
+    -- Fixed subtask stage issue
+
+
+16.0.0.8 ==>fixed issue of when open task it throws error.

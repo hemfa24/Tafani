@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+         <record model="ir.rule" id="rule_student_manager">
+            <field name="name">Student Manager Rule</field>
+            <field name="model_id" ref="aht_education_core.model_aht_student" />
+            <field name="domain_force">[(1,'=',1)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_student_profile_manager'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="1" />
+            <field name="perm_write" eval="1" />
+            <field name="perm_unlink" eval="1" />
+        </record>
+         <record model="ir.rule" id="rule_student">
+            <field name="name">View Student Own Profile</field>
+            <field name="model_id" ref="aht_education_core.model_aht_student" />
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+             <field name="groups" eval ="[(4, ref('aht_education_core.group_student'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record> 
+        
+        
+        <!-- lecturer record rules -->
+        <record model="ir.rule" id="rule_lecturer_manager">
+            <field name="name">Lecturer Manager Rule</field>
+            <field name="model_id" ref="aht_education_core.model_hr_employee" />
+            <field name="domain_force">[(1,'=',1)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_lecturer_manager'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="1" />
+            <field name="perm_write" eval="1" />
+            <field name="perm_unlink" eval="1" />
+        </record>
+         <record model="ir.rule" id="rule_lecturer">
+            <field name="name">View Lecturer Own Profile</field>
+            <field name="model_id" ref="aht_education_core.model_hr_employee" />
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_lecturer'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record> 
+        
+        
+        
+        <record model="ir.rule" id="rule_lecturer_student_attendance">
+            <field name="name">View Lecturer own student Attendance</field>
+            <field name="model_id" ref="aht_education_core.model_student_course_attendance" />
+            <field name="domain_force">[('faculty.user_id','=',user.id)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_lecturer'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="1" />
+            <field name="perm_write" eval="1" />
+            <field name="perm_unlink" eval="1" />
+        </record>  
+        
+        
+         <record model="ir.rule" id="rule_lecturer_student_attendance_correction">
+            <field name="name">View Lecturer own student Attendance Correction</field>
+            <field name="model_id" ref="aht_education_core.model_attendance_correction_request" />
+            <field name="domain_force">[('faculty.user_id','=',user.id)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_lecturer'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="1" />
+            <field name="perm_write" eval="1" />
+            <field name="perm_unlink" eval="1" />
+        </record>   
+        
+        
+         <record model="ir.rule" id="rule_lecturer_notes_lecturer">
+            <field name="name">View Lecturer own notes</field>
+            <field name="model_id" ref="aht_education_core.model_lecturer_notes" />
+            <field name="domain_force">[('uploaded_by','=',user.id)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_lecturer'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="1" />
+            <field name="perm_write" eval="1" />
+            <field name="perm_unlink" eval="1" />
+        </record>   
+        
+        
+         <record model="ir.rule" id="rule_lecturer_notes_student">
+            <field name="name">View student registered course notes</field>
+            <field name="model_id" ref="aht_education_core.model_lecturer_notes" />
+            <field name="domain_force">[('course_offered.student_ids.user_id','in',user.ids)]</field>
+             <field name="groups" eval="[(4, ref('aht_education_core.group_student'))]"/>
+            <field name="perm_read" eval="1" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>   
+        
+        
+        
+        
+        
+        
+          <!-- Registration student -->
+        <record id="student_registration_course_rule" model="ir.rule">
+            <field name="name">student course registration access</field>
+            <field name="model_id" ref="model_course_registration_student"/>
+            <field name="groups" eval="[(4, ref('aht_education_core.group_student'))]"/>
+           <field name="domain_force">[('student_id.user_id','=',user.id)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    </data>
+</odoo>

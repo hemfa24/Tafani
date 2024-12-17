@@ -1,0 +1,100 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="edu_class_form_view">
+            <field name="name">Class Title</field>
+            <field name="model">course.registration.class</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2" colspan="2">
+                            <field name="section_id"/>
+                            <field name="program_id"/>
+                            <field name="semester_id"/>
+                            <field name="shift"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="edu_class_tree_view">
+            <field name="name">Class Title</field>
+            <field name="model">course.registration.class</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="section_id"/>
+                    <field name="program_id"/>
+                    <field name="semester_id"/>
+                    <field name="shift"/>
+                    <!--=======-->
+                    <!--                <field name="name" />-->
+                    <!--                <field name="section_id" />-->
+                    <!--&gt;>>>>>> 16.0-->
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_class_title">
+            <field name="name">Class</field>
+            <field name="res_model">course.registration.class</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="edu_section_form_view">
+            <field name="name">Section Title</field>
+            <field name="model">course.registration.section</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2" colspan="2">
+                            <field name="name" required="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="edu_section_tree_view">
+            <field name="name">Section Title</field>
+            <field name="model">course.registration.section</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_section_title">
+            <field name="name">Section</field>
+            <field name="res_model">course.registration.section</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.ui.view" id="edu_semester_form_view">
+            <field name="name">Semester form</field>
+            <field name="model">course.registration.semester</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2" colspan="2">
+                            <field name="name" required="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="edu_semester_tree_view">
+            <field name="name">Semester Tree</field>
+            <field name="model">course.registration.semester</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_semester">
+            <field name="name">Semester</field>
+            <field name="res_model">course.registration.semester</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2020 CorTex IT Solutions Ltd. <https://cortexsolutions.net/>
+     License OPL-1 -->
+<odoo>
+    <data>
+        <record id="view_module_filter_inherit_multi_upgrade" model="ir.ui.view">
+            <field name="name">ir.module.module.list.select.inherit.multi.upgrade</field>
+            <field name="model">ir.module.module</field>
+            <field name="inherit_id" ref="base.view_module_filter"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="before">
+                    <filter name="need_upgrade" string="Needs Upgrade" domain="[('need_upgrade', '=', True)]"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="module_tree_inherit_multi_upgrade" model="ir.ui.view">
+            <field name="name">ir.module.module.tree.inherit.multi.upgrade</field>
+            <field name="model">ir.module.module</field>
+            <field name="inherit_id" ref="base.module_tree"/>
+            <field name="arch" type="xml">
+                <field name="installed_version" position="before">
+                    <field name="latest_version" />
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

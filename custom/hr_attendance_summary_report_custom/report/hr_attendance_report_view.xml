@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="hr_attendance_report_wizard_inh_form" model="ir.ui.view">
+        <field name="name">hr.attendance.report.wizard</field>
+        <field name="model">hr.attendance.report.wizard</field>
+        <field name="inherit_id" ref="hr_attendance_summary_report.hr_attendance_report_wizard_form"/>
+        <field name="arch" type="xml">
+        	
+        	<xpath expr="//form/group/group/field[@name='employee_id']" position="replace">
+        		<field name="employee_id" widget="many2many_tags" attrs="{'invisible': [('select_type', '=', 'department')]}"/>
+        	</xpath>
+        	<xpath expr="//form/group/group/field[@name='employee_id']" position="after">
+        		<field name="select_type" widget='radio'/>
+        		<field name="department_id"  widget="many2many_tags" attrs="{'invisible': [('select_type', '=', 'employee')]}"/>
+        	</xpath>
+        </field>
+    </record>
+
+	<record id="paperformat_employee_attendance" model="report.paperformat">
+        <field name="name">Employee Attandance</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">325</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">6</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+
+
+    <record id="report_employee_attendance" model="ir.actions.report">
+        <field name="name">Employee Attendance Report</field>
+        <field name="model">hr.attendance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_attendance_summary_report.employee_attendance_view</field>
+        <field name="report_file">hr_attendance_summary_report.employee_attendance_view</field>
+        <field name="print_report_name">Employee Attendance Report'</field>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_employee_attendance"/>
+    </record>
+
+    <template id="hr_attendance_summary_report.employee_attendance_view">
+    	<t t-call="web.basic_layout">
+    		<div class="page">
+	        	<t t-if="report_options == 'summary'">
+	        		<h4 style="text-align: center;">Employee Attendance Summary Report</h4>
+	        	</t>
+	        	<t t-if="report_options == 'Summary_with_horurs'">
+		    		<h4 style="text-align: center;">Employee Attendance Summary with HoursReport</h4>
+		    	</t>
+        		<div>
+                    <table>
+                        <tr>
+                            <td><strong>From:</strong>
+                                <span t-esc="from_date"/><strong>To:</strong>
+                                <span t-esc="to_date"/>
+                            </td>
+           				</tr>
+                    </table>
+                </div>
+                <div>
+		    		<table class="table table-bordered mb32" style="table-layout:auto;">
+		                <thead>
+		                    <tr>
+		                    	<th rowspan="2">Employee</th>
+		                    	<th rowspan="2">Department</th>
+		                    	<t t-foreach="day" t-as="d">
+		    						<th t-esc="d"></th>
+		    					</t>
+		    					<t t-if="report_options == 'summary'">					
+			   						<th rowspan="2">Total Present</th>
+			   						<th rowspan="2">Total Absent</th>
+			   					</t>
+			   					<t t-if="report_options == 'Summary_with_horurs'">
+			   						<th rowspan="2">Total Hour</th>
+			   					</t>
+			   				</tr>
+			   				<tr>
+			   					<t t-foreach="weekday" t-as="w">
+			   						<th t-esc="w"></th>
+			   					</t>
+			   				</tr>
+						</thead>
+						<tbody>
+							<t t-foreach="status_dict" t-as="summury">
+								<t t-set="hours" t-value="[]"/>
+								<tr>
+									<t t-set='total_hour' t-value='0'/>
+									<t t-set='count' t-value='0'/>
+									<t t-set='countA' t-value='0'/>
+									<t t-if="report_options == 'summary'">
+										<td t-esc="summury"/>
+										<td t-esc="dept_dict[summury]"/>
+									</t>
+									<t t-if="report_options == 'Summary_with_horurs'">
+										<td rowspan="2" t-esc="summury"/>
+										<td rowspan="2" t-esc="dept_dict[summury]"/>
+									</t>
+									<t t-foreach="time_dict" t-as="time">
+										<t t-if="summury == time">
+											<t t-foreach="summury_value" t-as="s">
+												<t t-if="s == 'A'">
+													<td t-esc='s' style="background-color: red; text-align: center;color:white;"/>
+													<t t-set="countA" t-value="countA + 1"/>
+												</t>
+												<t t-if="s == 'P'">
+													<td t-esc='s' style="background-color: green; text-align: center;color:white;"/>
+													<t t-set="count" t-value="count + 1"/>
+												</t>
+												<t t-if="s == 'L'">
+		                                        	<td t-esc='s' style="background-color: blue; text-align: center;color:white;"/>
+		                                        </t>
+		                                        <t t-if="s == 'PH'">
+		                                        	<td t-esc='s' style="background-color: yellow; text-align: center;color:white;"/>
+		                                        </t>
+		                                        <t t-if="s == 'W'">
+		                                        	<td t-esc='s' style="background-color: gray; text-align: center;"/>
+		                                        </t>
+		                                        <t t-if="s == ' '">
+		                                        	<td t-esc='s' style="background-color: gray; text-align: center;"/>
+		                                        </t>
+											</t>
+											<t t-foreach="time_value" t-as="t">
+		                                        <t t-set="hours" t-value="hours + [t]"/>
+		                                        <t t-if="t != 0">
+		                                            <t t-set="total_hour" t-value="total_hour + t"/>
+		                                        </t>
+		                                    </t>
+										</t>
+									</t>
+									<t t-if="report_options == 'summary'">
+										<td t-esc="count" style="text-align: center;"/>
+										<td t-esc="countA" style="text-align: center;"/>
+									</t>
+									<t t-if="report_options == 'Summary_with_horurs'">
+										<td rowspan="2" t-esc="'%.2f'%(total_hour)" style="text-align: center;"/>
+									</t>
+								</tr>
+								<t t-if="report_options == 'Summary_with_horurs'">
+									<tr>
+			                            <t t-foreach="hours" t-as="h">
+			                                <td t-esc="h" style="text-align: center;"/>
+			                            </t>
+			                        </tr>
+								</t>
+							</t>
+						</tbody>
+		    		</table>
+		    		<table  class="table table-bordered mb32" style="table-layout:auto;width:360px">
+		                <thead>
+		                    <tr>
+		                    	<th colspan="4">Color Key Map</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                    <tr>
+		                    	<th style="width:15px">Color</th>
+		                    	<th style="width:40px">Description</th>
+		                    	<th style="width:15px">Color</th>
+		                    	<th style="width:40px">Description</th>
+		                    </tr>
+		                    <tr>
+		                    	<td style="background-color:red"><center>A</center></td>
+		                    	<td>  Absent</td>
+		                    	<td style="background-color:green"><center>P</center></td>
+		                    	<td>  Present</td>
+		                    </tr>
+		                    <tr>
+		                    	<td style="background-color:yellow"><center>PH</center></td>
+		                    	<td> Public Holiday</td>
+		                    	<td style="background-color:blue"><center>L</center></td>
+		                    	<td> Leave</td>
+		                    </tr>
+		                    <tr>
+		                    	<td style="background-color:gray"><center>W</center></td>
+		                    	<td>  Weekend</td>
+		                    	<td style="background-color:gray"></td>
+		                    	<td>  Rest</td>
+		                    </tr>
+		                </tbody>
+		    		</table>
+		    	</div>
+		    </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_pos_advance_cache
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-28 06:27+0000\n"
+"PO-Revision-Date: 2022-09-28 06:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model,name:sh_pos_advance_cache.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__create_uid
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__create_date
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__delete_ids
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__delete_ids
+msgid "Delete Ids"
+msgstr "Eliminar IDS"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__display_name
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__id
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update____last_update
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__write_uid
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_customer_update__write_date
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_product_update__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields.selection,name:sh_pos_advance_cache.selection__pos_config__sh_partner_upate__on_refresh
+#: model:ir.model.fields.selection,name:sh_pos_advance_cache.selection__pos_config__sh_product_upate__on_refresh
+msgid "On Refresh"
+msgstr "Refrescarse"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model,name:sh_pos_advance_cache.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuración del punto de venta"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model,name:sh_pos_advance_cache.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model,name:sh_pos_advance_cache.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields.selection,name:sh_pos_advance_cache.selection__pos_config__sh_partner_upate__online
+#: model:ir.model.fields.selection,name:sh_pos_advance_cache.selection__pos_config__sh_product_upate__online
+msgid "Real Time"
+msgstr "Tiempo real"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_pos_config__sh_partner_upate
+msgid "Update Customer "
+msgstr "Actualizar el cliente"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model.fields,field_description:sh_pos_advance_cache.field_pos_config__sh_product_upate
+msgid "Update Product "
+msgstr "Producto de actualización"
+
+#. module: sh_pos_advance_cache
+#: model_terms:ir.ui.view,arch_db:sh_pos_advance_cache.view_pos_config_form_advance_cache
+msgid "Update Product/customer Info"
+msgstr "Actualizar información del producto/cliente"
+
+#. module: sh_pos_advance_cache
+#: model:ir.model,name:sh_pos_advance_cache.model_customer_update
+msgid "customer.update"
+msgstr "Cliente."
+
+#. module: sh_pos_advance_cache
+#: model:ir.model,name:sh_pos_advance_cache.model_product_update
+msgid "product.update"
+msgstr "Actualización del producto"

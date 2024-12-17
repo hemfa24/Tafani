@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                />
+                <div class="oe_right oe_button_box" style="margin: 0px -280px 0px 0px;">
+                    <button name="apply_stock_analytic_distribution" type="object" string="Apply" class="oe_highlight" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

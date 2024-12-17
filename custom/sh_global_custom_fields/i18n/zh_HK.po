@@ -1,0 +1,799 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_global_custom_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-28 10:52+0000\n"
+"PO-Revision-Date: 2020-09-28 10:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_form_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Access Rights"
+msgstr "访问权限"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__sh_position__after
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_model_tab__sh_position__after
+msgid "After"
+msgstr "后"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Archive"
+msgstr "档案"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Are you sure that you want to archive this record?"
+msgstr "您确定要归档此记录吗？"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__sh_position__before
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_model_tab__sh_position__before
+msgid "Before"
+msgstr "前"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_m2m_selection__many2many_binary
+msgid "Binary"
+msgstr "二进制"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Binary Fields"
+msgstr "二进制字段"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Boolean Fields"
+msgstr "布尔字段"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_model_tab_wizard_view
+msgid "Cancel"
+msgstr "取消"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Char Fields"
+msgstr "凯田"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_m2m_selection__many2many_checkboxes
+msgid "Checkboxes"
+msgstr "复选框"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__compute
+msgid ""
+"Code to compute the value of the field.\n"
+"Iterate on the recordset 'self' and assign the field's value:\n"
+"\n"
+"    for record in self:\n"
+"        record['size'] = len(record.name)\n"
+"\n"
+"Modules time, datetime, dateutil are available."
+msgstr ""
+"Code to compute the value of the field.\n"
+"Iterate on the recordset 'self' and assign the field's value:\n"
+"\n"
+"    for record in self:\n"
+"        record['size'] = len(record.name)\n"
+"\n"
+"Modules time, datetime, dateutil are available."
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__column1
+msgid "Column 1"
+msgstr "第1列"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__column2
+msgid "Column 2"
+msgstr "第2栏"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__column2
+msgid "Column referring to the record in the comodel table"
+msgstr "列指的是Comodel表中的记录"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__column1
+msgid "Column referring to the record in the model table"
+msgstr "列引用模型表中的记录"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__complete_name
+msgid "Complete Name"
+msgstr "全名"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__compute
+msgid "Compute"
+msgstr "计算"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__copied
+msgid "Copied"
+msgstr "复制"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Copied Fields"
+msgstr "复制的字段"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/basic_controller.js:0
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Create Custom Field"
+msgstr "创建自定义字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.actions.act_window,name:sh_global_custom_fields.sh_global_dynamic_fields_action
+msgid "Create Custom Fields"
+msgstr "创建自定义字段"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/basic_controller.js:0
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Create Custom Tab"
+msgstr "创建自定义选项卡"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Create Fields"
+msgstr "创建字段"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_model_tab_wizard_view
+msgid "Create Tab"
+msgstr "创建选项卡"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__create_uid
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__create_uid
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__create_uid
+msgid "Created by"
+msgstr "由...制作"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__create_date
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__create_date
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__create_date
+msgid "Created on"
+msgstr "创建于"
+
+#. module: sh_global_custom_fields
+#: model:ir.model,name:sh_global_custom_fields.model_sh_custom_field_model
+msgid "Custom Field Model"
+msgstr "自定义字段模型"
+
+#. module: sh_global_custom_fields
+#: model:ir.model,name:sh_global_custom_fields.model_sh_model_fields_global_selection
+msgid "Custom Field Model description"
+msgstr "自定义字段模型描述"
+
+#. module: sh_global_custom_fields
+#: model:ir.actions.act_window,name:sh_global_custom_fields.sh_global_custom_fields_view_action
+#: model:ir.ui.menu,name:sh_global_custom_fields.sh_global_custom_fields_menu
+#: model:ir.ui.menu,name:sh_global_custom_fields.sh_global_custom_fields_root_menu
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_form_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Custom Fields"
+msgstr "自定义字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model,name:sh_global_custom_fields.model_sh_custom_model_tab
+msgid "Custom Model Tab"
+msgstr "自定义模型选项卡"
+
+#. module: sh_global_custom_fields
+#: model:ir.actions.act_window,name:sh_global_custom_fields.sh_custom_model_tab_form_action
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_model_tab_wizard_view
+msgid "Custom Tab"
+msgstr "自定义选项卡"
+
+#. module: sh_global_custom_fields
+#: model:ir.ui.menu,name:sh_global_custom_fields.sh_custom_model_tab_form_action_menu
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_model_tab_form_view
+msgid "Custom Tabs"
+msgstr "自定义选项卡"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Date Fields"
+msgstr "日期字段"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "DateTime Fields"
+msgstr "DateTime字段"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Delete"
+msgstr "删除"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__depends
+msgid "Dependencies"
+msgstr "依赖性"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__depends
+msgid ""
+"Dependencies of compute method; a list of comma-separated field names, like\n"
+"\n"
+"    name, partner_id.name"
+msgstr ""
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__display_name
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__display_name
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__domain
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__task_domain
+msgid "Domain"
+msgstr "领域"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_form_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Domains"
+msgstr "域名"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Duplicate"
+msgstr "复制"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__group_expand
+msgid "Expand Groups"
+msgstr "展开团体"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__position_selection__fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Field"
+msgstr "场地"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__help
+msgid "Field Help"
+msgstr "现场帮助"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__field_description
+msgid "Field Label"
+msgstr "现场标签"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__field_type
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__ttype
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Field Type"
+msgstr "字段类型"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_float_selection__float_time
+msgid "Float"
+msgstr "漂浮"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Float Fields"
+msgstr "浮田"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__relation_field
+msgid ""
+"For one2many fields, the field on the target model that implement the "
+"opposite many2one relationship"
+msgstr ""
+"对于One2many字段，实现目标模型上的字段"
+"相反的人关系"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__relation
+msgid "For relationship fields, the technical name of the target model"
+msgstr "对于关系领域，目标模型的技术名称"
+
+#. module: sh_global_custom_fields
+#: model:res.groups,name:sh_global_custom_fields.group_global_custom_field
+msgid "Global Custom Field"
+msgstr "全球自定义领域"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Global Custom Fields"
+msgstr "全局自定义字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.actions.act_window,name:sh_global_custom_fields.sh_custom_model_tab_wizard_action
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_tab_search
+msgid "Global Custom Tab"
+msgstr "全局自定义选项卡"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_tab_search
+msgid "Group By"
+msgstr "通过...分组"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__groups
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__groups
+msgid "Groups"
+msgstr "团体"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "HTML Fields"
+msgstr "HTML字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__field_help
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_form_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Help"
+msgstr "帮助"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_text_selection__html
+msgid "Html"
+msgstr "HTML."
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__id
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__id
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__group_expand
+msgid ""
+"If checked, all the records of the target model will be included\n"
+"in a grouped result (e.g. 'Group By' filters, Kanban columns, etc.).\n"
+"Note that it can significantly reduce performance if the target model\n"
+"of the field contains a lot of records; usually used on models with\n"
+"few records (e.g. Stages, Job Positions, Event Types, etc.)."
+msgstr ""
+"如果选中，则将包含目标模型的所有记录\ n"
+"在分组的结果（例如'筛选器，Kanban列等）中。\ n"
+"请注意，如果目标模型\ n会显着降低性能"
+"该领域包含很多记录;通常用于模型上\ n"
+"少数记录（例如阶段，工作职位，事件类型等）。"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__modules
+msgid "In Apps"
+msgstr "在应用中"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__index
+msgid "Indexed"
+msgstr "索引"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__inherit_view_obj
+msgid "Inherited UI View Saved Object"
+msgstr "继承的UI View已保存对象"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Integer Fields"
+msgstr "整数字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__label
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_form_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_tree_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Label"
+msgstr "标签"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model____last_update
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab____last_update
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection____last_update
+msgid "Last Modified on"
+msgstr "最后修改了"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__write_uid
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__write_uid
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__write_uid
+msgid "Last Updated by"
+msgstr "最后更新"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__write_date
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__write_date
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__write_date
+msgid "Last Updated on"
+msgstr "上次更新了"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__modules
+msgid "List of modules in which the field is defined"
+msgstr "定义该字段的模块列表"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Many2many Fields"
+msgstr "许多人的字段"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Many2one Fields"
+msgstr "多个字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__model_id
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__parent_model_name
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__ref_model_id
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__parent_model_name
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_tab_search
+msgid "Model"
+msgstr "模型"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__model
+msgid "Model Name"
+msgstr "型号名称"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__ir_model_fields_obj
+msgid "Models Fields Saved Object"
+msgstr "模型字段已保存对象"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__name
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__name
+msgid "Name"
+msgstr "姓名"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__on_delete
+msgid "On Delete"
+msgstr "在删除"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__on_delete
+msgid "On delete property for many2one fields"
+msgstr "在删除许多人的删除属性"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__parent_model
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__parent_model
+msgid "Parent Model"
+msgstr "父模型"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__parent_view_id
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__parent_view_id
+msgid "Parent View"
+msgstr "父视图"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__sh_position
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__sh_position
+msgid "Position"
+msgstr "位置"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__position_selection
+msgid "Position Based on"
+msgstr "基于的位置"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__sh_position_field
+msgid "Position Field"
+msgstr "位置领域"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__readonly
+msgid "Readonly"
+msgstr "只读"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__related
+msgid "Related Field"
+msgstr "相关领域"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__relation
+msgid "Related Model"
+msgstr "相关模型"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__related_field_id
+msgid "Related field"
+msgstr "相关领域"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__relation_field
+msgid "Relation Field"
+msgstr "关系领域"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__relation_table
+msgid "Relation Table"
+msgstr "关系表"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__relation_field_id
+msgid "Relation field"
+msgstr "关系领域"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__required
+msgid "Required"
+msgstr "必需的"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Required Fields"
+msgstr "必填字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__sh_field_id
+msgid "SH Custom Task"
+msgstr "SH自定义任务"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__selectable
+msgid "Selectable"
+msgstr "可选"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Selection Fields"
+msgstr "选择字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__selection_ids
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__sh_selection_ids
+msgid "Selection Options"
+msgstr "选择选项"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__selection
+msgid "Selection Options (Deprecated)"
+msgstr "选择选项（已弃用）"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__sequence
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__sequence
+msgid "Sequence"
+msgstr "序列"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__size
+msgid "Size"
+msgstr "尺寸"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__store
+msgid "Stored"
+msgstr "储存"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__position_selection__tab
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_tab_search
+msgid "Tab"
+msgstr "标签"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__invisible_tab
+msgid "Tab Invisible"
+msgstr "标签隐形"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__selected_tab
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__tab_list
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__tab_list
+msgid "Tab List"
+msgstr "标签列表"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_m2m_selection__many2many_tags
+msgid "Tags"
+msgstr "标签"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__task_model_name
+msgid "Task Model Name"
+msgstr "任务模型名称"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__name
+msgid "Technical Field Name"
+msgstr "技术领域名称"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.view_custom_field_search
+msgid "Text Fields"
+msgstr "文本字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__related
+msgid ""
+"The corresponding related field, if any. This must be a dot-separated list "
+"of field names."
+msgstr ""
+"相应的相关字段，如果有的话。这必须是一个分隔的列表"
+"字段名称。"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__model_id
+msgid "The model this field belongs to"
+msgstr "该领域的型号属于"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.constraint,message:sh_global_custom_fields.constraint_sh_custom_model_tab_name_uniq
+msgid "The name must be unique !"
+msgstr "名称必须是独一无二的！"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__domain
+msgid ""
+"The optional domain to restrict possible values for relationship fields, "
+"specified as a Python expression defining a list of triplets. For example: "
+"[('color','=','red')]"
+msgstr ""
+"可选域限制关系字段的可能值，"
+"指定为定义三胞胎列表的Python表达式。例如："
+"[（'颜色'，'='，'红色'）]"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__model
+msgid "The technical name of the model this field belongs to"
+msgstr "该字段所属模型的技术名称"
+
+#. module: sh_global_custom_fields
+#: model:res.groups,comment:sh_global_custom_fields.group_global_custom_field
+msgid "This user will be able to create custom field for any Object"
+msgstr "此用户将能够为任何对象创建自定义字段"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__translate
+msgid "Translatable"
+msgstr "可翻译"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__state
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_form_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_tree_view
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_wizard_view
+msgid "Type"
+msgstr "类型"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__ir_ui_view_obj
+msgid "UI View Saved Object"
+msgstr "UI View已保存对象"
+
+#. module: sh_global_custom_fields
+#. openerp-web
+#: code:addons/sh_global_custom_fields/static/src/js/form_controller.js:0
+#, python-format
+msgid "Unarchive"
+msgstr "未加工"
+
+#. module: sh_global_custom_fields
+#: model_terms:ir.ui.view,arch_db:sh_global_custom_fields.sh_custom_field_model_tree_view
+msgid "Update"
+msgstr "更新"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__relation_table
+msgid ""
+"Used for custom many2many fields to define a custom relation table name"
+msgstr ""
+"用于定制Many2many字段以定义自定义关系表名称"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_model_fields_global_selection__value
+msgid "Value"
+msgstr "价值"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_model_tab__view_id
+msgid "View"
+msgstr "看法"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__copied
+msgid "Whether the value is copied when duplicating a record."
+msgstr "复制记录时是否复制了该值。"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__store
+msgid "Whether the value is stored in the database."
+msgstr "该值是存储在数据库中。"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,help:sh_global_custom_fields.field_sh_custom_field_model__translate
+msgid ""
+"Whether values for this field can be translated (enables the translation "
+"mechanism for that field)"
+msgstr ""
+"可以翻译此字段的值（启用翻译"
+"该领域的机制）"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_binary_selection
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_char_selection
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_float_selection
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_m2m_selection
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_m2o_selection
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_selctn_selection
+#: model:ir.model.fields,field_description:sh_global_custom_fields.field_sh_custom_field_model__widget_text_selection
+msgid "Widget"
+msgstr "小部件"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_char_selection__email
+msgid "email"
+msgstr "电子邮件"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_binary_selection__image
+msgid "image"
+msgstr "图片"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_char_selection__phone
+msgid "phone"
+msgstr "电话"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_selctn_selection__priority
+msgid "priority"
+msgstr "优先事项"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_selctn_selection__radio
+msgid "radio"
+msgstr "收音机"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_m2o_selection__selection
+msgid "selection"
+msgstr "选择"
+
+#. module: sh_global_custom_fields
+#: model:ir.model.fields.selection,name:sh_global_custom_fields.selection__sh_custom_field_model__widget_char_selection__url
+msgid "url"
+msgstr "URL."

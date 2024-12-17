@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="tempalte" xml:space="preserve">
+
+    <t t-name="WrappedProductNameLines" t-inherit="point_of_sale.WrappedProductNameLines" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span" position="replace">
+            <t t-if="props.line.product_name_wrapped and props.line.product_name_wrapped.slice(1) != '' and props.line.is_topping">
+                <span class="sh_is_topping_line">
+                    <t t-foreach="props.line.product_name_wrapped.slice(1)" t-as="wrapped_line" t-key="wrapped_line_index"><t t-esc="wrapped_line"/></t>
+                </span>
+            </t>
+            <t t-else="">
+                <span>
+                    <t t-foreach="props.line.product_name_wrapped.slice(1)" t-as="wrapped_line" t-key="wrapped_line_index"><t t-esc="wrapped_line"/></t>
+                </span>
+            </t>
+        </xpath>
+    </t>
+    
+    <t t-name="ShOrderChangeReceipt" t-inherit="pos_restaurant.OrderChangeReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='changes.cancelled.length > 0']//div[hasclass('multiprint-flex')]" position="replace">
+            <div class="multiprint-flex">
+                <t t-if="change.is_topping">
+                    <span class="product-quantity" style="margin-left: 10% !important;" t-esc="change.quantity"/>
+                    <span class="product-name" t-esc="change.name"/> 
+                </t>
+                <t t-else="">
+                    <span class="product-quantity" t-esc="change.quantity"/>
+                    <span class="product-name" t-esc="change.name"/>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//t[@t-if='changes.new.length > 0']//div[hasclass('multiprint-flex')]" position="replace">
+            <div class="multiprint-flex"  >
+                <t t-if="change.is_topping">
+                    <span class="product-quantity" style="margin-left: 10% !important;" t-esc="change.quantity"/>
+                    <span class="product-name" t-esc="change.name"/> 
+                </t>
+                <t t-else="">
+                    <span class="product-quantity" t-esc="change.quantity"/>
+                    <span class="product-name" t-esc="change.name"/>
+                </t>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

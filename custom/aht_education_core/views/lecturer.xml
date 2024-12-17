@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="hr_emp_inherit" model="ir.ui.view">
+            <field name="name">emp lecturer</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            
+                <xpath expr="//header" position="inside">
+                    <button name="btn_create_user" string="Create User"   attrs="{'invisible': [('user_created', '=', True)]}" type="object" class="btn-primary" />
+                </xpath>
+                <xpath expr="//group/group/field[@name='company_id']" position="after">
+                    <field name="user_created" invisible="1"/>
+                    <field name="is_lecturer" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        
+        <record id="lecturer_action" model="ir.actions.act_window">
+            <field name="name">Lecturer</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">kanban,tree,form</field>
+             <field name="domain">[('is_lecturer', '=', 1)]</field>
+        <field name="context">{
+            'default_is_lecturer': 1}
+        </field>
+        </record>
+    </data>
+</odoo>

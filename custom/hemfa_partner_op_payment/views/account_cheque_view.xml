@@ -1,0 +1,76 @@
+<odoo>
+  <data>
+
+
+
+    <record id="account_incoming_cheque_reconcile_form_inherit_view" model="ir.ui.view">
+      <field name="name">account.cheque.incoming.reconcile</field>
+      <field name="model">account.cheque</field>
+      <field name="inherit_id" ref="hemfa_account_cheque.account_incoming_cheque_form_view"/>
+      <field name="arch" type="xml">
+        <button name="set_to_submit" position="before">
+          <button name="%(action_account_cheque_reconcile)d" id="account_po_reconcile" type="action" 
+          string="Openning Balance Reconcile" 
+          
+          attrs="{'invisible':['|','|',('openning_balance_payment','=',False),('status1','!=','cashed'),('unapplied_amount','=',0)]}"  
+            groups="partner_op.group_show_op_in_partner" class="oe_highlight"/>
+
+        </button>
+        <field name="re_amount" position="after">
+          <field name="openning_balance_payment" invisible="1"/>
+          
+          <field name="openning_balance_payment" groups="partner_op.group_show_op_in_partner"/>
+           
+           <div label="Reconcile" string="Reconcile" attrs="{'invisible':['|',('openning_balance_payment','=',False),('status1','!=','cashed')]}">
+            <b>Reconcile</b>
+           </div>
+          <div>
+            <button name="open_reconcile_view" class="oe_link" type="object" attrs="{'invisible':['|',('openning_balance_payment','=',False),('status1','!=','cashed')]}" string="View Reconcile" groups="partner_op.group_show_op_in_partner">
+            </button>
+          </div>
+          
+          <field name="unapplied_amount" groups="partner_op.group_show_op_in_partner"/>
+          <field name="unapplied_currency_amount" invisible="1" groups="partner_op.group_show_op_in_partner"/>
+        </field>
+
+      </field>
+    </record>
+
+    <record id="account_outgoing_cheque_reconcile_form_view" model="ir.ui.view">
+      <field name="name">account.cheque.outgoing.reconcile</field>
+      <field name="model">account.cheque</field>
+      <field name="inherit_id" ref="hemfa_account_cheque.account_outgoing_cheque_form_view"/>
+      <field name="arch" type="xml">
+
+       <button name="action_outgoing_cashed" position="before">
+          <button name="%(action_account_cheque_reconcile)d" id="account_po_reconcile" type="action" 
+          string="Openning Balance Reconcile" 
+          
+          attrs="{'invisible':['|','|',('openning_balance_payment','=',False),('status','!=','cashed'),('unapplied_amount','=',0)]}"    
+           groups="partner_op.group_show_op_in_partner" class="oe_highlight"/>
+
+        </button>
+
+        <field name="outgoing_residual" position="after">
+          <field name="openning_balance_payment" invisible="1"/>
+          
+          <field name="openning_balance_payment" groups="partner_op.group_show_op_in_partner"/>
+          <div label="Reconcile" string="Reconcile" attrs="{'invisible':['|',('openning_balance_payment','=',False),('status','!=','cashed')]}">
+          <b>Reconcile</b>
+          </div>
+          <div>
+            <button name="open_reconcile_view" class="oe_link" type="object" attrs="{'invisible':['|',('openning_balance_payment','=',False),('status','!=','cashed')]}" string="View Reconcile" groups="partner_op.group_show_op_in_partner">
+            </button>
+          </div>
+          <field name="unapplied_amount" groups="partner_op.group_show_op_in_partner"/>
+          <field name="unapplied_currency_amount" invisible="1" groups="partner_op.group_show_op_in_partner"/>
+        </field>
+
+      </field>
+    </record>
+
+
+
+
+  </data>
+</odoo>

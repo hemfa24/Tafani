@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <!-- <data noupdate="0">  
+    <record id="demo_product_product_inv" model="product.product">
+            <field name="name">Product Library Fine</field>
+            <field name="categ_id" ref="product.product_category_3"/>
+            <field name="standard_price">20.5</field>
+            <field name="list_price">30.75</field>
+            <field name="is_book">True</field>
+            <field name="detailed_type">service</field>
+            <field name="uom_id" ref="uom.product_uom_hour"/>
+            <field name="uom_po_id" ref="uom.product_uom_hour"/>
+        </record>
+   </data> -->
+</odoo>       

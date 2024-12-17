@@ -1,0 +1,150 @@
+<odoo>
+    <data>
+     <record model="ir.ui.view" id="ums_coursetitle_form_view">
+      <field name="name">Course Title</field>
+      <field name="model">aht.course.title</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="2" colspan="2" class="ums_form_style" >
+            <field name="name" required="True"></field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+      <record model="ir.ui.view" id="ums_coursetitle_tree_view">
+      <field name="name">Course Title</field>
+      <field name="model">aht.course.title</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name" ></field>
+        </tree>
+      </field>
+    </record>
+   <record model="ir.actions.act_window" id="ums_act_window_coursetitle">
+      <field name="name">Course Title</field>
+      <field name="res_model">aht.course.title</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+   <record model="ir.ui.view" id="courselevel_list_view">
+      <field name="name">course level</field>
+      <field name="model">aht.courselevel</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="courselevel_form_view">
+      <field name="name">Course Level</field>
+      <field name="model">aht.courselevel</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                 <field name="name" required="True"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="course_level_act_action_window">
+      <field name="name">Course Level</field>
+      <field name="res_model">aht.courselevel</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record model="ir.ui.view" id="create_subject_list_view">
+            <field name="name">Create Course</field>
+            <field name="model">aht.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="subject_level"/>
+                    <field name="subject_type"/>
+                    <field name="subject_code"/>
+                    <field name="credit_hour"/>
+                    <field name="theory_hour"/>
+                    <field name="practical_hour"/>
+                    <field name="course_category"/>
+                    <field name="department"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="create_subject_form_view">
+            <field name="name">Create Course</field>
+            <field name="model">aht.course</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <table width="100%">
+                            <tbody>
+                                <tr t-attf-style="background-color:white">
+                                    <td width="70%">
+                                        <div>
+                                            <label for="name" string="Content Title" class="oe_edit_only"/>
+                                            <h1>
+                                                <field name="name" default_focus="1"
+                                                       placeholder="e.g. Introduction Human rights ?"/>
+                                            </h1>
+                                        </div>
+                                    </td>
+                                    <td width="30%">
+                                        <field name="image" style="border-style: solid;
+                                   border-color: red;width:100px;height:100px" widget="image" class="oe_right"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <field name="company_id" invisible="1"/>
+                        <field name="company_currency" invisible="1"/>
+                        <group class="ums_form_style" col="4" colspan="4">
+                            <field name="course_category"/>
+                            <field name="description"/>
+                            <field name="subject_level" widget="selection"/>
+                            <field name="offering_level" required="1"/>
+<!--                             <field name="semester_id" string="Semester" required="1"/>
+ -->                            <field name="subject_type"/>
+                            <field name="subject_code"/>
+                            <field name="percredit_charges" widget="monetary"
+                                   options="{'currency_field': 'company_currency'}"/>
+                            <field name="credit_hour" required="1"/>
+                            <field name="theory_hour" attrs="{'invisible':[('subject_type','=','Practical')]}"/>
+                            <field name="practical_hour" attrs="{'invisible':[('subject_type','=','Theory')]}"/>
+                            <field name="total_course_charges" widget="monetary"
+                                   options="{'currency_field': 'company_currency'}"/>
+                            <field name="department"
+                                   widget="selection"
+                                   attrs="{'invisible':[('offering_level','!=','Departmental Requirements')],'required':[('offering_level','=','Departmental Requirements')]}"/>
+                            <field name="college"
+                                   widget="selection"
+                                   attrs="{'invisible':[('offering_level','!=','College Requirements')],'required':[('offering_level','=','College Requirements')]}"/>
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Course Objectives" name="Course Objectives">
+                                <field name="course_objectives"/>
+                            </page>
+                            <page string="Recommended Books" name="recommended_books">
+                                <field name="recommended_books"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       
+        <record model="ir.actions.act_window" id="subjects_act_action_window">
+            <field name="name">Course</field>
+            <field name="res_model">aht.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

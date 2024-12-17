@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_cheque,access.account.cheque,hemfa_account_cheque.model_account_cheque,,1,1,1,1
+access_cheque_transfered_wizard,access.cheque.transfered.wizard,hemfa_account_cheque.model_cheque_transfered_wizard,,1,1,1,1
+access_report_wizard,access.report.wizard,hemfa_account_cheque.model_report_wizard,,1,1,1,1
+access_cheque_wizard,access.cheque.wizard,hemfa_account_cheque.model_cheque_wizard,,1,1,1,1
+access_account_cheque_operation_user,access_account_cheque_operation_user,model_account_cheque_operation,base.group_user,1,1,1,1
+access_cheque_book_user,access_cheque_book_user,model_cheque_book,base.group_user,1,1,1,1
+access_cheque_book_line_user,access_cheque_book_line_user,model_cheque_book_line,base.group_user,1,1,1,1

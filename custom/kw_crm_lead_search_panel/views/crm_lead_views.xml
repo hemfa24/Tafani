@@ -1,0 +1,29 @@
+<odoo>
+    <record id="kw_crm_lead_search_panel_crm_lead_search" model="ir.ui.view">
+        <field name="name">crm.lead.search (kw_crm_lead_search_panel)</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+           <search position="inside">
+                <searchpanel>
+                    <field name="partner_id" enable_counters="1"
+                           icon="fa fa-user"/>
+                    <field name="company_id"/>
+<!--                     <field name="campaign_id"/>-->
+<!--                     <field name="country_id"/>-->
+<!--                     <field name="message_main_attachment_id"/>-->
+<!--                     <field name="recurring_plan"/>-->
+<!--                     <field name="phone_state"/>-->
+<!--                     <field name="priority"/>-->
+<!--                     <field name="recurring_plan"/>-->
+<!--                     <field name="source_id"/>-->
+<!--                     <field name="stage_id"/>-->
+<!--                     <field name="state_id"/>-->
+<!--                     <field name="team_id"/>-->
+<!--                     <field name="title"/>-->
+<!--                     <field name="type"/>-->
+                </searchpanel>
+           </search>
+        </field>
+    </record>
+</odoo>

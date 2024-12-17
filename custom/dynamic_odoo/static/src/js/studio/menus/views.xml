@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="dynamic_odoo.StudioIcon" owl="1">
+        <div class="o_mail_systray_item">
+            <a class="aShowST">
+                <img width="12px" height="12px" src="/dynamic_odoo/static/src/img/studio_icon_mode.png" alt="Odoo Studio Icon" title="Toggle Studio" aria-label="Toggle Studio" />
+            </a>
+        </div>
+    </t>
+</templates>

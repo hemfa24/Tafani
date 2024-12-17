@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <div t-name="crmDashboardAction" class="o_invoice_dashboard">
+	    <div class="o_form_view" style="background:#f9f9f9 !important;">
+	        <div class="helpdesk_dashboard_container mt-5">
+	        	<div class="col-md-12 ">
+				    <div class="row mb-5 filter-header">
+				    </div>
+				    <div style="overflow: scroll;height: 600px">
+			    		<div class="row activity_count_boxes">
+					    </div>
+					    <div class="container-fluid">
+				            <div class="row">
+				                <div class="card shadow col-md-12 p-0 m-0">
+								    <div class="helpdesk-table-container">
+								    </div>
+								</div>
+							</div>
+						</div>
+				    </div>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+	<t t-name="HelpdeskRows">
+        <div class="card-body table-responsive MaxTableContent">
+        
+            <div class="col-xl-12" >
+	            <table width="100%" >
+	                <tr>
+	                    <td colspan='2' style=' min-height: 80px;background: #F0F0F0;margin: 100px;'  >
+	                        <div class="row" style='margin-top: 20px;'> 
+                                <div class='col-6'>
+                                    <div class="row">
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-won-customer-chart form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="column" select="selected">Top Won Customer Chart</option>
+	                                               <option value="column">Column Chart</option>
+	                                               <option value="pie">Pie Chart</option>
+	                                               <option value="line">Line Chart</option>
+	                                               <option value="doughnut">Doughnut Chart</option>
+	                                               <option value="area">Line Area</option>
+	                                               <option value="scatter">Scatter Chart</option>
+	                                               <option value="bar">Bar Chart</option>
+	                                           </select>
+	                                        </span>
+                                        </div>
+                                        <div class='col-6'>
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-won-customer-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="10" select="selected">Top 10 </option>
+	                                               <option value="20">Top 20 </option>
+	                                               <option value="30">Top 30 </option>
+	                                               <option value="40">Top 40 </option>
+	                                               <option value="50">Top 50 </option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                                <div class='col-6'>
+                                    <div class="row">
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-sale-team-opportunity-chart form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="column" select="selected">Top Sale Team Opportunity Chart</option>
+	                                               <option value="column">Column Chart</option>
+	                                               <option value="pie">Pie Chart</option>
+	                                               <option value="line">Line Chart</option>
+	                                               <option value="doughnut">Doughnut Chart</option>
+	                                               <option value="area">Line Area</option>
+	                                               <option value="scatter">Scatter Chart</option>
+	                                               <option value="bar">Bar Chart</option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-sale-team-opportunity-number-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="3" select="selected">Top 3 </option>
+	                                               <option value="5">Top 5 </option>
+	                                               <option value="7">Top 7 </option>
+	                                               <option value="11">Top 11 </option>
+	                                               <option value="13">Top 13 </option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </td>  
+                    </tr>
+	                
+	                <tr>
+	                    
+	                    <td width="50%" style=' min-height: 80px;background: #F0F0F0;margin: 100px;padding: 15px;'  >
+	                        <div  class='chart_box'>
+                                <div id="chartContainer_1"  style="height: 250px; width: 100%;"></div>
+                            </div>
+	                    </td>
+	                    <td width="50%" style=' min-height: 80px;background: #F0F0F0;margin: 100px;padding: 15px;'  >
+	                        <div  class='chart_box'>
+                                <div id="chartContainer_2" style="height: 250px; width: 100%;"></div>
+                            </div>
+	                    </td>
+	                </tr>
+	            </table>
+	             <table width="100%">
+	                
+	                  <tr>
+	                    <td colspan='2' style=' min-height: 80px;background: #F0F0F0;margin: 100px;'  >
+	                        <div class="row">
+                                <div class='col-6'>
+                                    <div class="row">
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-expected-revenue-chart form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="column" select="selected">Top Expected Revenue Chart</option>
+	                                               <option value="column">Column Chart</option>
+	                                               <option value="pie">Pie Chart</option>
+	                                               <option value="line">Line Chart</option>
+	                                               <option value="doughnut">Doughnut Chart</option>
+	                                               <option value="area">Line Area</option>
+	                                               <option value="scatter">Scatter Chart</option>
+	                                               <option value="bar">Bar Chart</option>
+	                                           </select>
+	                                        </span>
+                                        </div>
+                                        <div class='col-6'>
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-expected-revenue-number-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="5" select="selected">Top 5 </option>
+	                                               <option value="10">Top 10 </option>
+	                                               <option value="15">Top 15 </option>
+	                                               <option value="20">Top 20 </option>
+	                                               <option value="25">Top 25 </option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                                <div class='col-6'>
+                                    <div class="row">
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-lost-chart-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="column" select="selected">Top Expected Revenue Chart</option>
+	                                               <option value="column">Column Chart</option>
+	                                               <option value="pie">Pie Chart</option>
+	                                               <option value="line">Line Chart</option>
+	                                               <option value="doughnut">Doughnut Chart</option>
+	                                               <option value="area">Line Area</option>
+	                                               <option value="scatter">Scatter Chart</option>
+	                                               <option value="bar">Bar Chart</option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="top-lost-chart-number-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="5" select="selected">Top 5 </option>
+	                                               <option value="10">Top 10 </option>
+	                                               <option value="15">Top 15 </option>
+	                                               <option value="20">Top 20 </option>
+	                                               <option value="25">Top 25 </option>
+	                                           </select>
+	                                        </span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </td>  
+                    </tr>
+	                
+	                
+	                <tr>
+	                    <td width="50%" style=' min-height: 80px;background: #F0F0F0;margin: 100px;padding: 15px;'  >
+	                        <div  class='chart_box'>
+                                <div id="chartContainer_3" style="height: 250px; width: 100%;"></div>
+                            </div>
+	                    </td>
+	                    <td width="50%" style=' min-height: 80px;background: #F0F0F0;margin: 100px;padding: 15px;'  >
+	                        <div  class='chart_box'>
+                                <div id="chartContainer_4" style="height: 250px; width: 100%;"></div>
+                            </div>
+	                    </td>
+	                </tr>
+	            </table>
+	            
+	            <table width="100%">
+	                <tr>
+	                       <td colspan='2' style=' min-height: 80px;background: #F0F0F0;margin: 100px;'  >
+	                        <div class="row">
+                                <div class='col-6'>
+                                    <div class="row">
+                                        <div class='col-6'>
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="priority-lead-chart-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="column" select="selected">Top Expected Revenue Chart</option>
+	                                               <option value="column">Column Chart</option>
+	                                               <option value="pie">Pie Chart</option>
+	                                               <option value="line">Line Chart</option>
+	                                               <option value="doughnut">Doughnut Chart</option>
+	                                               <option value="area">Line Area</option>
+	                                               <option value="scatter">Scatter Chart</option>
+	                                               <option value="bar">Bar Chart</option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                        <div class='col-6'>
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="lead-priority-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="0" select="selected">Low Priority </option>
+	                                               <option value="1">Medium Priority</option>
+	                                               <option value="2">High Priority </option>
+	                                               <option value="3">Very High Priority</option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                                <div class='col-6'>
+                                    <div class="row">
+                                        <div class='col-6'>
+                                        
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="priority-pipeline-chart-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="column" select="selected">Top Expected Revenue Chart</option>
+	                                               <option value="column">Column Chart</option>
+	                                               <option value="pie">Pie Chart</option>
+	                                               <option value="line">Line Chart</option>
+	                                               <option value="doughnut">Doughnut Chart</option>
+	                                               <option value="area">Line Area</option>
+	                                               <option value="scatter">Scatter Chart</option>
+	                                               <option value="bar">Bar Chart</option>
+	                                           </select>
+	                                        </span>
+                                            
+                                        </div>
+                                        <div class='col-6'>
+                                            <span class="col-4 pull-right" style='margin-top:15px;'>
+	                                           <select class="pipeline-priority-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	                                               <option value="0" select="selected">Low Priority </option>
+	                                               <option value="1">Medium Priority</option>
+	                                               <option value="2">High Priority </option>
+	                                               <option value="3">Very High Priority</option>
+	                                           </select>
+	                                        </span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </td> 
+                    </tr>
+	                <tr>
+	                    <td width="50%" style=' min-height: 80px;background: #F0F0F0;margin: 100px;padding: 15px;'  >
+	                        <div  class='chart_box'>
+                                <div id="chartContainer_5" style="height: 250px; width: 100%;"></div>
+                            </div>
+	                    </td>
+	                    <td width="50%" style=' min-height: 80px;background: #F0F0F0;margin: 100px;padding: 15px;'  >
+	                        <div  class='chart_box'>
+                                <div id="chartContainer_6" style="height: 250px; width: 100%;"></div>
+                            </div>
+	                    </td>
+	                </tr>
+	            </table>
+	        </div>
+<!--            =============row===============-->
+            <div class="row">
+                <div class='col-7'>
+                    <h6 class="m-0 font-weight-bold h3 chart_heading " t-att-title="list_view_name" style="padding:12px 0px 12px 0px;color:#0eb24d;background:#bce1c3;">
+        	            <t t-esc="list_all_activity_title" />
+                    </h6>
+                    <t t-if="list_all_activity and list_all_activity.length">
+                        <span t-field="partner_id.name or ''"/>
+                    	<table id="ListViewTable" class="table table-hover" style="font-size:14px;" width="100%">
+	                        <thead>
+	                            <tr>
+	                                <th width="15%">
+	                                    Name  
+	                                </th>
+	                                <th width="15%">
+	                                    Activity Type 
+	                                </th>
+	                                 <th width="10%">
+	                                    Summary
+	                                </th>
+	                                <th width="10%">
+	                                    Due Date
+	                                </th>
+	                                <th width="30%">
+	                                    
+	                                </th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<t t-if="list_all_activity and list_all_activity.length">
+	                             <t t-foreach="list_all_activity" t-as="row">
+	                                 <tr t-att-data-record-id="row.id">
+	                                     <td>
+	                                         <t t-esc="row.res_name"/>
+	                                     </td>
+	                                     <td>
+	                                        <t t-if="row.activity_type_id and row.activity_type_id.length">
+	                                             <t t-esc="row.activity_type_id[1]"/>
+                                             </t>
+	                                     </td>
+	                                     <td>
+	                                     		<t t-esc="row.summary or ' '"/>
+	                                     </td>
+	                                     <td>
+	                                     		<t t-esc="row.date_deadline or ' '"/>
+	                                     </td>
+        	                             <td>
+<!--        	                                btn btn-primary-->
+        									<button class="dev-menu-action-all-activity font-weight-bold" style="color:#5b82e9" role="option" t-att-rec-id="row.id" id="view" type="button">
+        								    	View
+        								    </button>
+        								    <button class="dev-menu-action-view-record font-weight-bold" role="option" style="color:#5b82e9"
+        								    t-att="{'res_id': row.res_id, 'model': row.res_model}"  id="view" type="button">
+        								    	View Document
+        								    </button>
+        	                             </td>
+	                                 </tr>
+	                             </t>
+	                          </t>
+	                        </tbody>
+	                    </table>
+                </t>
+                <t t-else="">
+                	<div class="p-3 py-3 d-flex flex-row align-items-center justify-content-between ">
+                		<h6>No Records Found.</h6>
+                	</div>
+                </t>
+            </div>
+            <div class='col-5'>
+                
+                    <center> 
+                            <h1 style="padding:12px 0px 12px 0px;"> Upcoming Activities </h1>
+                     </center>
+                     <t t-if="upcoming_activity and upcoming_activity.length" >
+                        <marquee direction = "up" scrollamount="1">
+                        	<table id="ListViewTable" class="table table-hover" style='margin-top:-25px;'>
+                                <tbody>
+                                	<t t-if="upcoming_activity and upcoming_activity.length">
+                                     <t t-foreach="upcoming_activity" t-as="row">
+                                         <tr t-att-data-record-id="row.id">
+                                             <td >
+                                                <span class="badge badge-pill badge-primary font-weight-bold" style="font-size:15px;">
+                                                    <t t-esc="row.date_deadline or ' '" />
+                                                </span>
+                                             </td>
+                                             <td>
+                                                 <b> Name :</b> <t t-esc="row.res_name or ' '"/> <br/>
+                                                 <b>Activity Type :</b> <t t-if='row.activity_type_id' t-esc="row.activity_type_id[1] or ' '"/><br/>
+                                                 <b>Summary:</b> <t t-esc="row.summary or ' '"/><br/>
+                                                 
+                                             </td>
+                                         </tr>
+                                     </t>
+                                  </t>
+                                </tbody>
+                            </table>
+                    </marquee>
+                </t>
+            </div>
+            </div>
+            <div class="row">
+                
+                <div class='col-6'>
+                    <h6 class="m-0 font-weight-bold h3 chart_heading " t-att-title="list_view_name" style="padding:12px 0px 12px 0px;color:white;background:#a33ebb;">
+        	            <t t-esc="table_title_draft_appointment" />
+                    </h6>
+
+                    <t t-if="all_leads_list and all_leads_list.length">
+                    	<table id="ListViewTable" class="table table-hover">
+	                        <thead>
+	                            <tr>
+	                                <th>
+	                                    Name 
+	                                </th>
+	                                <th>
+	                                    Customer 
+	                                </th>
+	                                <th>
+	                                    Phone
+	                                </th>
+	                                 <th>
+	                                    Sales Team
+	                                </th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<t t-if="all_leads_list and all_leads_list.length">
+	                             <t t-foreach="all_leads_list" t-as="row">
+	                                     <tr t-att-data-record-id="row.id">
+	                                         <td>
+	                                             <t t-esc="row.name"/>
+	                                         </td>
+	                                         <td>
+	                                         	<t t-if="row.partner_name">
+	                                         		<t t-esc="row.partner_name"/>
+	                                         	</t>
+	                                         </td>
+	                                         <td>
+	                                             <t t-esc="row.phone"/>
+	                                         </td>
+	                                         <td >
+	                                             <t t-if="row.sale_team">
+	                                         		<t t-esc="row.sale_team"/>
+	                                         	</t>
+	                                         </td>
+            	                             <td>
+            									<button class="btn btn-primary dev-action-view-lead" role="option" t-att-rec-id="row.id" id="view" type="button">
+            								    	View
+            								    </button>
+            	                             </td>
+	                                     </tr>
+	                             </t>
+	                          </t>
+	                        </tbody>
+	                    </table>
+                </t>
+                <t t-else="">
+                	<div class="p-3 py-3 d-flex flex-row align-items-center justify-content-between ">
+                		<h6>No Records Found.</h6>
+                	</div>
+                </t>
+                    
+                </div>
+                
+                    <div class='col-6'>
+                    <h6 class="m-0 font-weight-bold h3 chart_heading " t-att-title="list_view_name" style="padding:12px 0px 12px 0px;color:white;background:#a33ebb;">
+        	            <t t-esc="my_pipeline_list_title" />
+                    </h6>
+
+                    <t t-if="my_pipeline_list and my_pipeline_list.length">
+                    	<table id="ListViewTable" class="table table-hover">
+	                        <thead>
+	                            <tr>
+	                                <th>
+	                                    Name 
+	                                </th>
+	                                <th>
+	                                    Customer 
+	                                </th>
+	                                <th>
+	                                    Phone
+	                                </th>
+	                                 <th>
+	                                    Sales Team
+	                                </th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<t t-if="my_pipeline_list and my_pipeline_list.length">
+	                             <t t-foreach="my_pipeline_list" t-as="row">
+	                                     <tr t-att-data-record-id="row.id">
+	                                         <td>
+	                                             <t t-esc="row.name"/>
+	                                         </td>
+	                                         <td>
+	                                         	<t t-if="row.partner_name">
+	                                         		<t t-esc="row.partner_name"/>
+	                                         	</t>
+	                                         </td>
+	                                         <td>
+	                                             <t t-esc="row.phone"/>
+	                                         </td>
+	                                         <td >
+	                                             <t t-if="row.team_id and row.team_id.length">
+	                                         		<t t-esc="row.team_id"/>
+	                                         	</t>
+	                                         </td>
+            	                             <td>
+            									<button class="btn btn-primary dev-action-view-lead" role="option" t-att-rec-id="row.id" id="view" type="button">
+            								    	View
+            								    </button>
+            	                             </td>
+	                                     </tr>
+	                             </t>
+	                          </t>
+	                        </tbody>
+	                    </table>
+                </t>
+                <t t-else="">
+                	<div class="p-3 py-3 d-flex flex-row align-items-center justify-content-between ">
+                		<h6>No Records Found.</h6>
+                	</div>
+                </t>
+                    
+                </div>
+                
+            </div>
+<!--            Room Lines================================================-->
+            
+            <br/><br/>
+        </div>
+	</t>
+
+	<t t-name="HelpdeskCountBoxes">
+	    <div class="col-xl-12" >
+	        <table width="100%">
+	            <tr>
+	                <td width="20%" class='td_count_box' >
+	                        <div id="navigate_all_leads"  class='td_div_box_1 count_size hover_class action_all_leads'>
+	                            <t t-if="response.all_leads and response.all_leads.length">
+                                    	<t t-esc="response.all_leads.length"/> 
+                                    </t>
+                                    <t t-else="">
+                                    	0 
+                                    </t> <br/>
+                                <div class='div_box_fix_name'> Total Leads </div>
+                            </div>
+	                </td>
+	                <td width="20%" class='td_count_box' >
+	                    <div id="navigate_my_pipeline"  class='td_div_box_2 count_size hover_class action_all_leads'>
+	                            <t t-if="response.my_pipeline and response.my_pipeline.length">
+                                    	<t t-esc="response.my_pipeline.length"/> 
+                                    </t>
+                                    <t t-else="">
+                                    	0 
+                                    </t> <br/>
+                                <div class='div_box_fix_name'> Total Pipeline  </div>
+                            </div>
+	                </td>
+	                <td width="20%" class='td_count_box' >
+	                    <div id="navigate_won"  class='td_div_box_3 count_size hover_class action_all_leads'>
+	                            <t t-if="response.all_won_pipeline and response.all_won_pipeline.length">
+                                    	<t t-esc="response.all_won_pipeline.length"/> 
+                                    </t>
+                                    <t t-else="">
+                                    	0 
+                                    </t> <br/>
+                                <div class='div_box_fix_name'> Total Won </div>
+                            </div>
+	                </td>
+	                <td width="20%" class='td_count_box' >
+	                    <div id="navigate_new_customer"  class='td_div_box_4 count_size hover_class navigate_new_customer'>
+	                            <t t-if="response.new_customer_record and response.new_customer_record.length">
+                                    	<t t-esc="response.new_customer_record.length"/> 
+                                    </t>
+                                    <t t-else="">
+                                    	0 
+                                    </t> <br/>
+                                <div class='div_box_fix_name'> New Customers </div>
+                            </div>
+	                </td>
+	                <td width="20%" class='td_count_box' >
+	                    <div id="navigate_all_activities"  class='td_div_box_1 count_size hover_class navigate_all_activities'>
+	                            <t t-if="response.all_activity and response.all_activity.length">
+                                    	<t t-esc="response.all_activity.length"/> 
+                                    </t>
+                                    <t t-else="">
+                                    	0 
+                                    </t> <br/>
+                                <div class='div_box_fix_name'> All Activities </div>
+                        </div>
+	                </td>
+	            </tr>
+            </table>
+        </div>
+	    
+	</t>
+
+	<t t-name="ActivityFilter">
+	        <div class="col-6 text-right" style="margin-bottom:10px;" >
+	        </div>
+	        <div class="col-2 text-right" style="margin-bottom:10px;" >
+	            <h4>Users Filter </h4>
+	        </div>
+	        <div class="col-2 text-right" style="margin-bottom:10px;" >
+	            <h4>Customers Filter </h4>
+	        </div>
+	        <div class="col-2 text-right" style="margin-bottom:10px;" >
+	            <h4>Date Filter </h4>
+	        </div>
+            <div class="col-6 float-right" >
+            </div>
+	       <div class="col-2 float-right" >
+                
+	           <select class="users-option form-control pull-left" placeholder="select User">
+	               <option value="0" select="selected">All User</option>
+	               <t t-foreach="users" t-as="user">
+	               		<option t-att-value="user.id"><t t-esc="user.name"/></option>
+	               </t>
+	           </select>
+	       </div>
+	       <div class="col-2 float-right">
+	           <select class="partners-option form-control pull-left" placeholder="select Partner">
+	               <option value="0" select="selected">All Partner</option>
+	               <t t-foreach="partners" t-as="partner">
+	               		<option t-att-value="partner.id"><t t-esc="partner.name"/></option>
+	               </t>
+	           </select>
+	       </div>
+	       <span class="col-2 pull-right">
+	           <select class="date-based-filter form-control pull-left" placeholder="select Range" style="margin-left: - 5px;">
+	               <option value="today" select="selected">Today</option>
+	               <option value="all" >All</option>
+	               <option value="yesterday">Yesterday</option>
+	               <option value="current_week">This Week</option>
+	               <option value="last_7_days">Last Seven Days</option>
+	               <option value="last_week">Last Week</option>
+	               <option value="current_month">This Month</option>
+	               <option value="current_year">This Year</option>
+	               <option value="custom_range">Custom Date Range</option>
+	           </select>
+	       </span>
+	       
+	       
+	       <span class="col-2 pull-right">
+	                &#160;
+	       </span>
+	       <span class="col-2 pull-right">
+	                &#160;
+	       </span>
+	       <span class="col-2 pull-right">
+	                &#160;
+	       </span>
+	       
+	       
+	       <button type='button' class='button btn btn-primary apply-dashboard-date-filter mr-2 ml-2 pull-right d-none'
+             >Apply
+             </button>
+             <button type='button' class='button btn btn-primary clear-dashboard-date-filter ml-2 pull-right d-none'
+             >Clear
+             </button>
+			<div class="date_input_fields pull-right d-flex">
+			</div>
+<!--	   </div>-->
+	</t>
+
+</templates>

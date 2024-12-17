@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="wizard_fee_form_view" model="ir.ui.view">
+        <field name="name">wizard_fee_form</field>
+        <field name="model">wizard.fee</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+         
+            <form string="Wizard Lost Item Fee">
+                <group>
+                    <group>
+                        <field name="item_fee" force_save="1"/>
+                        <field name="inv_payment"/>
+                    </group>
+               </group>
+                   
+               
+                <footer>
+                    <button name="confirm_fee" string="Confirm fee" type="object" class="oe_highlight" />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    
+    
+     
+   <record id="action_wizard_fee" model="ir.actions.act_window">
+            <field name="name">Item fee Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.fee</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_fee_form_view"/>
+            <field name="target">new</field>
+        </record>
+        
+      
+    
+</odoo>   
+    

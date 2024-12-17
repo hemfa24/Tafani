@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_warehouse_inherit" model="ir.ui.view">
+      <field name="name">stock.warehouse.form.inherit</field>
+      <field name="model">stock.warehouse</field>
+      <field name="inherit_id" ref="stock.view_warehouse"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="attributes">
+          <attribute name="groups">stock.group_adv_location,stock.group_stock_multi_warehouses,hemfa_stock.group_storekeeper</attribute>
+        </xpath>
+        <xpath expr="//page[@name='warehouse_config']" position="attributes">
+          <attribute name="groups">stock.group_adv_location,stock.group_stock_multi_warehouses</attribute>
+        </xpath>
+        <xpath expr="//page[@name='technical_info']" position="attributes">
+          <attribute name="groups">stock.group_adv_location,stock.group_stock_multi_warehouses,base.group_no_one</attribute>
+        </xpath>
+
+        <xpath expr="//page[@name='warehouse_config']" position="before">
+          <page string="Warehouse storekeeper" name="warehouse_storekeeper" colspan="4">
+            <field name="storekeeper_ids"/>
+          </page>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

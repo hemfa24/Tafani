@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data noupdate="1">
+        <record id="product_category_bundle_product_id" model="product.category">
+            <field name="parent_id" ref="product.product_category_all" />
+            <field name="name">Bundle Product</field>
+        </record>
+
+    </data>
+
+
+</odoo>

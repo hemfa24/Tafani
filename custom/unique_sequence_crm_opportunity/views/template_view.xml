@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="crm_oppor_custom_probc" name="Crm Opportunity" inherit_id='website_crm_partner_assign.portal_my_opportunities'>
+            <xpath expr="//thead/tr/th[1]" position="before">
+                <th>Number</th>
+            </xpath>
+            <xpath expr="//tbody/tr/td[1]" position="before">
+                <td><span t-field="opp.custom_number"/></td>
+            </xpath>
+        </template>
+
+        <template id="crm_oppor_form_custom_probc" name="Crm Opportunity Form" inherit_id='website_crm_partner_assign.portal_my_opportunity'>
+            <xpath expr="//h5" position="before">
+                <h5>
+                <!-- <small class="text-muted">Number - </small> -->
+                    <span t-field="opportunity.custom_number"/>
+                </h5>
+            </xpath>
+        </template>
+
+        <template id="crm_lead_custom_probc" name="Crm Lead" inherit_id='website_crm_partner_assign.portal_my_leads'>
+            <xpath expr="//thead/tr/th[1]" position="before">
+                <th>Number</th>
+            </xpath>
+            <xpath expr="//tbody/tr/td[1]" position="before">
+                <td><span t-field="lead.custom_number"/></td>
+            </xpath>
+        </template>
+
+        <template id="crm_lead_form_custom_probc" name="Crm Opportunity Form" inherit_id='website_crm_partner_assign.portal_my_lead'>
+            <xpath expr="//h4" position="before">
+                <h4>
+                <!-- <small class="text-muted">Number - </small> -->
+                    <span t-field="lead.custom_number"/>
+                </h4>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

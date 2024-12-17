@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+
+        <record id="sale_discount_limit_global_fix" model="sale.discount.settings">
+            <field name="name">Global Discount Limit for Fixed</field>
+            <field name="discount_type">global</field>
+            <field name="discount_method">fix</field>
+        </record>
+          <record id="sale_discount_limit_global_per" model="sale.discount.settings">
+            <field name="name">Global Discount Limit for Percentage</field>
+            <field name="discount_type">global</field>
+            <field name="discount_method">per</field>
+        </record>
+          <record id="sale_discount_limit_line_fix" model="sale.discount.settings">
+            <field name="name">Order Line Discount Limit for Fixed</field>
+            <field name="discount_type">line</field>
+            <field name="discount_method">fix</field>
+        </record>
+        <record id="sale_discount_limit_line_per" model="sale.discount.settings">
+            <field name="name">Order Line Discount Limit for Percentage</field>
+            <field name="discount_type">line</field>
+            <field name="discount_method">per</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="st_attendance_request_list_view">
+            <field name="name">Attendance Request</field>
+            <field name="model">attendance.correction.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="academic_year"/>
+                    <field name="course_offered"/>
+                    <field name="attendance_date"/>
+                    <field name="faculty"/>
+                    <field name="class_hours"/>
+                    <field name="submission_datetime"/>
+                    <field name="approved_by"/>
+                     <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="attendance_request_form_view">
+            <field name="name">Attendance Request form</field>
+            <field name="model">attendance.correction.request</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="submit_attendance" string="Submit" type="object" class="oe_highlight" states="Draft" />
+                        <button name="btn_approve" string="Approve" groups="aht_education_core.group_attendance_correction" type="object" class="oe_highlight" states="Submitted" />
+                        <button name="btn_reject" string="Reject" groups="aht_education_core.group_attendance_correction" type="object" class="oe_highlight" states="Submitted" />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="academic_year"/>
+                            <field name="course_offered"/>
+                            <field name="attendance_date"/>
+                            <field name="faculty"/>
+                            <field name="class_hours" widget='radio' options="{'horizontal':true}"/>
+                            <field name="submission_datetime"/>
+                            <field name="approved_by"/>
+                       
+                        </group>
+
+                         <separator style="color:green;font-size:18px;" string="Student List"
+                                   colspan="4"/>
+                         <field name="attendance_lines">
+                            <tree class="tree_no_open"
+                                      editable="bottom">
+                           <field name="student"/>
+                           <field name="status" widget='radio' options="{'horizontal':true}"/>
+                           </tree>
+                         </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="attendance_request_action_window">
+            <field name="name">Attendance correction Request</field>
+            <field name="res_model">attendance.correction.request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+    </data>
+</odoo>

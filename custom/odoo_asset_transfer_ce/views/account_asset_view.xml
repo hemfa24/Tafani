@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_asset_asset_transfer_form_inherit" model="ir.ui.view">
+            <field name="name">account.asset.asset.custom.transfer.form</field>
+            <field name="model">account.asset.asset.custom</field>
+            <field name="inherit_id" ref="odoo_account_asset.view_account_asset_asset_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="action_view_asset_transfer" type="object" class="oe_stat_button" icon="fa-bars" string="Asset Transferred"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

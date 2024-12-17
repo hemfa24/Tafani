@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_auto_activity_config_form" model="ir.ui.view">
+        <field name="name">auto.activity.config.form</field>
+        <field name="model">auto.activity.config</field>
+        <field name="arch" type="xml">
+            <form string="Auto Activity Configuration">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="auto_activity"/>
+                        <field name="auto_activity_amount"/>
+                        <field name="auto_activity_unit"/>
+                        <field name="auto_activity_type"/>
+                        <field name="auto_activity_user_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_auto_activity_config_tree" model="ir.ui.view">
+        <field name="name">auto.activity.config.tree</field>
+        <field name="model">auto.activity.config</field>
+        <field name="arch" type="xml">
+            <tree string="Auto Activity Configuration">
+                <field name="name"/>
+                <field name="auto_activity"/>
+                <field name="auto_activity_amount"/>
+                <field name="auto_activity_unit"/>
+                <field name="auto_activity_type"/>
+                <field name="auto_activity_user_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_auto_activity_config" model="ir.actions.act_window">
+        <field name="name">Auto Activity Config</field>
+        <field name="res_model">auto.activity.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_auto_activity_config" name="Auto Activity Config" parent="base.menu_custom" action="action_auto_activity_config"/>
+</odoo>

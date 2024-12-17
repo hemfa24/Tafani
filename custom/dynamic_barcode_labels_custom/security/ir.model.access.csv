@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_td_barcode_product_lines_multi_custom,access_barcode_product_lines_multi_custom,model_barcode_product_lines_multi,dynamic_barcode_labels.group_barcode_labels,1,1,1,1
+access_td_barcode_labels_multi_custom,access_barcode_labels_multi_custom,model_barcode_labels_multi,dynamic_barcode_labels.group_barcode_labels,1,1,1,1

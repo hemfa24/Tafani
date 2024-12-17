@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.module.category" id="module_category_offerings_root">
+            <field name="name">Course offerings</field>
+            <field name="sequence">50</field>
+        </record>
+        <record model="ir.module.category" id="module_category_student_access">
+            <field name="name">Student profile Access</field>
+            <field name="sequence">51</field>
+        </record>
+        
+         <record model="ir.module.category" id="module_category_library_access">
+            <field name="name">Library Access</field>
+            <field name="sequence">52</field>
+        </record>
+        <!-- Groups -->
+        <record id="group_student_profile_manager" model="res.groups">
+            <field name="name">Student Profile Manager</field>
+            <field name="category_id" ref="module_category_student_access"/>
+             <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+        </record>
+        <record id="group_student" model="res.groups">
+            <field name="name">Student</field>
+            <field name="category_id" ref="module_category_student_access"/>
+             <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+        </record>
+        <record id="group_course_offered_manager" model="res.groups">
+            <field name="name">Course Offered Manager</field>
+             <field name="category_id" ref="module_category_offerings_root"/>
+        </record>
+         <record id="group_course_offering_approval" model="res.groups">
+            <field name="name">Course Offering Approval</field>
+            <field name="category_id" ref="module_category_offerings_root"/>
+        </record>
+        <record id="group_registration_manager" model="res.groups">
+            <field name="name">Registration Manager</field>
+        </record>
+        <record id="group_attendance_correction" model="res.groups">
+            <field name="name">Attendance correction approval </field>
+        </record>
+         <record id="group_registration_student" model="res.groups">
+            <field name="name">Registration student</field>
+        </record>
+        <record id="group_time_table_manager" model="res.groups">
+            <field name="name">Time table Manager</field>
+        </record>
+         <record id="group_scholarship_manager" model="res.groups">
+            <field name="name">Scholarship Manager</field>
+        </record>
+         <record id="group_lecturer" model="res.groups">
+            <field name="name">Lecturer</field>
+        </record>
+          <record id="group_lecturer_manager" model="res.groups">
+            <field name="name">Lecturer Profile Manager</field>
+        </record>
+        
+        <record id="group_librarian" model="res.groups">
+            <field name="name">Librarian</field>
+             <field name="category_id" ref="module_category_library_access"/>
+        </record>
+        
+         <record id="group_library_manager" model="res.groups">
+            <field name="name">Library Manager</field>
+             <field name="category_id" ref="module_category_library_access"/>
+        </record>
+         <record id="group_print_library_card" model="res.groups">
+            <field name="name">Allow Print Card</field>
+             <field name="category_id" ref="module_category_library_access"/>
+        </record>
+        
+        
+        
+         <record id="course_offered_manager_offerings_access" model="ir.model.access">
+            <field name="name">Course Offered Manager - Offerings Access</field>
+            <field name="model_id" ref="model_aht_course_offerings"/>
+            <field name="group_id" ref="group_course_offered_manager"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <!-- Registration Manager -->
+        <record id="registration_manager_student_access" model="ir.model.access">
+            <field name="name">Registration Manager - Student Access</field>
+            <field name="model_id" ref="model_course_registration_student"/>
+            <field name="group_id" ref="group_registration_manager"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        
+         <record id="registration_manager_student_access_lines" model="ir.model.access">
+            <field name="name">Registration Manager - Student Access_lines </field>
+            <field name="model_id" ref="model_course_registration_lines"/>
+            <field name="group_id" ref="group_registration_manager"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        
+        
+        
+        
+        
+        
+          <record id="registration_student_access" model="ir.model.access">
+            <field name="name">Student course registration Access</field>
+            <field name="model_id" ref="model_course_registration_student"/>
+            <field name="group_id" ref="group_student"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        
+        
+        
+          <record id="registration_lines_student_access" model="ir.model.access">
+            <field name="name">Student course registration lines Access</field>
+            <field name="model_id" ref="model_course_registration_lines"/>
+            <field name="group_id" ref="group_student"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        
+        
+          <record id="lecturer_student_attendance_access" model="ir.model.access">
+            <field name="name">Lecturer student attendance access</field>
+            <field name="model_id" ref="model_student_course_attendance"/>
+            <field name="group_id" ref="group_lecturer"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        
+        
+         <!-- <record id="lecturer_student_attendance_correction_access" model="ir.model.access">
+            <field name="name">Lecturer student attendance correction access</field>
+            <field name="model_id" ref="model_attendance_correction_request"/>
+            <field name="group_id" ref="group_lecturer"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record> -->
+        
+        
+        
+    </data>
+</odoo>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- <record id="imhert_res_company_form_id" model="ir.ui.view">
+    <field name="name">res.company.form.inhert</field>
+    <field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form" />
+    <field name="arch" type="xml">
+      <field name="vat" xpr="" position="after">
+        <field name="product_setting" />
+      </field>
+    </field>
+  </record> -->
+
+  <record id="inherit_view_id_inherit_pos_session" model="ir.ui.view">
+    <field name="name">pos.session.view.form.inherit</field>
+    <field name="model">pos.session</field>
+    <field name="inherit_id" ref="point_of_sale.view_pos_session_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//form" position="attributes">
+        <attribute name="js_class">JsFormView</attribute>
+      </xpath>
+      <xpath expr="//header" position="inside">
+        <div class="header-button">
+          <button name="%(pos_custom_hemfa.wizard_wi_close_session_action_id)d" type="action"
+            groups="point_of_sale.group_pos_manager"
+            attrs="{'invisible': [('state', '!=', 'closing_control')]}">
+            <span><i class="fa fa-sign-out oe_highlight" role="img" /> Close</span>
+
+          </button>
+        </div>
+
+      </xpath>
+      <xpath expr="//group" position="after">
+        <group name="custom">
+
+          <field name="cash_counted" />
+          <field name="bank_counted" />
+          <field name="other_counted" />
+        </group>
+
+
+      </xpath>
+    </field>
+  </record>
+
+
+  <record model="ir.ui.view" id="cash_ace_view_pos_config_form_id">
+    <field name="name">pos.config.form.view.cash.inherit</field>
+    <field name="model">pos.config</field>
+    <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//sheet" position="inside">
+        <h2>Cash Openning</h2>
+        <div class="row mt16 o_settings_container">
+          <div class="o_setting_left_pane">
+            <field name="default_cash" />
+          </div>
+          <div class="o_setting_right_pane">
+            <label for="default_cash" />
+          </div>
+          <div class="o_setting_right_pane" attrs="{'invisible': [('default_cash','!=',True)]}">
+            <field name="opening_cash" />
+          </div>
+          <!-- <div class="o_setting_right_pane">
+            <label for="opening_cash" />
+          </div> -->
+        </div>
+      </xpath>
+    </field>
+  </record>
+
+  <!-- <record id="sale_order_inherit_form" model="ir.ui.view">
+    <field name="name">sale.order.form.inherit</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_id']"
+        position="before">
+        <field name="barcode_custom" />
+      </xpath>
+    </field>
+  </record> -->
+
+
+  <!-- <record model="ir.ui.view" id="product_normal_form_view_inhert_id">
+    <field name="name">product.product.view.form.easy</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_normal_form_view" />
+    <field name="arch" type="xml">
+
+      <field name="product_tag_ids" position="after">
+        <field name="ls_active" force_save="1" invisible="1" />
+      </field>
+
+      <notebook position="inside">
+        <page name="barcode_options" string="Products Setting"
+          attrs="{'invisible':[('ls_active','=',False)]}">
+          <field name='pos_multi_barcode_option'>
+            <tree editable="bottom">
+              <field name="name" />
+              <field name="qty" />
+              <field name="price" />
+              <field name="unit" />
+              <field name="price_lst" />
+            </tree>
+          </field>
+        </page>
+      </notebook>
+    </field>
+  </record> -->
+
+  <menuitem id="bundle_product_menu_sale" parent="sale.product_menu_catalog"
+    name="Bundle Products" action="sh_pos_all_in_one_retail.sh_bundled_products" />
+  <menuitem id="bundle_product_menu_inventory" parent="stock.menu_stock_inventory_control"
+    name="Bundle Products" action="sh_pos_all_in_one_retail.sh_bundled_products" />
+
+  <menuitem id="menu_pos_custom_template_product_sale_menu_id" name="Custom Product Template"
+    action="sh_pos_all_in_one_retail.action_pos_template_product" parent="sale.product_menu_catalog" />
+  <menuitem id="menu_pos_custom_template_product_inventory_menu_id" name="Custom Product Template"
+    action="sh_pos_all_in_one_retail.action_pos_template_product"
+    parent="stock.menu_stock_inventory_control" />
+
+</odoo>
+    

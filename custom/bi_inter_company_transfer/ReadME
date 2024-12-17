@@ -1,0 +1,10 @@
+15.0.0.1 ==>fixed issue of traceback for tax when fiscal position is selected
+15.0.0.2 ==>fixed issue of traceback for bill.
+15.0.0.3 ==>fixed issue of action in all smart buttons.
+16.0.0.4 ==>fixed issue of sequence and stock when sale order created from purchase and Auto Validate Delivery/Receipt is true.
+
+=> 16.0.0.2 : Add French, Spanish , Arabic and Dutch translation in module also improved an index.
+16.0.0.3 : fixed issue of SO or PO confirm product with serial or lots
+16.0.0.4 ==> Fixed issue of when select validate invoice/bill and create return transfer at that time credit/bill note can't be posted.
+16.0.0.5 ==> Fixed issue of when create inter company transfer with lot/serial number at that time in purchase order delivery can't udpate it and also billed qty can't be update.
+16.0.0.6 ==> Update Inter company line price unit field and also chnages in when cretea serial number for inter company transfer at that time show warning.

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_account_tax" model="ir.actions.report">
+            <field name="name">Account Tax Report</field>
+            <field name="model">bi.account.tax.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_account_tax_report.bi_report_account_tax</field>
+            <field name="report_file">bi_account_tax_report.bi_report_account_tax</field>
+        </record>
+    </data>
+</odoo>

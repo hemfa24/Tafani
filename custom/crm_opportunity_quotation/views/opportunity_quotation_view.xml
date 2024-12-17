@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_crm_opportunity_assign_form_inherited_view" model="ir.ui.view">
+            <field name="name">crm.lead.request.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='lead']" position="after">
+                    <page string="Sales Quotation Products" groups="sales_team.group_sale_salesman">
+                        <!-- <group > -->
+                            <field name="request_quota_line" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty" string="Quotation Quntity"/>
+                                    <!-- <field name="product_uom"
+                                        groups="product.group_uom" options='{"no_open": True}'/> -->
+                                    <field name="qty_onhand" />
+                                    <field name="product_uom"
+                                         options='{"no_open": True}'
+                                         groups="uom.group_uom"/>
+                                    <field name="custom_order_line_id" readonly="1"/>
+                                    <field name="custom_order_id" readonly="1"/>
+                                </tree>
+                            </field>
+                        <!-- </group> -->
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="crm_case_form_view_opporinty_inherited_button" model="ir.ui.view">
+            <field name="name">crm.lead.oppor.inherited.crm.button</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button string="Create Detail Quotation" name="custom_create_quotation" type="object" class="oe_highlight" groups="  sales_team.group_sale_salesman_all_leads,  sales_team.group_sale_salesman"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

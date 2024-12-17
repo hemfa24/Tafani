@@ -1,0 +1,13 @@
+1) Version: 16.0.0.1 | Date : 24/03/2023
+- Fixed the issue in down payment.
+
+16.0.0.2 ==> Fixed issue of when create invoice at that time discount line will be visible in invoice line and also update invoice report.
+
+=> 16.0.0.3 :  Improved an index as per latest improvements.
+
+16.0.0.4 ==> Update discount account in sale and purchase and also update report views of sale,purchase and invoice.
+
+16.0.0.5 ==> Fixed issue of in sale,purchase show wrong amount of untax amount and amount total and also update discount account domain in module.
+
+
+16.0.0.6 ==> Fixed issue of when we don't added any discount type at that time in list view show wrong untaxed amount and total.

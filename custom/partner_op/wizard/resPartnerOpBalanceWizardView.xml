@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_op_balance_wizard_form" model="ir.ui.view">
+            <field name="name">res.partner.op_balance.wizard</field>
+            <field name="model">res.partner.op_balance.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Balances">
+                    <sheet>
+                        <group>
+                            <field name="openning_balance" attrs="{'invisible':[('is_bill','=',True)]}"/>
+                            <field name="openning_balance_bill" attrs="{'invisible':[('is_bill','=',False)]}"/>
+                            <field name="invoice_balance" attrs="{'invisible':[('is_bill','=',True)]}"/>
+                            <field name="bill_balance" attrs="{'invisible':[('is_bill','=',False)]}"/>
+                            
+                            <field name="partner_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="is_bill" invisible="1"/>
+                        </group>
+                        <footer>
+                            <button
+                            name="show_invoices" 
+                            string="Show Invoices" 
+                            type="object"
+                            default_focus="1" 
+                            class="oe_highlight"/>
+
+
+                            <button string="Close" class="oe_link" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_res_partner_op_balance_wizard" model="ir.actions.act_window">
+            <field name="name">Partner Balances</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.op_balance.wizard</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
+

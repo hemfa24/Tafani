@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="template_product_stock_low_notify_email" model="mail.template">
+        <field name="name">Product Stock Low - Send Email</field>
+        <field name="email_from"></field>
+        <field name="subject">{{object.company_id.name}} - Low Stock Notification</field>
+        <field name="email_to">{{object.company_id.notify_user_id.email}}</field>
+        <field name="model_id" ref="sh_low_stock_notification.model_product_low_stock_email" />
+        <field name="lang">{{object.company_id.notify_user_id.lang}}</field>
+        <field name="auto_delete" eval="False" />
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <table border="0" width="100%" cellpadding="0" bgcolor="#ededed"
+                    style="padding: 20px; background-color: #ededed; border-collapse: separate;"
+                    summary="o_mail_notification">
+                    <tbody>
+                        <!-- HEADER -->
+                        <tr>
+                            <td align="center" style="min-width: 700px;">
+                                <table width="700" border="0" cellpadding="0" bgcolor="#875A7B"
+                                    style="min-width: 700px; background-color: rgb(135, 90, 123); padding: 20px; border-collapse: separate;">
+                                    <tr>
+                                        <td valign="middle">
+                                            <span
+                                                style="font-size: 20px; color: white; font-weight: bold;">
+                                                Low Stock Notification
+                                            </span>
+                                        </td>
+                                        <td valign="middle" align="right">
+                                            <img src="/logo.png?company={{object.company_id.id}}"
+                                                style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                alt="{{object.company_id.name}}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- CONTENT -->
+                        <tr>
+                            <td align="center" style="min-width: 700px;">
+                                <table width="700" border="0" cellpadding="0" bgcolor="#ffffff"
+                                    style="min-width: 700px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse: separate;">
+                                    <tbody>
+                                        <td valign="top"
+                                            style="font-family: Arial, Helvetica, sans-serif; color: #555; font-size: 14px;">
+                                            <p> Dear <strong>
+                                                    <t
+                                                        t-out="object.company_id.notify_user_id.name or ''" />
+                                                , </strong>
+                                            </p>
+                                            <p> Here is a list of products whose quantity is lower
+                                                than minimum quantity <t
+                                                    t-if="object.company_id.product_quantity_check == 'global'">
+                                                    <t
+                                                        t-out="object.company_id.minimum_quantity or ''" />
+                                                    <strong> Globally</strong>
+                                                </t>
+                                                <t
+                                                    t-if="object.company_id.product_quantity_check == 'individual'">
+                                                    <strong>Individually</strong>
+                                                </t>
+                                                <t
+                                                    t-if="object.company_id.product_quantity_check == 'order_point'">
+                                                on <strong>Reorder Rules (Order Points)</strong>
+                                                </t>
+                                                specified. </p>
+                                            <br />
+                                        </td>
+                                    </tbody>
+                                </table>
+                                <table width="700" border="0" cellpadding="0" bgcolor="#ffffff"
+                                    style="min-width: 700px; background-color: rgb(255, 255, 255); padding-left: 10px; padding-right: 10px; border-collapse: separate;">
+                                    <tr>
+                                        <td>
+                                            <b>Product List</b>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td width="37%"
+                                            style="border: 1px solid gray; background-color: #875a7b; text-decoration: none; color: #fff; font-size: 16px;">
+                                            Product Name
+                                        </td>
+                                        <td width="17%"
+                                            style="border: 1px solid gray; background-color: #875a7b; text-decoration: none; color: #fff; font-size: 16px;">
+                                            Default Code
+                                        </td>
+                                        <td width="17.5%"
+                                            style="border: 1px solid gray; background-color: #875a7b; text-decoration: none; color: #fff; font-size: 16px;">
+                                            <t
+                                                t-if="object.company_id.sh_chouse_qty_type == 'on_hand'">
+                                                On Hand Qty
+                                            </t>
+                                            <t t-else="">
+                                                Forcasted Qty
+                                            </t>
+                                        </td>
+
+                                        <td width="23.5%"
+                                            style="border: 1px solid gray; background-color: #875a7b; text-decoration: none; color: #fff; font-size: 16px;">
+                                            Remaining Qty
+                                        </td>
+                                        <t
+                                            t-if="object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point' ">
+                                            <td width="23.5%"
+                                                style="border: 1px solid gray; background-color: #875a7b; text-decoration: none; color: #fff; font-size: 16px;">
+                                                Minimum Qty
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                <t t-foreach="object.notify_ids" t-as="row">
+                                    <table width="700" border="0" cellpadding="0" bgcolor="#ffffff"
+                                        style="min-width: 700px; background-color: rgb(255, 255, 255); padding-left: 10px; padding-right: 10px; border-collapse: separate;">
+                                        <tr>
+                                            <td width="37%" style="border: 1px solid gray;">
+                                                <span>
+                                                    <t t-out="row.name or ''" />
+                                                </span>
+                                            </td>
+                                            <td width="17%" style="border: 1px solid gray;">
+                                                <span>
+                                                    <t t-out="row.def_code or ''" />
+                                                </span>
+                                            </td>
+                                            <td width="17.5%" style="border: 1px solid gray;">
+                                                <span>
+                                                    <t t-out="row.prod_qty or ''" />
+                                                </span>
+                                            </td>
+
+                                            <td width="23.5%" style="border: 1px solid gray;">
+                                                <span>
+                                                    <t t-out="row.remaining_qty or ''" />
+                                                </span>
+                                            </td>
+                                            <t
+                                                t-if="object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point'">
+                                                <td width="23.5%" style="border: 1px solid gray;">
+                                                    <span>
+                                                        <t t-out="row.min_qty or ''" />
+                                                    </span>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </table>
+                                </t>
+                            </td>
+                        </tr>
+
+                        <!-- FOOTER -->
+                        <tr>
+                            <td align="center" style="min-width: 700px;">
+                                <table width="700" border="0" cellpadding="0" bgcolor="#875A7B"
+                                    style="min-width: 700px; background-color: rgb(135, 90, 123); padding: 20px; border-collapse: separate;">
+                                    <tr>
+                                        <td valign="middle" align="left"
+                                            style="color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;">
+                                            <t t-out="object.company_id.name or ''" />
+                                            <br />
+                                            <t t-out="object.company_id.phone or ''" />
+                                        </td>
+                                        <td valign="middle" align="right"
+                                            style="color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;">
+                                            <t t-if="object.company_id.email">
+                                                <a href="mailto:{{object.company_id.email}}"
+                                                    style="text-decoration: none; color: white;">
+                                                    <t t-out="object.company_id.email or ''" />
+                                                </a>
+                                                <br />
+                                            </t>
+                                            <t t-if="object.company_id.website">
+                                                <a href="{{object.company_id.website}}"
+                                                    style="text-decoration: none; color: white;">
+                                                    <t t-out="object.company_id.website or ''" />
+                                                </a>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </field>
+    </record>
+
+</odoo>

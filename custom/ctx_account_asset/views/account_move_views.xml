@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2022 CorTex IT Solutions Ltd. <https://cortexsolutions.net/>
+     License OPL-1 -->
+<odoo>
+
+    <record id="view_invoice_asset_category" model="ir.ui.view">
+        <field name="name">account.move.supplier.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <field name="asset_ids" invisible="1"/>
+                <field name="asset_count" invisible="1"/>
+
+                <button name="open_asset_view" type="object" class="oe_stat_button" icon="fa-cube"
+                        attrs="{'invisible': ['|', ('move_type', '!=', 'in_invoice'), ('asset_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="asset_count"/>
+                        </span>
+                        <span class="o_stat_text" attrs="{'invisible': [('asset_count','&gt;', 1)]}">Asset</span>
+                        <span class="o_stat_text" attrs="{'invisible': [('asset_count','&lt;=', 1)]}">Assets</span>
+                    </div>
+                </button>
+
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="before">
+                <field string="Asset Category" name="asset_category_id" force_save="1"
+                       attrs="{'column_invisible': [('parent.move_type', 'not in', ['in_invoice'])]}"
+                       domain="[('type','=','purchase')]" context="{'default_type':'purchase'}"/>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/tree/field[@name='account_id']" position="before">
+                <field string="Asset Category" name="asset_category_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

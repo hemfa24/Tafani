@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+# Part of Probuse Consulting Service Pvt Ltd. See LICENSE file for full copyright and licensing details.
+
+{
+    'name': 'Account Asset Disposal',
+    'version': '1.0',
+    'author': 'Probuse Consulting Service Pvt. Ltd.',
+    'license': 'Other proprietary',
+    'category': 'Accounting & Finance',
+    'price': 40.0,
+    'currency': 'EUR',
+    'summary': 'Account Asset Disposal',
+    'website': 'https://www.probuse.com',
+    'description': """
+    Account Asset Disposal
+""",
+    'depends': ['account_asset'],
+    'data': [
+             'views/asset_view.xml'
+    ],
+    'installable': True,
+    'auto_install': False,
+}

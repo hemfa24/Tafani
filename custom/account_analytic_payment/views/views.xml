@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Register Payment Wizard -->
+
+    <record id="view_move_form_inherit_cd_id" model="ir.ui.view">
+        <field name="name">account.move.cd.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id'][1]" position="after">
+                <!--  Add your fields or attributes here  -->
+                <field name="analytic_distribution" widget="analytic_distribution"
+                       attrs="{'invisible': [('move_type', '!=', 'out_refund')],'readonly': [('state', '!=', 'draft')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Account Payments -->
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.form.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='amount_div']" position="after">
+                <field name="analytic_distribution" widget="analytic_distribution"/>
+                <field name="salesperson_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_incoming_cheque_form_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.cheque.form.inherit</field>
+        <field name="model">account.cheque</field>
+        <field name="inherit_id" ref="hemfa_account_cheque.account_incoming_cheque_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='re_amount']" position="after">
+                <field name="analytic_distribution" widget="analytic_distribution"/>
+                <field name="salesperson_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="account_incoming_cheque_form_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.cheque.form.inherit</field>
+        <field name="model">account.cheque</field>
+        <field name="inherit_id" ref="hemfa_account_cheque.account_outgoing_cheque_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='paid_ids']" position="after">
+                <field name="analytic_distribution" widget="analytic_distribution"/>
+                <field name="salesperson_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="account_in_cheque_form_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.cheque.form.inherit.incoming</field>
+        <field name="model">account.cheque</field>
+        <field name="inherit_id" ref="hemfa_account_cheque.account_incoming_cheque_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='paid_ids']" position="after">
+                <field name="analytic_distribution" widget="analytic_distribution"/>
+                <field name="salesperson_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="invoice_user_id_invoice_form" model="ir.ui.view">
+        <field name="name">invoice_user_id.invoice.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="invoice_user_id" invisible="0"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- <record id="view_account_payment_tree_inherit" model="ir.ui.view">
+        <field name="name">account.payment.tree.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="after">
+                <field name="account_analytic_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_supplier_payment_tree_inherit" model="ir.ui.view">
+        <field name="name">account.supplier.payment.tree.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="after">
+                <field name="account_analytic_id"/>
+            </xpath>
+        </field>
+    </record> -->
+
+</odoo>

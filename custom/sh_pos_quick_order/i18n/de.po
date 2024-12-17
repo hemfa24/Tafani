@@ -1,0 +1,53 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_pos_quick_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-21 05:44+0000\n"
+"PO-Revision-Date: 2022-07-21 05:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_pos_quick_order
+#: model:ir.model.fields,field_description:sh_pos_quick_order.field_pos_config__sh_quick_customer
+msgid "Customer"
+msgstr "Kunde"
+
+#. module: sh_pos_quick_order
+#: model:ir.model.fields,field_description:sh_pos_quick_order.field_pos_config__sh_is_enable_quick_order
+msgid "Enable Quick Pos Order"
+msgstr "Aktivieren Sie die schnelle POS -Bestellung"
+
+#. module: sh_pos_quick_order
+#: model:ir.model.fields,field_description:sh_pos_quick_order.field_pos_config__sh_is_quick_payment_method
+msgid "Payment Method"
+msgstr "Zahlungsmethode"
+
+#. module: sh_pos_quick_order
+#: model:ir.model,name:sh_pos_quick_order.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Verkaufspunktkonfiguration"
+
+#. module: sh_pos_quick_order
+#. openerp-web
+#: code:addons/sh_pos_quick_order/static/src/xml/pos.xml:0
+#, python-format
+msgid "Quick Order"
+msgstr "Schnelle Bestellung"
+
+#. module: sh_pos_quick_order
+#: model_terms:ir.ui.view,arch_db:sh_pos_quick_order.sh_pos_quick_order_configurations
+msgid "Quick Order Configuration"
+msgstr "Kurzauftragskonfiguration"
+
+#. module: sh_pos_quick_order
+#: model:ir.model.fields,field_description:sh_pos_quick_order.field_pos_config__sh_is_enable_quick_invoice
+msgid "Want to Create invoice ?"
+msgstr "Möchten Sie Rechnung erstellen?"

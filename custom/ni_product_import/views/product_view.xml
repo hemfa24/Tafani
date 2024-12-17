@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="division_product_normal_form_view_inherit" model="ir.ui.view">
+            <field name="name">division.product.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='invoice_policy']" position="after">
+                    <!-- Add your fields or attributes here -->
+                    <field name="division_id"/>
+                </xpath>
+                 <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <field name="nex_text_cells"/>
+                    <field name="model_no"/>
+                    <field name="material_composition"/>
+                    <field name="age_group_id"/>
+                    <field name="product_type_group_id"/>
+                    <field name="collection_id"/>
+                    <field name="seasonality_id"/>
+                </xpath>
+
+            </field>
+        </record>
+        <record id="import_product_template_inherit_form" model="ir.ui.view">
+            <field name="name">product.product.import</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_policy']" position="after">
+                    <field name="division_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="import_product_product_variant_inherit_form" model="ir.ui.view">
+            <field name="name">product.product.import</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_template_variant_value_ids']" position="replace">
+                    <field name="product_template_attribute_value_ids" widget="many2many_tags"
+                           groups="product.group_product_variant" readonly="1"/>
+                </xpath>
+                <!-- <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <field name="product_brand_id" />
+                </xpath> -->
+            </field>
+        </record>
+
+        <record id="product_normal_form_view" model="ir.ui.view">
+            <field name="name">product.product.import.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <field name="product_brand_id"/>
+                    <field name="model_id"/>
+                    <field name="sex_id"/>
+                    <field name="college_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+

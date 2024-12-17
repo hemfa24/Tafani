@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_res_config_setting_form_view" model="ir.ui.view">
+        <field name="name">sh.res.config.setting.form.view</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='general_settings']//div[@id='contacts_settings']" position="before">
+                <div>
+                    <h2>Product Internal Reference Generator Feature</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="sh_product_int_ref_generator" string="Product Internal Reference Generator Feature" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_int_ref_generator" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_new_product_int_ref_generator" string="Auto Generate Internal Reference For New Products" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_new_product_int_ref_generator" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <button name="action_generate_int_ref" string="Generate Internal Reference for All Product" type="object" class="oe_highlight" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_sequence_separate" string="Product Sequence Separate" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_sequence_separate" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">Product Name Config</span>
+                                <div class="content-group">
+                                    <div class="mt16 row" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_name_config" string="Product Name Config" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_name_config" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_name_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_name_digit" string="Product Name Digit" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_name_digit" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_name_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_name_separate" string="Product Name Separate" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_name_separate" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_name_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_name_seq" string="Product Name Position In Internal Reference" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_name_seq" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">Product Attribute Config</span>
+                                <div class="content-group">
+                                    <div class="mt16 row" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_attribute_config" string="Product Attribute Config" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_attribute_config" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_attribute_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_attribute_name_digit" string="Product Attribute Name Digit" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_attribute_name_digit" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_attribute_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_attribute_name_separate" string="Product Attribute Name Separate" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_attribute_name_separate" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_attribute_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_attribute_name_seq" string="Product Attribute Name Position In Internal Reference" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_attribute_name_seq" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">Product Category Config</span>
+                                <div class="content-group">
+                                    <div class="mt16 row" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_cataegory_config" string="Product Category Config" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_cataegory_config" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_cataegory_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_category_digit" string="Product Category Digit" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_category_digit" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_cataegory_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_catagory_separate" string="Product Category Separate" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_catagory_separate" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_cataegory_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_catagory_name_seq" string="Product Category Name Position In Internal Reference" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_catagory_name_seq" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">Product Sequence Config</span>
+                                <div class="content-group">
+                                    <div class="mt16 row" attrs="{'invisible':[('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_sequence_config" string="Product Sequence Config" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_sequence_config" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_sequence_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_sequence" string="Product Sequence" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_sequence" />
+                                    </div>
+                                    <div class="mt16 row" attrs="{'invisible':['|',('sh_product_sequence_config','=',False),('sh_product_int_ref_generator','=',False)]}">
+                                        <label for="sh_product_sequence_seq" string="Product Sequence Position In Internal Reference" class="col-3 col-lg-3 o_light_label" />
+                                        <field name="sh_product_sequence_seq" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

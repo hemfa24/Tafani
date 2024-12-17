@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="account_incoming_cheque_form_view_inherit_commission" model="ir.ui.view">
+            <field name="name">account.incoming.cheque.form.view.inherit.commission</field>
+            <field name="model">account.cheque</field>
+            <field name="inherit_id" ref="hemfa_account_cheque.account_incoming_cheque_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="comissions" string="Commissions">
+                        <field name="commission_ids"/>
+                    </page>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <field name="is_invoice_checked_with_commission" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='action_incoming_cashed']" position="attributes">
+                    <attribute name="attrs">
+                        {'invisible': ['|', ('status1', '!=', 'deposited'), ('is_invoice_checked_with_commission', '=',
+                        False)]}
+                    </attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_incoming_cashed']" position="after">
+                    <button name="action_incoming_cashed" string="Cashed" type="object" class="btn-primary"
+                            attrs="{'invisible': ['|', ('status1', '!=', 'deposited'), ('is_invoice_checked_with_commission', '!=', False)]}"
+                            confirm="Cheque has not checked invoice, due to it's not calculate commission you may proceed?"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

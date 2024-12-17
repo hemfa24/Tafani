@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_picking_form" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//field[@name='move_ids_without_package']/form/group/field[@name='product_uom_category_id']" position="after">
+                    <field name="product_uom_id" invisible="1"/>
+                    <field name="product_uom_po_id" invisible="1"/>
+                </xpath> -->
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom_category_id']" position="after">
+                    <field name="product_uom_id" invisible="1"/>
+                    <field name="product_uom_po_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom']" position="attributes">
+                     <attribute name="domain">[('id', 'in', (product_uom_id, product_uom_po_id))]</attribute>
+
+                </xpath>
+            </field>
+        </record>
+        <!-- <record id="stock_move_inhert_form_id" model="ir.ui.view">
+            <field name="name">stock.move.inhert.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='main_grp_col2']" position="inside">
+                    <field name="product_uom_id" invisible="1"/>
+                    <field name="product_uom_po_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record> -->
+    </data>
+</odoo>

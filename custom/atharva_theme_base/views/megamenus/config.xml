@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="as_megamenus" name="Atharva Megamenu" groups="base.group_user">
+        <section class="as_mega_menu as-mega-menu-preview-section" data-as-snippet="as_mega_menu">
+            <div class="container as-mega-menu-welcome">
+                <div class="as-mm-wc-in">
+                    <button class="btn as-e-btn-primary as-config"><i class="fa fa-pencil-square-o"/> Configure Alan Mega Menu </button>
+                    <div class="as-mm-wc-img">
+                        <img src="/atharva_theme_base/static/src/img/snippets/megamenu/configure-mega-menu.svg" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>

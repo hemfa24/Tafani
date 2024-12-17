@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="crm_lead_unique_number_probc_list" model="ir.ui.view">
+        <field name="name">crm.lead.unique.list</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_date']" position="before">
+                <field name="custom_number"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_unique_number_probc_search" model="ir.ui.view">
+        <field name="name">crm.lead.unique.search</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="custom_number"/>
+            </xpath>
+            <xpath string="Number" expr="//filter[@name='filter_date_closed']" position="before">
+                <filter name="Number" context="{'group_by':'custom_number'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_unique_number_probc_kanban" model="ir.ui.view">
+        <field name="name">crm.lead.unique.kanban</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_lead_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/templates/t/div/div" position="before">
+                <div>
+                    <strong></strong>
+                    <field name="custom_number"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

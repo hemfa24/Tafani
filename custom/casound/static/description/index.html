@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TTN SOFTWARE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #tab-content-1,
+        #tab-content-2,
+        #tab-content-3,
+        #tab-content-4 {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        ;
+
+        .tab-content:not(:first-child) {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container col">
+        <div id="tab-1" class="tab-content">
+
+            <h2 class="oe_slogan" style="color:#875A7B">Problem</h2>
+            <h3 class="oe_slogan">Sometimes you want to see how your inventory has changed over a period of time, for
+                example, how many products have increased or decreased in quantity.
+
+            </h3>
+
+            <h2 class="oe_slogan" style="color:#875A7B">Solution</h2>
+            <h3 class="oe_slogan">This report will compile data based on the quantity changes of your products, allowing
+                you to easily and visually track the changes over time.</h3>
+
+            <h2 class="oe_slogan" style="color:#875A7B">How to use?</h2>
+            <h3 class="oe_slogan">Very simple</h3>
+
+        </div>
+
+        <div id="tab-2" class="tab-content col">
+
+            <div class="col my-5 py-2">
+
+                <h3 style="height: 120px;text-align: center;" class="mt-4">Chose time and location</h3>
+
+
+                <img width="1080"
+                    src="https://res.cloudinary.com/djh7lsffd/image/upload/v1682416396/Stock_Inventory_Report/b57brhagqdvukanisd6x.png" />
+            </div>
+            <div class="col my-5 py-2">
+                <h3 style="height: 120px;text-align: center;" class="mt-4">Show report</h3>
+                <img width="1080"
+                    src="https://res.cloudinary.com/djh7lsffd/image/upload/v1682416396/Stock_Inventory_Report/yeqzpmgultnhdz5sx8ag.png" />
+            </div>
+            <div class="col my-5 py-2">
+                <h3 style="height: 120px;text-align: center;" class="mt-4">Print</h3>
+                <img width="1080"
+                    src="https://res.cloudinary.com/djh7lsffd/image/upload/v1682778029/Stock_Inventory_Report/thqr5arvqwusirggrgmd.png" />
+
+            </div>
+
+        </div>
+
+
+        <div id="tab-4" class="tab-content">
+            <h3 style="height: 120px;text-align: center;"> Support</h3>
+            <p>Email: ttn.software@gmail.com</p>
+            <p>Discord: </p>
+            <p>Youtube: </p>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    $(document).ready(function () {
+        $('.tab-link').click(function () {
+            var tab_id = $(this).attr('data-tab');
+
+            $('.tab-link').removeClass('active');
+            $('.tab-content').hide();
+
+            $(this).addClass('active');
+            $('#' + tab_id).show();
+        });
+    });
+</script>
+</body>
+
+</html>

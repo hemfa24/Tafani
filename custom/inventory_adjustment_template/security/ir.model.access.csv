@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_inventory_adjustment_template_new,inventory.adjustment.template.new,model_inventory_adjustment_template_new,,1,1,1,1
+access_inventory_adjustment_template_new_line,inventory.adjustment.template.new.line,model_inventory_adjustment_template_new_line,,1,1,1,1
+access_load_inventory_template,load.inventory.template,model_load_inventory_template,,1,1,1,1
+
+
+
+access_product_product_all,access_product_product,product.model_product_product,base.group_user,1,1,1,1
+access_select_products_adj,access_select_products_adj,model_select_products_adj,base.group_user,1,1,1,1

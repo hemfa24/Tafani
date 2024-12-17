@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="ni_import_product_generic" model="ir.ui.view">
+            <field name="name">ni.import.product.generic</field>
+            <field name="model">product.generic.import.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Ni Import Product Generic">
+                    <group col="4">
+                        <field name="ni_file_type" widget="radio" options="{'horizontal': true}"/>
+                        <field name="ni_varient" widget="radio" options="{'horizontal': true}"/>
+                    </group>
+
+                    <group col="4">
+                        <field name="ni_search_product" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('ni_varient','!=','none')]}"/>
+                        <field name="ni_file_data" />
+                    </group>
+
+                    <footer>
+                        <button name="action_import_generic_product" string="Import" type="object"  class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="ni_action_wizard_import_generic_product" model="ir.actions.act_window">
+            <field name="name">Import Products </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.generic.import.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_generic_import_product" name="Import Product" action="ni_action_wizard_import_generic_product" parent="sale.menu_sale_config" sequence="1"/>
+</data>
+</odoo>

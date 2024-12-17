@@ -1,0 +1,102 @@
+<odoo>
+   <data>
+      <record id="publisher_form_view" model="ir.ui.view">
+            <field name="name">publisher.form_view</field>
+            <field name="model">book.publisher</field>
+            <field name="arch" type="xml">
+                <form string="Publisher">
+                  
+                   <sheet>
+             
+                        <div class="o_employee_avatar">
+                          <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                        
+                        </div>
+                        <div class="oe_title">     
+                            <h1>
+                               <label for="name"/>
+                               <field name="name" />
+                            </h1>
+                        </div>    
+                      <group>
+                            <group string="Publisher Details">
+                                <field name="country_id"/>
+                            </group>
+                            
+                           
+                        </group>
+                      
+                     </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        <record id="publisher_tree_view" model="ir.ui.view">
+            <field name="name">publisher tree view</field>
+            <field name="model">book.publisher</field>
+            <field name="arch" type="xml">
+                <tree string="Publishers">
+                    <field name="name"/> 
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="publisher_kanban_view" model="ir.ui.view">
+        <field name="name">publisher.kanban</field>
+        <field name="model">book.publisher</field>
+        <field name="arch" type="xml">
+            <kanban sample="1" class="o_kanban_product_template">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="country_id"/>
+                     
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                             <div class="o_kanban_image me-1">
+                                <img t-att-src="kanban_image('book.publisher', 'image_128', record.id.raw_value)" alt="Product" class="o_image_64_contain"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top mb-0">
+                                    <div class="o_kanban_record_headings">
+                                       
+                                    </div>
+                                    
+                                </div>
+                                <t t-if="record.name">
+                                    <strong>
+                                        
+                                        <field name="name"/>
+                                    </strong>    
+                                </t>
+                                <div>
+                                   <t t-if="record.country_id">
+                                      <field name="country_id" /> 
+                                   </t>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>  
+        
+       <record id="action_book_publisher" model="ir.actions.act_window">
+            <field name="name">Publishers</field>
+            <field name="res_model">book.publisher</field>
+            <field name="view_mode">kanban,form,tree</field>
+            <field name="view_id" ref="publisher_kanban_view"/>
+            
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new record
+                </p>
+            </field>
+        </record>     
+    
+   </data>
+</odoo>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="studio.AppCenter" owl="1">
+        <div class="wrapAppCenter" style="width: 100%; display: flex"></div>
+    </t>
+</templates>

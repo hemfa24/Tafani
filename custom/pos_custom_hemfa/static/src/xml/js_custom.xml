@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="point_of_sale.js_custom" t-inherit="web.FormView" t-inherit-mode="primary" owl="1">
+        <!-- <xpath expr="//button[@name='open_frontend_cb']" position="afte">
+            
+            <button class="btn btn-info" type="button" t-on-click="onClickTestJavascript">
+                Test Javascript 1
+            </button>
+        </xpath> -->
+        <xpath expr="(//div)[last()]" position="inside">
+
+            <button class="btn btn-info" type="button" t-on-click="onClickTestJavascript">
+                Test Javascript 2
+            </button>
+        </xpath>
+        <xpath expr="//ActionMenus" position="after">
+
+            <button class="btn btn-info" type="button" t-on-click="onClickTestJavascript">
+                Test Javascript 1
+            </button>
+        </xpath>
+
+    </t>
+</templates>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+
+    <record id="inherit_print_product_label_view_form_dynamic" model="ir.ui.view">
+        <field name="name">print.product.label.inherit</field>
+        <field name="model">print.product.dynamic.label</field>
+        <field name="inherit_id" ref="garazd_dynamic_product_label.print_product_dynamic_label_view_form_id"/>
+        <field name="arch" type="xml">
+<!--            <xpath expr="//field[@name='output']" position="after">-->
+<!--                <field name="label_template_preview" string="Show Label" widget="boolean_toggle" attrs="{'invisible': [('is_template_report', '=', False)]}"/>-->
+<!--            </xpath>-->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(garazd_product_label_pro.action_product_label_template_list)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-file-text"
+                        string="Templates"
+                />
+            </xpath>
+<!--            <xpath expr="//a[@name='label_builder_link']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+            <xpath expr="//group[@name='label_template']" position="inside">
+                <div class="o_row" colspan="2">
+                    <field name="template_id" attrs="{'required': [('is_template_report', '=', True)]}" options="{'no_open': True, 'no_create': True}"/>
+                    <button name="action_edit_template"
+                            title="Edit Template"
+                            type="object"
+                            icon="fa-external-link"
+                            attrs="{'invisible': [('template_id', '=', False)]}"/>
+                    <button name="action_add_template"
+                            string="Add"
+                            type="object"
+                            icon="fa-plus"
+                            class="btn-primary"
+                            title="Create a new label template"/>
+                </div>
+
+            </xpath>
+
+<!--            <xpath expr="//tree/field[@name='barcode']" position="after">-->
+<!--                <field name="price" optional="show"/>-->
+<!--                <field name="currency_id" optional="show"/>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,1 @@
+from . import wizard_course_selection ,wizard_report_timetable,wizard_report_attendance,wizard_fee

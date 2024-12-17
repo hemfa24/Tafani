@@ -1,0 +1,230 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="program_title_list_view">
+            <field name="name">Program Title List</field>
+            <field name="model">program.title</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="program_title_form_view">
+            <field name="name">Program Title form</field>
+            <field name="model">program.title</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Program Title" colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="program_title_action_window">
+            <field name="name">Program Title</field>
+            <field name="res_model">program.title</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+  
+  
+        <!-- program level -->
+        <record model="ir.ui.view" id="program_level_list_view">
+            <field name="name">Program Level List</field>
+            <field name="model">program.level</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="program_level_form_view">
+            <field name="name">Program Level form</field>
+            <field name="model">program.level</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Program Level" colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="program_level_action_window">
+            <field name="name">Program Level</field>
+            <field name="res_model">program.level</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>    
+         
+         
+         <!-- program duration -->
+         
+            <record model="ir.ui.view" id="program_duration_list_view">
+            <field name="name">Program Duration List</field>
+            <field name="model">program.duration</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="program_duration_form_view">
+            <field name="name">Program Duration form</field>
+            <field name="model">program.duration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Program Duration" colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="program_duration_action_window">
+            <field name="name">Program Duration</field>
+            <field name="res_model">program.duration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record> 
+        
+        
+        
+         <!-- program dependency -->
+          <record model="ir.ui.view" id="program_depends_list_view">
+            <field name="name">Program dependency List</field>
+            <field name="model">program.depends</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="program_depends_form_view">
+            <field name="name">Program Dependency form</field>
+            <field name="model">program.depends</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Program Depends on" colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="program_dependency_action_window">
+            <field name="name">Program Dependency</field>
+            <field name="res_model">program.depends</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         
+         <!-- degree Abbreviation -->
+           <record model="ir.ui.view" id="degree_abbreviation_list_view">
+            <field name="name">Degree Abbreviation List</field>
+            <field name="model">degree.abbreviation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="degree_abbreviation_form_view">
+            <field name="name">Degree Abbreviation form</field>
+            <field name="model">degree.abbreviation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Degree Abbreviation" colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="degree_abbreviation_action_window">
+            <field name="name">Degree Abbreviation</field>
+            <field name="res_model">degree.abbreviation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        <!-- program main form -->
+        <record model="ir.ui.view" id="aht_program_list_view">
+            <field name="name">Program List</field>
+            <field name="model">aht.program</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="complete_name"/>
+                    <field name="department_id"/>
+                    <field name="program_level_id"/>
+                    <field name="degree_abbr_id"/>
+                    <field name="program_title_id"/>
+                    
+                    <field name="program_code"/>
+                    <field name="program_depends_id"/>
+                    <field name="program_duration_id"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="aht_program_form_view">
+            <field name="name">Program form</field>
+            <field name="model">aht.program</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Program" colspan="4"/>
+                        <group>
+                            <group>
+                                <field name="department_id"/>
+                                <field name="program_level_id"/>
+                               <field name="degree_abbr_id"/>
+                            </group>
+                            
+                            <group>
+                                <field name="program_title_id"/>
+                                <field name="program_code"/>
+                                <field name="program_depends_id"/>
+                                <field name="program_duration_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="aht_program_action_window">
+            <field name="name">Program</field>
+            <field name="res_model">aht.program</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record> 
+        
+        
+        
+        
+        
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="edit_lines_price_unit_form_view">
+        <field name="name">edit.lines.price.unit.form</field>
+        <field name="model">edit.lines.price.unit</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                    <field name="price_unit"/>
+                </group>
+                <footer>
+                    <button string="Update" name="update_unit_price" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_edit_lines_price_unit">
+        <field name="name">Update Unit Price</field>
+        <field name="res_model">edit.lines.price.unit</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

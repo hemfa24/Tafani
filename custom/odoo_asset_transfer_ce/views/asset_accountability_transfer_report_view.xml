@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_asset_accountability_transfer_pivot" model="ir.ui.view">
+            <field name="name">asset.accountability.transfer: Pivot</field>
+            <field name="model">asset.accountability.transfer</field>
+            <field name="arch" type="xml">
+                <pivot string="asset_accountability_transfer">
+<!--                    <field name="name" type="row"/>-->
+                    <field name="transferred_asset_id" type="row"/>
+                    <field name="transferred_asset_id" type="measure"/>
+                    <field name="asset_sequence_number"/>
+                    <field name="asset_description"/>
+<!--                    <field name="transfer_asset_category_id" type="row"/>-->
+<!--                    <field name="source_department_id" type="row"/>-->
+<!--                    <field name="source_partner_id" type="row"/>-->
+<!--                    <field name="destination_department_id" type="row"/>-->
+<!--                    <field name="destination_partner_id" type="row"/>-->
+<!--                    <field name="user_id" type="row"/>-->
+<!--                    <field name="asset_transfer_type_id" type="row"/>-->
+<!--                    <field name="name" type="row"/>-->
+<!--                    <field name="state" type="row"/>-->
+                    <field name="purchase_price" type="measure"/>
+                    <field name="residual_value" type="measure"/>
+<!--                    <field name="total_attendance" type="measure" widget="float_time"/>-->
+                </pivot>
+            </field>
+        </record>
+
+        <record id="act_asset_accountability_transfer_pivot" model="ir.actions.act_window">
+            <field name="name">Asset Accountability Transfer</field>
+            <field name="res_model">asset.accountability.transfer</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">pivot</field>
+        </record>
+
+<!--        <menuitem id="sub_menu_asset_accountability" name="Asset Accountability" parent="menu_asset_accountability_main"/>-->
+       <!-- <menuitem id="menu_asset_accountability_report" name="Reports" parent="odoo_asset_transfer.menu_asset_accountability_main" action="act_asset_accountability_transfer_pivot"/>-->
+            
+    </data>
+</odoo>

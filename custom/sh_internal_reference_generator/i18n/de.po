@@ -1,0 +1,268 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_internal_reference_generator
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-29 06:40+0000\n"
+"PO-Revision-Date: 2020-09-29 06:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Product"
+" Attribute Config</span>"
+msgstr ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Produkt"
+"Attributkonfig</span>"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Product"
+" Category Config</span>"
+msgstr ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Produkt"
+"Kategorie Konfig</span>"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Product"
+" Name Config</span>"
+msgstr ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Produkt"
+"Name Config</span>"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Product"
+" Sequence Config</span>"
+msgstr ""
+"<span class=\"o_form_label\" "
+"attrs=\"{'invisible':[('sh_product_int_ref_generator','=',False)]}\">Produkt"
+"Sequenzkonfiguration</span>"
+
+#. module: sh_internal_reference_generator
+#: model:ir.actions.act_window,name:sh_internal_reference_generator.sh_auto_generate_int_ref_action
+#: model:ir.actions.act_window,name:sh_internal_reference_generator.sh_auto_generate_int_ref_action_product_template
+msgid "Auto Generate Internal Reference"
+msgstr "Interne Referenz automatisch generieren"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_new_product_int_ref_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_new_product_int_ref_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Auto Generate Internal Reference For New Products"
+msgstr "Interne Referenz für neue Produkte automatisch generieren"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_internal_reference_wizard_form_view
+msgid "Cancel"
+msgstr "Stornieren"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model,name:sh_internal_reference_generator.model_res_company
+msgid "Companies"
+msgstr "Unternehmen"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_product__company_id
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_template__company_id
+msgid "Company"
+msgstr "Unternehmen"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model,name:sh_internal_reference_generator.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__display_name
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_product__display_name
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_template__display_name
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__display_name
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_internal_reference_wizard_form_view
+msgid "Genarate"
+msgstr "Generieren"
+
+#. module: sh_internal_reference_generator
+#: model:ir.actions.act_window,name:sh_internal_reference_generator.action_internal_reference_wizard
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_internal_reference_wizard_form_view
+msgid "Generate Internal Reference"
+msgstr "Interne Referenz generieren"
+
+#. module: sh_internal_reference_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Generate Internal Reference for All Product"
+msgstr "Generieren Sie eine interne Referenz für alle Produkte"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__id
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_product__id
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_template__id
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__id
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__id
+msgid "ID"
+msgstr "ICH WÜRDE"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model,name:sh_internal_reference_generator.model_internal_reference_wizard
+msgid "Internal Reference Wizard"
+msgstr "Interner Referenzassistent"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard____last_update
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_product____last_update
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_product_template____last_update
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company____last_update
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model,name:sh_internal_reference_generator.model_product_product
+msgid "Product"
+msgstr "Produkt"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_attribute_config
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_attribute_config
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Attribute Config"
+msgstr "Produktattributkonfig"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_attribute_name_digit
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_attribute_name_digit
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Attribute Name Digit"
+msgstr "Produktattribut Name Ziffer"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_attribute_name_separate
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_attribute_name_separate
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Attribute Name Separate"
+msgstr "Produktattributname getrennt"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_cataegory_config
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_cataegory_config
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Category Config"
+msgstr "Produktkategorie Konfig"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_category_digit
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_category_digit
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Category Digit"
+msgstr "Produktkategorie Ziffer"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_catagory_separate
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_catagory_separate
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Category Separate"
+msgstr "Produktkategorie getrennt"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_int_ref_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_int_ref_generator
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Internal Reference Generator Feature"
+msgstr "Produktinterner Referenzgenerator"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_name_config
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_name_config
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Name Config"
+msgstr "Produktname Konfig"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_name_digit
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_name_digit
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Name Digit"
+msgstr "Produktname Ziffer"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_name_separate
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_name_separate
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Name Separate"
+msgstr "Produktname getrennt"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_sequence
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_sequence
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Sequence"
+msgstr "Produktsequenz"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_sequence_config
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_sequence_config
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Sequence Config"
+msgstr "Produktsequenzkonfig"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_company__sh_product_sequence_separate
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_res_config_settings__sh_product_sequence_separate
+#: model_terms:ir.ui.view,arch_db:sh_internal_reference_generator.sh_res_config_setting_form_view
+msgid "Product Sequence Separate"
+msgstr "Produktsequenz getrennt"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model,name:sh_internal_reference_generator.model_product_template
+msgid "Product Template"
+msgstr "Produktvorlage"
+
+#. module: sh_internal_reference_generator
+#: model:ir.model.fields,field_description:sh_internal_reference_generator.field_internal_reference_wizard__sh_replace_existing
+msgid "Replace Existing ?"
+msgstr "Existierendes ersetzen ?"

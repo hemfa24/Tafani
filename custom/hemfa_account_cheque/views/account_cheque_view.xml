@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="cheque_transfered_wizard_wizard_view" model="ir.ui.view">
+            <field name="name">Cheque Transfered</field>
+            <field name="model">cheque.transfered.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Cheque Transfer">
+                    <group>
+                        <field name="transfered_date" />
+                        <field name="contact_id" />
+                    </group>
+                    <footer>
+                        <button string="Submit" name="create_ckeck_transfer_entry"
+                            class="oe_highlight" type="object" /> or <button name="cancel"
+                            string="Cancel" class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="cheque_transfered_wizard_action" model="ir.actions.act_window">
+            <field name="name">Cheque Transfered Wizard</field>
+            <field name="res_model">cheque.transfered.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <record id="cheque_wizard_wizard_view" model="ir.ui.view">
+            <field name="name">Cheque Wizard</field>
+            <field name="model">cheque.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Cheque">
+                    <group>
+                        <field name="chequed_date" />
+                        <field name="cash_journal_id" />
+                        <field name="is_outgoing" readonly='1' invisible="1" />
+                        <field name="bank_account_id"
+                            attrs="{'invisible': [('is_outgoing', '=',False)],'required':[('is_outgoing','=','True')]}" />
+                    </group>
+                    <footer>
+                        <button string="Submit" name="create_cheque_entry" class="oe_highlight"
+                            type="object" /> or <button name="cancel" string="Cancel"
+                            class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="cheque_wizard_action" model="ir.actions.act_window">
+            <field name="name">Cheque</field>
+            <field name="res_model">cheque.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <record id="account_incoming_cheque_form_view" model="ir.ui.view">
+            <field name="name">account.incoming.cheque.form.view</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <form string="Incoming Cheque">
+                    <header>
+                        <button name="set_to_submit" string="Submit" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status1', 'in', ['registered','cashed','bounced','return','cancel','transfered','deposited'])]}" />
+                        <button name="set_to_deposite" string="Deposite" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status1', 'not in', ['registered',]),]}" />
+                        <button name="set_from_deposite_to_draft" string="Cancel" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status1', 'not in', ['registered',]),]}" />
+                        <!-- <button name="count_account_invoice" string="Refresh" type="object" 
+         class="btn-primary" 
+         /> -->
+
+
+                        <button name="action_incoming_cashed" string="Cashed" type="object"
+                            attrs="{'invisible': [('status1', 'not in', ['deposited'])]}"
+                            class="btn-primary" />
+                        <button name="set_to_return" string="Returned" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status1', 'not in', ['deposited'])]}" />
+                        <!-- ,('is_partial','=',True) -->
+                        <button name="set_to_bounced" string="Bounced" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status1', 'not in', ['deposited'])]}" />
+                        <!-- ,('is_partial','=',True) -->
+
+                        <!-- <button name="action_incoming_return_to_deposited" string="Cancel"
+                        type="object" class="btn-primary" attrs="{'invisible': [('status1', 'not
+                        in', ['cashed',]),]}"/> -->
+
+
+                        <!-- <button name="611" string="Cashed" type="action" class="btn-primary"
+                        attrs="{'invisible': [('status1', 'in',
+                        ['draft','cashed','bounced','return','cancel','transfered','deposited'])]}"/> -->
+                        <!-- <button name="610" string="Transfered" type="action"
+                        class="btn-primary" attrs="{'invisible': ['|',('status1', 'in',
+                        ['draft','bounced','return','cancel','transfered','deposited','cashed']),
+                        ('is_partial','=',True)]}"/> -->
+                        <button name="action_set_draft" string="Set To Draft" type="object"
+                            attrs="{'invisible':[('status1','not in',['bounced','cancel'])]}"
+                            class="btn-primary" />
+                        <button name="set_to_cancel" string="Cancel" type="object"
+                            class="btn-primary"
+                            confirm="Are You Sure You Want To Rest All Journal and Rest Cheque to Draft?"
+                            attrs="{'invisible': [('status1', 'not in', ['cashed',]),]}" />
+
+                        <!-- <button name="set_to_cancel" string="Cancel" type="object"
+                        class="btn-primary" attrs="{'invisible': [('status1', 'in',
+                        ['cancel','cashed','deposited','transfered','return','bounced']),]}"/> -->
+
+                        <field name="status1" widget="statusbar"
+                            statusbar_visible="draft,registered,deposited,cashed,return,bounced,transfered,cancel" />
+
+
+                    </header>
+                    <sheet string=" Incoming Account Cheque">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="attachment_on_account_cheque"
+                                type="object" icon="fa-cloud-upload"
+                                attrs="{'invisible': [('attachment_count', '=', 0)]}">
+                                <field name="attachment_count" widget="statinfo" string="Attachment" />
+                            </button>
+                            <button type="object" name="action_view_jornal_items"
+                                class="oe_stat_button" icon="fa-bars"
+                                attrs="{'invisible': [('journal_items_count', '=', 0)]}">
+                                <field name="journal_items_count" widget="statinfo"
+                                    string="Journal Items" />
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="journal_id" required="0"
+                                    attrs="{'readonly': [('status1','not in',['draft',])]}"
+                                    options="{'no_create': True, 'no_edit': True}" />
+                                <field name="bank_account_id" invisible="1"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                                <field name="cheque_number"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                                <field name="amount"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                                <field name="re_amount" readonly='1' />
+
+                                <field name="account_cheque_type" readonly='1' invisible="1" />
+                            </group>
+                            <group>
+                                <!-- 'required':[('payee_type','=','employee')] -->
+                                <field name="payee_type" required="1" />
+                                <field name="payee_user_id" string="Payer"
+                                    attrs="{'invisible':[('payee_type','=','employee')],'readonly': [('status1','not in','draft')]}" />
+                                <field name="employee_id"
+                                    domain="['|',('user_id','!=',False),('address_home_id','!=',False)]"
+                                    attrs="{'invisible':[('payee_type','!=','employee')],'readonly': [('status1','not in','draft')]}" />
+                                <field name="cheque_date"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                                <field name="cheque_receive_date"
+                                    attrs="{'invisible': [('account_cheque_type', '=','outgoing')],'required':[('account_cheque_type','=','incoming')],'readonly': [('status1','not in','draft')]}" />
+                                <field name="is_no_accounting_effect"
+                                    groups="hemfa_account_cheque.group_cheque_cash_no_accouting_effect"
+                                    required="0" />
+                                <field name="cheque_return_date"
+                                    attrs="{'invisible': [('status1', 'in',['draft','registered','cashed','bounced','cancel'])],'readonly': [('status1','not in','draft')]}" />
+                                <field name="paid_ids" readonly="1" widget="many2many_tags" />
+                                <field name="in_count" invisible="1" />
+                                <field name="is_partial" invisible="1" />
+
+                            </group>
+                        </group>
+                        <separator />
+                        <group>
+                            <group>
+                                <field name="credit_account_id"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                                <field name="journal_id"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                            </group>
+                            <group>
+                                <field name="debit_account_id"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                                <field name="company_id"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Invoices">
+                                <field name="checked_invoices_ids" widget="many2many_tags"
+                                    invisible="1" />
+
+
+                                <field name="invoice_ids" readonly="0" domain="[('move_type', '=', 'out_invoice')]">
+                                    <tree editable="bottom" create="0" delete="0">
+                                        <field name="name" readonly="1" />
+                                        <!-- <field name="ref"/> -->
+
+                                        <field name="partner_id" readonly="1" />
+                                        <field name="invoice_date" readonly="1"
+                                            invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')"
+                                            string="Bill Date" />
+                                        <field name="invoice_date" readonly="1"
+                                            invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')"
+                                            string="Invoice Date" />
+                                        <field name="invoice_date_due" readonly="1"
+                                            widget="remaining_days" optional="show"
+                                            attrs="{'invisible': [['payment_state', 'in', ('paid', 'in_payment', 'reversed')]]}" />
+                                        <field name="amount_residual"
+                                            attrs="{'column_invisible':[('parent.status1','=','draft')]}"
+                                            readonly="1" string="Amount Due" sum="Amount Due" />
+                                        <field name="amount_residual_cheque"
+                                            attrs="{'column_invisible':[('parent.status1','!=','draft')]}"
+                                            readonly="1" string="Amount Due" sum="Amount Due" />
+
+                                        <!-- <field name="curr_due_amount" readonly="1"
+                                        string="Amount Due" sum="Amount Due" /> -->
+                                        <field name="amount_total" readonly="1" string="Total"
+                                            sum="Total" decoration-bf="1" />
+                                        <field name="currency_id" readonly="1" />
+
+                                        <field name="payment_state"
+                                            attrs="{'column_invisible':[('parent.status1','=','draft')]}"
+                                            readonly="1" widget="badge"
+                                            decoration-danger="payment_state == 'not_paid'"
+                                            decoration-warning="payment_state in ('partial', 'in_payment')"
+                                            decoration-success="payment_state in ('paid', 'reversed')" />
+                                        <field name="payment_state_cheque"
+                                            attrs="{'column_invisible':[('parent.status1','!=','draft')]}"
+                                            readonly="1" widget="badge"
+                                            decoration-danger="payment_state == 'not_paid'"
+                                            decoration-warning="payment_state in ('partial', 'in_payment')"
+                                            decoration-success="payment_state in ('paid', 'reversed')" />
+
+                                        <field name="state" readonly="1" widget="badge"
+                                            decoration-success="state == 'posted'"
+                                            decoration-info="state == 'draft'" optional="show" />
+                                        <field name="check" force_save="1"
+                                            attrs="{ 'readonly':[('parent.status1','!=','draft')]}" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Attachment">
+                                <field name="attchment_ids"
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                            </page>
+                            <page string="Description">
+                                <field name="comment" placeholder="Add an internal note..."
+                                    attrs="{'readonly': [('status1','not in','draft')]}" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_incoming_cheque_tree_view" model="ir.ui.view">
+            <field name="name">account.incoming.cheque.tree.view</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <tree string="Incoming Account Cheque" decoration-danger="status1 == 'cancel'">
+                    <field name="name" />
+                    <field name="payee_user_id" string="Payer" />
+                    <field name="bank_account_id" />
+                    <field name="cheque_number" />
+                    <field name="amount" />
+                    <field name="journal_id" />
+                    <field name="cheque_date" />
+                    <field name="cheque_return_date" />
+                    <field name="status1" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Outgoing View -->
+
+        <record id="account_outgoing_cheque_form_view" model="ir.ui.view">
+            <field name="name">account.outgoing.cheque.form.view</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <form string="Outgoing Account Cheque">
+                    <header>
+                        <button name="set_to_submit" string="Submit" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status', 'in', ['registered','cashed','bounced','return','cancel','transfered','deposited'])]}" />
+                        <button invisible="1" name="%(cheque_wizard_action)d" string="Cashed"
+                            type="action" class="btn-primary"
+                            attrs="{'invisible': [('status', 'in', ['draft','cashed','bounced','return','cancel','transfered','deposited'])]}" />
+                        <button name="action_outgoing_cashed" string="Cashed" type="object"
+                            attrs="{'invisible':[('status','not in',['registered'])]}"
+                            class="btn-primary" />
+                        <button name="set_to_bounced" string="Bounced" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': ['|',('status', 'in', ['draft','bounced','return','cancel','transfered','deposited','cashed']),('is_partial','=',True)]}" />
+                        <button name="set_to_return" string="Returned" type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': ['|',('status', 'in', ['draft','return','cancel','transfered','deposited','cashed']),('is_partial','=',True)]}" />
+                        <!-- <button name="action_set_draft" string="Set To Draft" type="object"
+                        confirm="Are You Sure You Want To Rest All Journal and Rest Cheque to
+                        Draft?"
+                        attrs="{'invisible':['|',('status','in',['draft',]),('account_cheque_type','!=','outgoing')]}"
+                        class="btn-primary"/>
+                    <button name="set_to_cancel" confirm="Are You Sure You Want To Rest Cheque to Cancel?"
+                        string="Cancel" type="object" class="btn-primary" attrs="{'invisible':
+                        [('status', 'in', ['draft',]),] }"/> -->
+                        <button name="action_set_draft" string="Set To Draft" type="object"
+                            attrs="{'invisible':[('status','not in',['bounced','cancel','return'])]}"
+                            class="btn-primary" />
+                        <button name="set_to_cancel" string="Cancel" type="object"
+                            class="btn-primary"
+                            confirm="Are You Sure You Want To Rest All Journal and Rest Cheque to Draft?"
+                            attrs="{'invisible': [('status', 'not in', ['cashed',]),]}" />
+
+                        <field name="status" widget="statusbar" />
+                    </header>
+                    <sheet string="Outgoing Account Cheque">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="attachment_on_account_cheque"
+                                type="object" icon="fa-cloud-upload"
+                                attrs="{'invisible': [('attachment_count', '=', 0)]}">
+                                <field name="attachment_count" widget="statinfo" string="Attachment" />
+                            </button>
+                            <button type="object" name="action_view_jornal_items"
+                                class="oe_stat_button" icon="fa-bars"
+                                attrs="{'invisible': [('journal_items_count', '=', 0)]}">
+                                <field name="journal_items_count" widget="statinfo"
+                                    string="Journal Items" />
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="sequence" invisible="1"/>
+                                <field name="name"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="journal_id" required="0"
+                                    attrs="{'readonly': [('status','not in','draft')]}"
+                                    options="{'no_create': True, 'no_edit': True}" />
+                                <field name="cheque_book_id" required="1"
+                                    domain="[('journal_id','=',journal_id)]"
+                                    attrs="{'readonly': [('status','not in','draft')]}"
+                                    options="{'no_create_edit': True,'no_create': True, 'no_quick_create': True}" />
+                                <field name="cheque_book_line_id" required="1"
+                                    domain="[('cheque_book_id','=',cheque_book_id),('journal_id','=',journal_id),('is_used','=',False)]"
+                                    attrs="{'readonly': [('status','not in','draft')]}"
+                                    options="{'no_create_edit': True,'no_create': True, 'no_quick_create': True}" />
+                                <field name="bank_account_id" invisible="1"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                                <field invisible="1" name="cheque_number"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                                <field name="amount"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                                <field name="outgoing_residual" force_save="1" readonly="1" />
+                                <field name="re_amount" invisible="1" readonly='1' />
+
+                                <field name="account_cheque_type" readonly='1' invisible="1" />
+                            </group>
+                            <group>
+                                <!-- 'required':[('payee_type','=','employee')] -->
+                                <field name="payee_type" required="1" />
+                                <field name="payee_user_id" string="Payee"
+                                    attrs="{'invisible':[('payee_type','=','employee')],'readonly': [('status','not in','draft')]}" />
+                                <field name="employee_id"
+                                    domain="['|',('user_id','!=',False),('address_home_id','!=',False)]"
+                                    attrs="{'invisible':[('payee_type','!=','employee')],'readonly': [('status','not in','draft')]}" />
+
+                                <field name="cheque_date"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                                <field name="cheque_given_date"
+                                    attrs="{'invisible': [('account_cheque_type', '=','incoming')],'required':[('account_cheque_type','=','outgoing')],'readonly': [('status','not in','draft')]}" />
+                                <field name="cheque_receive_date"
+                                    attrs="{'invisible': [('account_cheque_type', '=','outgoing')],'required':[('account_cheque_type','=','incoming')],'readonly': [('status','not in','draft')]}" />
+                                <field name="cheque_return_date"
+                                    attrs="{'invisible': [('status', 'in',['draft','registered','cashed','bounced','cancel'])],'readonly': [('status','not in','draft')]}" />
+                                <field name="paid_ids" readonly="1" widget="many2many_tags" />
+                                <field name="in_count" invisible="1" />
+                                <field name="is_partial" invisible="1" />
+
+                            </group>
+                        </group>
+                        <separator />
+                        <group>
+                            <group>
+                                <field name="credit_account_id"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                                <field name="journal_id"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                            </group>
+                            <group>
+                                <field name="debit_account_id"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                                <field name="company_id"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Invoices">
+                                <field name="checked_invoices_ids" widget="many2many_tags"
+                                    invisible="1" />
+
+                                <field name="invoice_ids" readonly="0" domain="[('move_type', '=', 'in_invoice')]">
+                                    <tree editable="bottom" create="0" delete="0">
+                                        <field name="name" readonly="1" />
+                                        <!-- <field name="ref"/> -->
+
+                                        <field name="partner_id" readonly="1" />
+                                        <field name="invoice_date" readonly="1"
+                                            invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')"
+                                            string="Bill Date" />
+                                        <field name="invoice_date" readonly="1"
+                                            invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')"
+                                            string="Invoice Date" />
+                                        <field name="invoice_date_due" readonly="1"
+                                            widget="remaining_days" optional="show"
+                                            attrs="{'invisible': [['payment_state', 'in', ('paid', 'in_payment', 'reversed')]]}" />
+                                        <field name="amount_residual"
+                                            attrs="{'column_invisible':[('parent.status','=','draft')]}"
+                                            readonly="1" string="Amount Due" sum="Amount Due" />
+                                        <field name="amount_residual_cheque"
+                                            attrs="{'column_invisible':[('parent.status','!=','draft')]}"
+                                            readonly="1" string="Amount Due" sum="Amount Due" />
+
+                                        <!-- <field name="curr_due_amount" readonly="1"
+                                        string="Amount Due" sum="Amount Due" /> -->
+                                        <field name="amount_total" readonly="1" string="Total"
+                                            sum="Total" decoration-bf="1" />
+                                        <field name="currency_id" readonly="1" />
+                                        <field name="payment_state"
+                                            attrs="{'column_invisible':[('parent.status','=','draft')]}"
+                                            readonly="1" widget="badge"
+                                            decoration-danger="payment_state == 'not_paid'"
+                                            decoration-warning="payment_state in ('partial', 'in_payment')"
+                                            decoration-success="payment_state in ('paid', 'reversed')" />
+                                        <field name="payment_state_cheque"
+                                            attrs="{'column_invisible':[('parent.status','!=','draft')]}"
+                                            readonly="1" widget="badge"
+                                            decoration-danger="payment_state == 'not_paid'"
+                                            decoration-warning="payment_state in ('partial', 'in_payment')"
+                                            decoration-success="payment_state in ('paid', 'reversed')" />
+
+
+                                        <field name="state" readonly="1" widget="badge"
+                                            decoration-success="state == 'posted'"
+                                            decoration-info="state == 'draft'" optional="show" />
+                                        <field name="check"
+                                            attrs="{'readonly':[('parent.status','!=','draft')]}" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Attachment">
+                                <field name="attchment_ids"
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                            </page>
+                            <page name="employee_operations" string="Employee Operations">
+                                <field name="cheque_operation_ids">
+                                    <tree editable="bottom" create="0" delete="0">
+                                        <field name="name" readonly="1" />
+                                        <field name="amount" readonly="1" sum="Total" />
+                                        <!-- <field name="payslip_id" readonly="1"/> -->
+                                        <field name="check"
+                                            attrs="{'readonly':[('parent.status','!=','draft')]}" />
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name" />
+                                            <field name="amount" />
+                                            <field name="payslip_id" />
+                                            <field name="check" />
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Description">
+                                <field name="comment" placeholder="Add an internal note..."
+                                    attrs="{'readonly': [('status','not in','draft')]}" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_outgoing_cheque_tree_view" model="ir.ui.view">
+            <field name="name">account.outgoing.cheque.tree.view</field>
+            <field name="model">account.cheque</field>
+            <field name="arch" type="xml">
+                <tree string="Outgoing Account Cheque" decoration-danger="status == 'cancel'">
+                    <field name="name" />
+                    <field name="payee_user_id" />
+                    <field name="bank_account_id" />
+                    <field name="cheque_number" />
+                    <field name="amount" />
+                    <field name="journal_id" />
+                    <field name="cheque_date" />
+                    <field name="cheque_return_date" />
+                    <field name="status" />
+                </tree>
+            </field>
+        </record>
+        <!-- End -->
+
+        <record id="action_incoming_cheque" model="ir.actions.act_window">
+            <field name="name">Incoming Cheque</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.cheque</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="account_incoming_cheque_tree_view" />
+            <field name="domain">[('account_cheque_type','=','incoming')]</field>
+            <field name="context">{'default_account_cheque_type': 'incoming'}</field>
+        </record>
+
+        <record id="action_outgoing_cheque" model="ir.actions.act_window">
+            <field name="name">Outgoing Cheque</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.cheque</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('account_cheque_type','=','outgoing')]</field>
+            <field name="context">{'default_account_cheque_type': 'outgoing'}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_outgoing_view_form">
+            <field name="act_window_id" ref="action_outgoing_cheque" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_outgoing_cheque_form_view" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_outgoing_view_tree">
+            <field name="act_window_id" ref="action_outgoing_cheque" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account_outgoing_cheque_tree_view" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_incoming_view_form">
+            <field name="act_window_id" ref="action_incoming_cheque" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_incoming_cheque_form_view" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_incoming_view_tree">
+            <field name="act_window_id" ref="action_incoming_cheque" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account_incoming_cheque_tree_view" />
+        </record>
+
+        <record id="report_form_account_cheque" model="ir.ui.view">
+            <field name="name">report.form.account.cheque</field>
+            <field name="model">report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="from_date" />
+                        <field name="to_date" />
+                    </group>
+                    <group>
+                        <field name="cheque_type" />
+                    </group>
+                    <footer>
+                        <button name="submit" string="Submit" type="object" class="oe_highlight" />
+                        or <button string="Cancel" class="oe_highlight" special="cancel" />
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_report_wizard" model="ir.actions.act_window">
+            <field name="name">Account Cheque Report</field>
+            <field name="res_model">report.wizard</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="report_form_account_cheque" />
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_bank_management" name="Bank Check Management"
+            parent="hemfa_account_treasury.menu_account_treasury" sequence="3" />
+        <menuitem id="menu_sub_incoming_cheque" name="Receiving Checks"
+            parent="menu_bank_management" action="action_incoming_cheque" sequence="1" />
+        <menuitem id="menu_sub_outgoing_cheque" name="Sending Checks" parent="menu_bank_management"
+            action="action_outgoing_cheque" sequence="2" />
+
+        <menuitem id="menu_account_cheque_report" parent="account.menu_finance_reports"
+            action="action_report_wizard" sequence="100" />
+
+    </data>
+</odoo>

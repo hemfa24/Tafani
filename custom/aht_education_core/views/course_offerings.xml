@@ -1,0 +1,148 @@
+<odoo>
+    <data>
+        <record id="view_course_offer_search" model="ir.ui.view">
+            <field name="name">Course Offerings</field>
+            <field name="model">aht.course.offerings</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Course Offered">
+                    <field name="department"/>
+                    <field name="course_name"/>
+                    <field name="state"/>
+                    <newline/>
+                    <group string="Group By...">
+                        <filter name="department" string="Department"
+                                domain="[]" context="{'group_by':'department'}"/>
+                        <filter name="course_name" string="Course"
+                                domain="[]" context="{'group_by':'course_name'}"/>
+                        <filter name="state" string="State"
+                                domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="course_registration_tree_view">
+            <field name="name">Course Offerings</field>
+            <field name="model">aht.course.offerings</field>
+            <field name="arch" type="xml">
+                <tree import="1">
+                    <field name="course_name"/>
+                    <field name="faculty"/>
+                    <field name="class_id"/>
+                    <field name="credit_hours"/>
+                    <field name="capacity"/>
+                    <field name="remaining_seats"/>
+                    <field name="department"/>                 
+                   <field name="academic_year"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="course_offering_form_view">
+            <field name="name">Course Offerings</field>
+            <field name="model">aht.course.offerings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <button name="btn_submit" string="Submit" type="object" class="oe_highlight" states="Draft" />
+                         <button name="btn_approve"  
+                                groups="aht_education_core.group_course_offering_approval" 
+                                string="Approve" 
+                                type="object" 
+                                class="oe_highlight"
+                                states="Waiting For Approval" />
+                         <button name="btn_reset"
+                                string="Reset"
+                                type="object"
+                                states="Waiting For Approval,reject" />       
+                         <button name="btn_reject"
+                                string="Reject"
+                                groups="aht_education_core.group_course_offering_approval" 
+                                type="object"
+                                states="Waiting For Approval" />
+                        <field name="state" widget="statusbar"  statusbar_visible="Draft,Approved,reject"/>
+                    </header>
+                    <sheet>
+                       <separator style="color:green;font-size:18px;" string="Course Offerings" colspan="4"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="course_type" invisible="1"/>
+                        <field name="company_currency" invisible="1"/>
+                        <!--                        <field name="available_class_ids" invisible="1"/>-->
+                        <div class="oe_title">
+                            <label for="crn" string="CRN"/>
+                            <h1>
+                                <field name="crn"
+                                       readonly='1'
+                                       options='{"no_open": True, "no_create": True}'/>
+                            </h1>
+                            <h1>
+                                <!-- <field name="semester_id"
+                                       required="1"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"
+                                       options='{"no_open": True, "no_create": True}'/> -->
+                            </h1>
+                            <!--                             <field name="semester_id" required="1"/>-->
+                        </div>
+                        <group>
+                            <group col="4" class="ums_form_style" colspan="4">
+                                <field name="class_id"/>
+                                <field name="student_ids"
+                                widget="many2many_tags" invisible="1"/>
+                                <field name="academic_year" required="1"/>
+                                <field name="course_name"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"
+                                       options='{"no_open": True, "no_create": True}'/>                             
+                                <field name="course_code"/>
+                                <field name="offering_level"/>
+                                <field name="course_level"/>
+                                <field name="course_duration"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="credit_hours"/>
+                                <field name="faculty"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"
+                                       options='{"no_open": True, "no_create": True}'/>
+                                <field name="is_alternative_faculity"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
+                         <field name="alternative_faculity"
+                                widget="many2many_tags"
+                                attrs="{'invisible':[('is_alternative_faculity','!=',True)],'required':[('is_alternative_faculity','=',True)]}"/>
+                                <field name="department" readonly="1" force_save="True"
+                                       options='{"no_open": True, "no_create": True}'/>
+                                <field name="capacity" string="Total Capacity"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="enrolled" readonly="1" attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="remaining_seats" readonly="1"
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="course_category"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="main_language"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="course_charges"
+                                       invisible="1"
+                                       widget="monetary"
+                                       options="{'currency_field': 'company_currency'}"/>
+                                <field name="active" default="True" attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                <field name="rejection_reason_store" attrs="{'readonly':[('state','!=','Draft')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Course Outline">
+                                <field name="course_outline"/>
+                            </page>
+                            <page string="Recommended Books" name="Recommended Books">
+                                <field name="recommended_books"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       <record model="ir.actions.act_window" id="course_offerings_action_window">
+            <field name="name">Course Offerings</field>
+            <field name="res_model">aht.course.offerings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

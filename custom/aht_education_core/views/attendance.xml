@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="st_attendance_list_view">
+            <field name="name">Student Attendance</field>
+            <field name="model">student.course.attendance</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="academic_year"/>
+                    <field name="course_offered"/>
+                    <field name="attendance_date"/>
+                    <field name="faculty"/>
+                    <field name="attendance_type" invisible="1"/>
+                    <field name="class_hours"  attrs="{'invisible': [('attendance_type', '!=', 'hourly')]}"/>
+                    <field name="submission_datetime"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="st_attendance_form_view">
+            <field name="name">Student Attendance</field>
+            <field name="model">student.course.attendance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                <button name="submit_attendance" string="Submit" type="object" class="oe_highlight" states="Draft" />
+                <button name="attendance_request" string="Attendance Request" type="object" class="oe_highlight" states="Submitted" />
+                <field name="state" widget="statusbar"/>
+                 </header>
+                    <sheet>
+                       <separator style="color:green;font-size:18px;" string="Student Attendance" colspan="4"/>
+                        <group>
+                            <field name="academic_year" />
+                            <field name="course_offered" />
+                            <field name="attendance_date" />
+                            <field name="faculty"/>
+                             <field name="company_id" invisible="1"/>
+                             <field name="attendance_type" invisible="1" force_save="1" />
+                            <field name="class_hours" widget='radio' options="{'horizontal':true}" attrs="{'invisible': [('attendance_type', '!=', 'Hourly')]}"/>
+                            <field name="submission_datetime"/>
+                            <field name="class_type"/>
+                            <field name="lab_group_id" attrs="{'invisible': [('class_type', '!=', 'Lab')]}"/>
+                        </group>
+
+                         <separator style="color:green;font-size:18px;" string="Student List"
+                                   colspan="4"/>
+                         <field name="attendance_lines">
+                            <tree class="tree_no_open"
+                                      editable="bottom">
+                           <field name="student"/>
+                            <field name="company_id" invisible="1"/>
+                             <field name="attendance_type" invisible="1" force_save="1" />
+                           <field name="status" widget='radio' options="{'horizontal':true}" attrs="{'column_invisible': [('parent.attendance_type', '!=', 'Hourly')]}"/>
+                            <field name="att_status"  attrs="{'column_invisible': [('parent.attendance_type', '=', 'Hourly')],'required':[('parent.attendance_type','!=','Hourly')]}" />
+                           </tree>
+                         </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="st_attendance_action_window">
+            <field name="name">Student Attendance</field>
+            <field name="res_model">student.course.attendance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+    </data>
+</odoo>

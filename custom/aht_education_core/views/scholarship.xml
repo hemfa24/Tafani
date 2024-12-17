@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="scholarship_list_view">
+            <field name="name">scholarship List</field>
+            <field name="model">aht.scholarship</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="scholarship_form_view">
+            <field name="name">scholarship_form</field>
+            <field name="model">aht.scholarship</field>
+            <field name="arch" type="xml">
+                <form>
+                  
+                    <sheet>
+                       <separator style="color:green;font-size:18px;" string="Scholarship" colspan="4"/>
+                        <group>
+                            <field name="name" placeholder="e.g. merit-based"/>
+                        </group>                      
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="scholarship_action_window">
+            <field name="name">Scholarship</field>
+            <field name="res_model">aht.scholarship</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- student scholarship allocation -->
+        
+         <record model="ir.ui.view" id="scholarship_allocation_list_view">
+            <field name="name">scholarship allocation list</field>
+            <field name="model">scholarship.allocation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="academic_year"/>
+                    <field name="student_id"/>
+                    <field name="user_id"/>
+                    <field name="scholarship_type"/>
+                    <field name="value"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="scholarship_allocation_form_view">
+            <field name="name">scholarship_allocation_student_form</field>
+            <field name="model">scholarship.allocation</field>
+            <field name="arch" type="xml">
+                <form>
+                   <header>
+                        <button name="btn_confirm" groups="aht_education_core.group_scholarship_manager" string="Confirm" type="object" class="oe_highlight" states="Draft" />
+                 
+                        <field name="state" widget="statusbar"/>
+                 </header>
+                    <sheet>
+                       <separator style="color:green;font-size:18px;" string="Scholarship Allocation" colspan="4"/>
+                        <group>
+                            <group>
+                                 <field name="academic_year"/>
+                                 <field name="student_id"/>
+                                 <field name="user_id"/>
+                                 
+                            </group>
+                            <group>
+                               <field name="scholarship_id" />
+                                <field name="scholarship_type"/>    
+                                <field name="value"/>
+                             </group>
+                        </group>                      
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="scholarship_allocation_action_window">
+            <field name="name">Scholarship allocation</field>
+            <field name="res_model">scholarship.allocation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+        
+        
+       
+    </data>
+</odoo>

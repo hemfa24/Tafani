@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="page_container_1">
+            <head>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta http-equiv="Content-Language" content="en"/>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <title>
+                    <t t-out="title"/>
+                </title>
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
+                <meta name="description" t-att-content="description"/>
+                <t t-call="aht_education_core.student_portal_links_1"/>
+            </head>
+            <body>
+                <div class="main_page">
+                    <div class="container-scroller">
+                        <t t-call="aht_education_core.main_navbar_1"/>
+                        <div class="container-fluid page-body-wrapper">
+                            <t t-call="aht_education_core.ui_settings_1"/>
+                            <t t-call="aht_education_core.right_side_bar_1"/>
+                            <t t-call="aht_education_core.left_side_bar_1"/>
+                            <t t-out="0"/>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            <t t-call="aht_education_core.student_portal_scripts_1"/>
+        </template>
+    </data>
+</odoo>

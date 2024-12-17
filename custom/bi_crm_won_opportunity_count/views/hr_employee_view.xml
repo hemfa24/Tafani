@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_view_hr_employee_kanban" model="ir.ui.view">
+        <field name="name">hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//templates//div//ul//field[@name='work_phone']" position="after">
+                <field name="is_selected" invisible="True"/>
+                <div>
+                    <span attrs="{'invisible':[('is_selected', '=' ,False)]}"><strong>Won Opportunity : </strong></span>
+                    <strong>
+                        <field name="won_opportunity" attrs="{'invisible':[('is_selected', '=' ,False)]}"/>
+                    </strong>
+                </div>
+                <div>
+                    <span attrs="{'invisible':[('is_selected', '=' ,False)]}"><strong>Amount : </strong></span>
+                    <strong>
+                        <field name="amount" attrs="{'invisible':[('is_selected', '=' ,False)]}"/>
+                    </strong>
+                </div>
+            </xpath>            
+        </field>
+    </record>
+
+</odoo>

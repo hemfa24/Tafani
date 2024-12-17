@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_casound_bao_cao_xuat_nhap_kho_wizard,access_casound_bao_cao_xuat_nhap_kho_wizard,model_casound_bao_cao_xuat_nhap_kho_wizard,base.group_user,1,1,1,1
+access_casound_bao_cao_gia_thanh_wizard,access_casound_bao_cao_gia_thanh_wizard,model_casound_bao_cao_gia_thanh_wizard,base.group_user,1,1,1,1

@@ -1,0 +1,99 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="dep_list_view">
+            <field name="name">Department</field>
+            <field name="model">aht.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="dep_code"/>
+                    <field name="abbreviation"/>
+                    <field name="college"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="dept_form_view">
+            <field name="name">Department</field>
+            <field name="model">aht.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="company_currency" invisible="1"/>
+                        <table width="100%">
+                            <tbody>
+                                <tr t-attf-style="background-color:white">
+                                    <td width="70%">
+                                        <div>
+                                            <label for="name" string="Department Name" class="oe_edit_only"/>
+                                            <h1>
+                                                <field required="1" name="name" default_focus="1"
+                                                       placeholder="Department Name"/>
+                                            </h1>
+                                        </div>
+                                    </td>
+                                    <td width="30%">
+                                        <field name="title_image" style="border-style: solid; width:100px; height:100px;" widget="image"  class="oe_right" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <group col="2" colspan="12" class="um_form_style">
+                            <field name="dep_code" required="True"/>
+                            <field name="abbreviation"/>
+                            <field name="percredit_charges" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                            <field name="college" required="True"/>
+                            <field name="hod_department" required="True"/>
+
+                        </group>
+                        <notebook>
+                            <page string="About Department(Kurdish)">
+                                <separator style="color:green;font-size:28px;"
+                                           string="Kurdish"
+                                           colspan="4"/>
+                                <field name="about_dept_kurdish"/>
+                                <separator style="color:green;font-size:38px;"
+                                           string="English"
+                                           colspan="4"/>
+                                <field name="about_dept_english"/>
+                            </page>
+                            <page string="Vision and Mission">
+                                <separator style="color:green;font-size:28px;"
+                                           string="English"
+                                           colspan="4"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Mission"
+                                           colspan="4"/>
+                                <field name="mission_english"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Vision"
+                                           colspan="4"/>
+                                <field name="vision_english"/>
+                                <separator style="color:green;font-size:28px;"
+                                           string="Kurdish"
+                                           colspan="4"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Mission"
+                                           colspan="4"/>
+                                <field name="mission_kurdish"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Vision"
+                                           colspan="4"/>
+                                <field name="vision_kurdish"/>
+                            </page>
+                            <page string="Contact">
+                                <field name="dept_contact"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="lms_dept_action_window">
+            <field name="name">Department</field>
+            <field name="res_model">aht.department</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+    </data>
+</odoo>

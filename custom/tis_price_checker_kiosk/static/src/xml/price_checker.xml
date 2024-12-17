@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<template xml:space="preserve">
+    <t t-name="PriceCheckerKioskMode">
+        <div class="o_hr_attendance_kiosk_mode_container o_home_menu_background">
+            <span class="o_hr_attendance_kiosk_backdrop"/>
+            <div class="o_hr_attendance_clock text-center"/>
+            <div class="o_hr_attendance_kiosk_mode">
+                <t>
+                    <div class="row">
+                    <h3 style="padding-left: 40%;">باركود المنتج</h3>
+                    </div>
+                    <div class="row">
+                        <div style=" padding-left: 26%; border: transparent;">
+                            <input class="o_hr_attendance_PINbox text-center" t-attf-value="{{widget.text_field}}"/>
+                        </div>
+                    </div>
+
+                    <div class="row m-3 text-center">
+                        <div class="col-12 text-center">
+                            <h1 style="color: #5f5e97;"><b><t t-esc="widget.product_name"/></b></h1>
+                        </div>
+                    </div>
+
+                    <table cellpadding="10" align="center">
+                        <tr>
+                            <th>
+                                <b>العملة</b>
+                            </th>
+                            <th>
+                                <b>سعر المنتج</b>
+                            </th>
+
+                            <th>
+                                <b>الوحدة</b>
+                            </th>
+                        </tr>
+                        <tr t-if="widget.product_price1">
+                            <th>
+                                <h3><b>د.ل</b></h3>
+                            </th>
+                            <th>
+                                <h1>
+                                    <b>
+                                        <t t-esc="widget.product_price1"/>
+                                    </b>
+                                </h1>
+                            </th>
+
+                            <th>
+                                <h3 class="panel-title"><t t-esc="widget.product_unit1"/></h3>
+                            </th>
+
+                        </tr>
+
+                        <tr t-if="widget.product_price2">
+                            <th>
+                                <h3><b>د.ل</b></h3>
+                            </th>
+                            <th>
+                                <h1>
+                                    <b>
+                                        <t t-esc="widget.product_price2"/>
+                                    </b>
+                                </h1>
+                            </th>
+
+                            <th>
+                                <h3 class="panel-title"><t t-esc="widget.product_unit2"/></h3>
+                            </th>
+
+                        </tr>
+
+
+                    </table>
+                    </t>
+            </div>
+        </div>
+    </t>
+</template>

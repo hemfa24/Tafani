@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+
+    <record id="inherit_view_product_pricelist_item_form_view" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pricelist_rule_target']" position="inside">
+                <field name="multi_barcode" options="{'no_create':1}"
+                    attrs="{'invisible':[('applied_on', '!=','0_product_variant')]}" />
+
+            </xpath>
+        </field>
+    </record>
+    <record id="inherit_view_product_pricelist_form_view" model="ir.ui.view">
+        <field name="name">product.pricelist.form</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pricelist_settings']" position="inside">
+                <field name="multi_barcode"/>
+
+            </xpath>
+            <xpath expr="//page[@name='pricelist_rules']//field[@name='item_ids']//tree"  position="inside">
+                <field name="deco_value" invisible="1"/>
+                 <field name="multi_barcode" invisible="0"/>
+                
+            </xpath>
+            <xpath expr="//page[@name='pricelist_rules']//field[@name='item_ids']//tree"  position="attributes">
+                <attribute name="decoration-danger">deco_value == 0</attribute>
+                <attribute name="default_order">deco_value</attribute>
+            </xpath>
+
+
+             <xpath expr="//page[@name='pricelist_rules']//field[@name='item_ids']//tree[2]"  position="inside">
+                <field name="deco_value" invisible="1"/>
+                 <field name="multi_barcode" invisible="0"/>
+                
+            </xpath>
+            <xpath expr="//page[@name='pricelist_rules']//field[@name='item_ids']//tree[2]"  position="attributes">
+                <attribute name="decoration-danger">deco_value == 0</attribute>
+                <attribute name="default_order">deco_value</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

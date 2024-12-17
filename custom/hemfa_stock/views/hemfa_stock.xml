@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+    <record id="stock_location_employees" model="stock.location">
+      <field name="name">Employees</field>
+      <field name="location_id" ref="stock.stock_location_locations_partner"/>
+      <field name="usage">internal</field>
+      <field name="company_id"></field>
+    </record>
+  </data>
+</odoo>

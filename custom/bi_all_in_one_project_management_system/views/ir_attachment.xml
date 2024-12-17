@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="action_project_doc" model="ir.actions.act_window">
+            <field name="res_model">ir.attachment</field>
+            <field name="name">Project Documents</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('res_model', '=', 'project.project')]</field>
+        </record>
+        
+        
+        <record id="action_task_doc" model="ir.actions.act_window">
+            <field name="res_model">ir.attachment</field>
+            <field name="name">Task Documents</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('res_model', '=', 'project.task')]</field>
+        </record>
+        
+
+        <menuitem name="Documents"
+                   id="menu_main_documents"
+                   parent="project.menu_main_pm"
+                   sequence="1"
+                   groups="project.group_project_manager"/>
+    
+        <menuitem name="Project Documents"
+                   id="menu_project_documents"
+                   parent="bi_all_in_one_project_management_system.menu_main_documents"
+                   action="action_project_doc"/>
+                   
+        <menuitem name="Task Documents"
+                   id="menu_task_documents"
+                   parent="bi_all_in_one_project_management_system.menu_main_documents"
+                   action="action_task_doc"/>
+
+
+</odoo>

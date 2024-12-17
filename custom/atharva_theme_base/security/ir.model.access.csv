@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+atharva_theme_base.access_as_product_label,access_as_product_label,atharva_theme_base.model_as_product_label,,1,1,1,1
+atharva_theme_base.access_as_product_label_line,access_as_product_label_line,atharva_theme_base.model_as_product_label_line,,1,1,1,1
+atharva_theme_base.access_as_product_tab,access_as_product_tab,atharva_theme_base.model_as_product_tab,,1,1,1,1
+atharva_theme_base.access_product_tab_line,access_product_tab_line,atharva_theme_base.model_product_tab_line,,1,1,1,1
+atharva_theme_base.access_as_product_brand,access_as_product_brand,atharva_theme_base.model_as_product_brand,,1,1,1,1
+atharva_theme_base.access_as_product_extra_info,access_as_product_extra_info,atharva_theme_base.model_as_product_extra_info,,1,1,1,1
+atharva_theme_base.access_as_ppg,access_as_ppg,atharva_theme_base.model_as_ppg,,1,1,1,1
+atharva_theme_base.access_as_snippet_frame_config,access_as_snippet_frame_config,atharva_theme_base.model_as_snippet_frame_config,,1,1,1,1
+atharva_theme_base.access_as_snippet_frame,access_as_snippet_frame,atharva_theme_base.model_as_snippet_frame,,1,1,1,1
+atharva_theme_base.access_as_megamenu_tabs,access_as_megamenu_tabs,atharva_theme_base.model_as_megamenu_tabs,,1,1,1,1

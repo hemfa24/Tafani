@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+        
+        <record model="ir.ui.view" id="inherit_partner_library_member">
+            <field name="name">Library members</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='vat']" position="after">
+                   <field name="is_lib_member"/>
+                </xpath>
+                <field name="vat" position="after">
+                   <field name="qr_code" widget="image" class="oe_avatar"/>
+                 </field>
+               
+               
+                 <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page name="membership_info" string="Library Membership">
+                       <group>
+                           <group>
+                                <field name="member_id"/>
+                                <field name="membership_status" force_save="1"/>
+                                <field name="expires_on"/>
+                             </group>
+                         </group>
+                    </page>
+                </xpath>    
+            </field>
+        </record> 
+        
+        
+         <record id="library_members_partners_kanban_view" model="ir.ui.view">
+            <field name="name">res.partners.kanban.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <field name="mobile" position="after">
+                    <field name="membership_status"/>
+                    <field name="expires_on"/>
+                </field>
+                
+                <xpath expr="//div[hasclass('oe_kanban_details')]//div//ul/li[5]" position="after">
+                     <li class=""><strong>Expires :</strong><field name="expires_on"/></li>
+                      <li t-if="record.membership_status.raw_value == 'membership_expired'" ><field name="membership_status" style="background-color:#c36a5a;"/></li>
+                      <li t-if="record.membership_status.raw_value == 'membership_not_expired'" style=""><field name="membership_status"/></li>
+                </xpath>
+            </field>
+         </record>  
+        
+        <record id="action_library_members" model="ir.actions.act_window">
+            <field name="name">Members</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,form,tree</field>
+            <field name="view_id" ref="aht_education_core.library_members_partners_kanban_view"/>
+           <field name="domain">[('is_lib_member','=',True)]</field>
+            <field name="context">{"default_is_lib_member":True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new record
+                </p>
+            </field>
+        </record> 
+        
+        
+                   
+  </data>
+</odoo>

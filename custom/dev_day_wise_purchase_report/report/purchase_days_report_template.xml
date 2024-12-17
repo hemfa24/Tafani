@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <template id="days_purchase_report_body">
+        <t t-call="web.internal_layout">
+            <div class="page">
+                <center>
+                    <strong>
+                        <span style="font-size:24px;">PURCHASE ORDER DAYS WISE REPORT</span>
+                    </strong>
+                </center>
+                <br/>
+                <t t-set="move_ids" t-value="get_mov_line"/>
+                <table class="table table-condensed">
+                    <b>Start Date</b>
+                    :
+                    <span t-field="o.start_date" t-options='{"format": "dd-MM-yyyy"}'/>
+                    <br/>
+                    <b>End Date</b>
+                    :
+                    <span t-field="o.end_date" t-options='{"format": "dd-MM-yyyy"}'/>
+                    <br/>
+                    <b>Company</b>
+                    :
+                    <span t-field="o.company_ids"/>
+                    <br/>
+                    <br/>
+                    <tr>
+                        <th width="30%" style="border:1px solid black;">Product Name</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Monday</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Tuesday</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Wednesday</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Thursday</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Friday</th>
+
+                        <th width="8%" style="border:1px solid black;" class="text-center">Saturday</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Sunday</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">Total</th>
+                    </tr>
+                    <t t-set="mondya" t-value="0"/>
+                    <t t-set="tuesday" t-value="0"/>
+                    <t t-set="wednesday" t-value="0"/>
+                    <t t-set="thursday" t-value="0"/>
+                    <t t-set="friday" t-value="0"/>
+                    <t t-set="saturday" t-value="0"/>
+                    <t t-set="sunday" t-value="0"/>
+                    <t t-set="final_total" t-value="0"/>
+
+                    <tr t-foreach="get_data" t-as="line">
+                        <t t-set="total" t-value="line.get('monday') + line.get('tuesday')+line.get('wednesday') +line.get('thursday')+line.get('friday')+line.get('saturday')+line.get('sunday')"/>
+                        <t t-set="mondya" t-value="mondya+line.get('monday')"/>
+                        <t t-set="tuesday" t-value="tuesday+line.get('tuesday')"/>
+                        <t t-set="wednesday" t-value="wednesday+line.get('wednesday')"/>
+                        <t t-set="thursday" t-value="thursday+line.get('thursday')"/>
+                        <t t-set="friday" t-value="friday+line.get('friday')"/>
+                        <t t-set="saturday" t-value="saturday+line.get('saturday')"/>
+                        <t t-set="sunday" t-value="sunday+line.get('sunday')"/>
+                        <t t-set="final_total" t-value="final_total+total"/>
+
+
+                        <td style="border:1px solid black;">
+                            <span t-esc="line.get('product_name')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('monday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('tuesday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('wednesday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('thursday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('friday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('saturday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="line.get('sunday')"/>
+                        </td>
+                        <td class="text-center" style="border:1px solid black;">
+                            <span t-esc="total"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="30%" class="text-center" style="border:1px solid black;">Total</th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="mondya"/>
+                        </th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="tuesday"/>
+                        </th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="wednesday"/>
+                        </th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="thursday"/>
+                        </th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="friday"/>
+                        </th>
+
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="saturday"/>
+                        </th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="sunday"/>
+                        </th>
+                        <th width="8%" style="border:1px solid black;" class="text-center">
+                            <span t-esc="final_total"/>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="purchase_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="dev_day_wise_purchase_report.days_purchase_report_body"/>
+            </t>
+        </t>
+    </template>
+</odoo>

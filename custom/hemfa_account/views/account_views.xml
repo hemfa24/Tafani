@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="view_account_list" model="ir.ui.view">
+            <field name="name">account.account.transfer.list.cash</field>
+            <field name="model">account.account</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reconcile']" position="before">
+                    <field name="show_in_payment"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_form" model="ir.ui.view">
+            <field name="name">account.account.transfer.form.cash</field>
+            <field name="model">account.account</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                     <field name="show_in_payment"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

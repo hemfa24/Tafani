@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="LibraryDashboardMain">
+        <div class="oh_dashboards">
+            <div class="container-fluid o_hr_dashboard">
+            </div>
+        </div>
+    </t>
+    <t t-name="LibraryDashboard">
+        <div class="members_popup popup">
+            <div class="popup-content">
+                <span class="close_members_popup">
+                    <i class="fa fa-times" aria-hidden="true"/>
+                </span>
+                <h2 style="font-weight:bold; text-align: center; font-size:26px;">Members Lookup</h2>
+                <hr/>
+                <div class="mt-4 mb-4" style="float: left;">
+                        <input class="form-control" id="member_search" style="width:100%;"
+                               placeholder="Enter member name"/>
+                </div>
+                <form class="members_popup overflow-x">
+                    <div>
+                        <table style="width: 100%;"
+                               class="members_table table table-hover table-striped table-bordered">
+                            <thead style="background: #777c78eb;color: white;" class="">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="book_popup popup">
+            <div class="popup-content">
+                <span class="close_book_popup"><i class="fa fa-times" aria-hidden="true"/></span>
+                <h2 style="font-weight:bold; text-align: center; font-size:26px;">Book Lookup</h2>
+                <hr/>
+                <div class="mt-4 mb-4" style="float: left;">
+                        <input class="form-control" id="book_search" style="width:100%;"
+                               placeholder="Enter book title"/>
+                </div>
+                <form class="book_popup overflow-x">
+                    <div>
+                        <table style="width: 100%;"
+                               class="book_table table table-hover table-striped table-bordered">
+                            <thead style="background: #777c78eb;color: white;" class="">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>ISBN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="o_card_parent">
+            <h3>Circulation</h3>
+            <div class="o_row" style="width: 100%;">
+                <div class="o_col" style="width: 30%;">
+                    <div class="o_form_input_dropdown">
+                        <select id="dropdown_field" name="dropdown_field" class="form-select">
+                            <option value="checkout" selected="True">Checkout </option>
+                            <option value="book_drop">Book Drop</option>
+                            <option value="discard_book">Discard Book</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="o_col" style="width: 70%;padding:0px;">
+                            <div class="o_form_input">
+                                <input type="text" class="form-control" id="barcode_input_field"
+                                       placeholder="Enter a command or barcode" focus="True"
+                                       name="input_field"/>
+                            </div>
+                        </div>
+                    </div>
+
+            <div class="row main-section">
+               <div class="col-md-6 col-lg-6">
+                  <div class="o_card_parent_child" style="">
+                        <div class="o_row" style="margin-top: -5px; border-bottom:2px solid #bfbebe">
+                            <i class="fa fa-user"
+                               style="font-size: 25px;padding-left: 21px; padding-right: 3px; padding-top: 6px;"/>
+                            <h3 class="name" style="font-weight: bold;font-size: 23px;"></h3>
+                        </div>
+                      <div class="" style="height: 2px;"/>
+                      <div class="o_card_content mt-2" style="font-size: 18px;">
+                                <div class="o_card_info student_info">
+                                    <span class="partner_id" style="display: none;"></span>
+                                    <span class="student_id"></span>
+                                    <br/>
+                                    <span>2016</span>
+                                    <br/>
+                                    <span>Minor/Dibb</span>
+                                    <br/>
+                                    <span>5 Items</span>
+                                    <br/>
+                                    <span style="color: red;">5 overdue charges, $3.0</span>
+                                    <br/>
+                                    <span>Credit</span>
+                                </div>
+
+                          <div class="o_card_additional_info student_info">
+                              <span>Middle Student</span>
+                              <br/>
+                              <span>Lexile Score: 1010= SAT</span>
+                              <br/>
+                              <span>Reading Level: 8.6</span>
+                                </div>
+                          <div class="o_card_image">
+                                        <img class="student_info student_image"
+                                             style="max-height: 150px; max-width: 120px;"
+                                             src="/aht_education_core/static/src/images/user.png"
+                                             alt="Student Image"/>
+                                    </div>
+                                </div>
+                      <div style="text-align:center;">
+                          <button class="oe_button btn-primary">Details</button>
+                          <button class="lookup_members oe_button btn-primary">Lookup</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                <div class="o_card_parent_child" style="">
+                        <div class="o_row" style="margin-top:-5px; border-bottom:2px solid #bfbebe">
+                            <i class="fa fa-book"
+                               style="font-size: 25px;padding-left: 21px; padding-right: 3px; padding-top: 6px;"/>
+                            <h3 class="book_name" style="font-weight: bold;font-size: 23px;"></h3>
+                        </div>
+                    <div style="height: 2px;"/>
+                    <div class="o_card_content mt-2" style="font-size: 18px;">
+
+                        <div class="o_card_info book_info">
+                            <span class="book_isbn"></span>
+                            <br/>
+                            <span>FIC Car</span>
+                            <br/>
+                            <span class="book_available" style="color: red;">Available</span>
+                            <br/>
+                            <span>Credit</span>
+                        </div>
+                        <div class="o_card_additional_info book_info">
+                            <span class="copies"></span>
+                        </div>
+                        <div class="o_card_image">
+                                        <!-- Right-aligned image -->
+                            <img class="book_image book_info" style="max-height: 150px;max-width: 120px;"
+                                 src="/aht_education_core/static/src/images/book.png"
+                                 alt="Book Image"/>
+                         </div>
+
+                    </div>
+                    <div style="text-align:center;">
+                    <button class="oe_button btn-primary">Copy List</button>
+                        <button class="oe_button btn-primary">Stats</button>
+                        <button class="lookup_books oe_button btn-primary">LookUp</button>
+                </div>
+                 </div>
+            </div>
+        </div>
+            <h2 style="font-weight: bold; float:left;text-decoration: underline;">Transaction Logs</h2>
+            <div class="">
+                <table id="transactions_log" class="table table-hover table-striped table-bordered">
+                    <thead style="background: #71639e; color:white;">
+                        <tr>
+                        <th>
+                            Copy Barcode
+                        </th>
+                            <th>
+                            Title
+                        </th>
+                            <th>
+                            Checked Out
+                        </th>
+                            <th>Due Date</th>
+                            <th>Site</th>
+                            <th>Fine</th>
+                            <th>Renew Count</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

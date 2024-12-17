@@ -1,0 +1,142 @@
+<odoo>
+    <record id="report_attendance_qweb" model="ir.actions.report">
+        <field name="name">Attendance Report</field>
+        <field name="print_report_name">'Attendance'</field>
+        <field name="model">wizard.attendance</field>
+        <field name="binding_model_id" ref="model_wizard_attendance"/>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">aht_education_core.attendance_report_pdf</field>
+        <field name="report_file">aht_education_core.attendance_report_pdf</field>
+    </record>
+    
+    
+    
+    <template id="attendance_report_pdf">
+        <t t-call="web.html_container">
+         
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure" /><br/><br/>
+                        <strong style="text-align: center;"><h4>Attendance Report</h4></strong><br/>
+                        <strong style="text-align: center;" t-if="data.report_type == 'summary'"><h3>(Summary)</h3></strong><br/>
+                        <strong style="text-align: center;" t-if="data.report_type == 'detailed'"><h3>(Detailed)</h3></strong><br/>
+                        
+                        <div class="row">
+                            <strong>Academic Year =</strong>&#160;<span t-esc="data.academic_year.name"/><br/>
+                            <strong>Type =</strong>By &#160;<span t-esc="data.type"/><br/>
+                            <t t-if="data.type == 'student'">
+                               <strong>Student = &#160; <span t-esc="data.student_id.first_name"/></strong>
+                            </t>
+                            
+                             <t t-if="data.type == 'course'">
+                               <strong>Course = &#160; <span t-esc="data.course_id.display_name"/></strong>
+                            </t>
+                            
+                        </div>
+                        <br/><br/>
+                        <div class="row" align="center">
+                            <table class="table table-sm o_main_table">
+                              
+                                <thead >
+                                    <tr style="">
+                                        <th class="text-center" t-if="data.type == 'student'"  style="border:1px solid black;"><strong>Course</strong></th>
+                                        <th class="text-center"  t-if="data.type == 'course'" style="border:1px solid black;"><strong>Student</strong></th>
+                                         <th class="text-center"  t-if="data.report_type == 'detailed'" style="border:1px solid black;"><strong>Att Date</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>Total Hours</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>Present Hours</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>Absent Hourse</strong></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                <t t-if="data.report_type == 'detailed'">
+                                   <t t-if="data.type == 'student'">
+                                      <t t-if="det_stu_lines != ''">
+                                          <t t-foreach="det_stu_lines" t-as ="line">
+                                             
+                                                <tr style="border:1px solid black;">
+                                                    <t t-set="absnt_hr" t-if="line.status != 'Absent'"  t-value="int(line.attendance_id.class_hours) - int(line.status)" />
+                                                    <t t-set="absnt_hr" t-if="line.status == 'Absent'"  t-value="int(line.attendance_id.class_hours)" />
+                                                    <td  class="text-center" style="border:1px solid black;"><span t-esc="line.attendance_id.course_offered.display_name"/></td>
+                                                    <td  class="text-center" style="border:1px solid black;"><span t-esc="line.attendance_id.attendance_date"/></td>
+                                                    <td  class="text-center" style="border:1px solid black;"><span t-esc="line.attendance_id.class_hours"/></td>
+                                                    <td  t-if="line.status == 'Absent'"  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                                    <td  t-if="line.status != 'Absent'"  class="text-center" style="border:1px solid black;"><span t-esc="line.status"/></td>
+                                                    <td  class="text-center" style="border:1px solid black;"><span t-esc="absnt_hr"/></td> 
+                                                </tr>    
+                                          </t>
+                                      </t>
+                                   </t>
+                                   
+                                   
+                                   <t t-if="data.type == 'course'">
+                                       <t t-if="stu_lines != ''">
+                                            <t t-foreach="stu_lines" t-as ="line">
+                                                 <tr style="border:1px solid black;">
+                                                        <t t-set="absnt_hr" t-if="line.status != 'Absent'"  t-value="int(line.attendance_id.class_hours) - int(line.status)" />
+                                                        <t t-set="absnt_hr" t-if="line.status == 'Absent'"  t-value="int(line.attendance_id.class_hours)" />
+                                                        <td  class="text-center" style="border:1px solid black;"><span t-esc="line.student.display_name"/></td>
+                                                        <td  class="text-center" style="border:1px solid black;"><span t-esc="line.attendance_id.attendance_date"/></td>
+                                                        <td  class="text-center" style="border:1px solid black;"><span t-esc="line.attendance_id.class_hours"/></td>
+                                                        <td  t-if="line.status == 'Absent'"  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                                    <td  t-if="line.status != 'Absent'"  class="text-center" style="border:1px solid black;"><span t-esc="line.status"/></td>
+                                                    <td  class="text-center" style="border:1px solid black;"><span t-esc="absnt_hr"/></td> 
+                                                </tr>
+                                            </t>    
+                                       </t>
+                                   </t> 
+                                   
+                                   
+                                </t>
+                                <t t-if="data.report_type == 'summary'">
+                                   <t t-if="data.type == 'student'">
+                                        <t t-foreach="course" t-as ="c">
+                                           <t t-set="res"  t-value="getStatistic(c,data,data.report_type)" /> 
+                                           <tr style="border:1px solid black;">
+                                              <td  class="text-center" style="border:1px solid black;"><span t-esc="c.course_name.display_name"/></td>
+                                              <t t-if="res != False">
+                                                   <td  class="text-center" style="border:1px solid black;"><span t-esc="res[0]"/></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span t-esc="res[1]"/></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span t-esc="res[2]"/></td>
+                                              </t> 
+                                              <t t-else="">
+                                                    <td  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                              </t>
+                                           </tr> 
+                                       </t>
+                                   </t>
+                                   
+                                   
+                                 <t t-if="data.type == 'course'">
+                                      <t t-foreach="student" t-as ="s">
+                                           <t t-set="res"  t-value="getStuStatistics(s,stu_lines,data.report_type)" /> 
+                                           <tr style="border:1px solid black;">
+                                              <td  class="text-center" style="border:1px solid black;"><span t-esc="s.first_name"/></td>
+                                              <t t-if="res != False">
+                                                   <td  class="text-center" style="border:1px solid black;"><span t-esc="res[0]"/></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span t-esc="res[1]"/></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span t-esc="res[2]"/></td>
+                                              </t> 
+                                              <t t-else="">
+                                                    <td  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                                   <td  class="text-center" style="border:1px solid black;"><span>0</span></td>
+                                              </t>
+                                           </tr> 
+                                       </t>
+                                  </t> 
+                                </t>   
+                                   
+                                   
+                                </tbody>
+                            </table>    
+                        </div>
+                        
+                    </div>
+                </t>
+        </t>        
+    </template>
+                    
+</odoo>    

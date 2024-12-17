@@ -1,0 +1,139 @@
+<odoo>
+
+
+    <record id="paperformat_membership_card_report" model="report.paperformat">
+            <field name="name">Membership card format</field>
+            
+           <field name="default" eval="False"/>
+            <field name="disable_shrinking" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">105</field>
+            <field name="page_width">68</field>
+            <field name="orientation">Landscape</field>
+            <field name="header_spacing">35</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="dpi">96</field>
+        </record> 
+    <record id="action_report_library_membership_card" model="ir.actions.report">
+        <field name="name">Library Membership Card </field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">aht_education_core.report_membership_card</field>
+        <field name="report_file">aht_education_core.report_membership_card</field>
+        <field name="print_report_name">
+            ('%s Library Card' % (object.name))</field>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="binding_type">report</field>
+         <field name="paperformat_id" ref="aht_education_core.paperformat_membership_card_report"/>
+    </record>
+    
+   
+    <template id="report_membership_card">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                     
+                        <article> 
+                              <div class="card col-md-6" style="font-size:35px;width:370px; height:159pt; border: 1.5pt solid black; ">
+                                <div class = "row">
+                                    <div class="col-md-5" style="">
+                                      <div style="height:70px;width:65px; display:inline;float:left;">
+                                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="height:70px;width:65px;margin-top:3px;padding-left:7px;padding-bottom:5px;margin-bottom:1px;object-fit:cover;" alt="Company Logo"/>
+                                      </div>  
+                                      <div style="display:inline;float:left;">
+                                         <span style="margin-top:1px;white-space:nowrap;padding-bottom:0.5px; font-size:18px; margin-left:100px; "><strong>MEMBERSHIP CARD</strong></span>
+                                      </div>
+                                    </div>
+                                 </div>
+                                 
+                                  <div class = "row" style=""> 
+                                    <div class="col-md-6" style="">
+                                      <table  class ="table-borderless"  style="border:none !important;  border-collapse: collapse;  table-layout: fixed;">
+                                         <tr style="border:none !important;">
+                                            <td style="border:none !important; width:120px;padding-left:14px;margin-left:14px;" colspan=""> <img t-att-src="image_data_uri(rec.avatar_1920)" style="border-radius:5px; max-height:120px;max-width:70%;margin-top:10px; margin-left:10px;" alt="member Image"/>
+                                            </td>
+                                            <td style="font-size:14px; vertical-align:top; border:none !important;">
+                                               <p style="padding-top:8px;height:5px; white-space:nowrap;"><strong>Member ID :</strong><span style="font-size:13px;" t-esc="rec.member_id"/></p>
+                                               <p style="padding-top:14px; height:5px; font-weight:bold;"><strong>Title :</strong><span style="font-size:13px;" t-esc="rec.title.name"/></p>
+                                               <p style="padding-top:14px; height:5px; font-weight:bold;"><strong>Valid upto :</strong><span style="font-size:13px;" t-esc="rec.expires_on"/></p>    
+                                                 
+                                            </td>
+                                            
+                                            <td style="border:none !important;margin-left:3px;padding-left:10px;">
+                                                <p style="padding-right:2px;margin-top:1px; height:5px;font-size:8px; font-weight:bold;"><img 
+                                                t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', 'rec.qr_code', 80, 80)"/></p>
+                                            </td>
+                                         </tr>
+                                         
+                                        <tr style="border:none !important;">
+                                            <td colspan="5" style="padding-top:16px;padding-left:10px;font-size:24px; font-weight:bold; vertical-align:middle;  border:none !important;"><span t-esc="rec.name"/></td>
+                                        </tr>
+                                      </table>
+                                     </div>
+                                  
+                                  </div>
+                                </div> 
+                            </article>
+                         </div>  
+                         
+                         
+                         
+                         <!-- second page -->
+                        <div class="page" style="margin-top:45px;">
+                            <article> 
+                              <div class="card col-md-6" style="width:370px; height:159pt; border: 1.5pt solid black; ">
+                                   <div style="text-align:center;margin-top:5px;height:10px;width:100%;height:25px; padding-top:4px;padding-left:2px;">
+                                       <strong style="font-size:18px;">Terms and Conditions</strong>
+                                   </div>
+                                   
+                                   
+                                   <div class = "row" style="margin-top:5px;"> 
+                                    <div class="col-md-6" style="">
+                                        <ul style="font-size:8px;">
+                                             <li> 
+                                               <span>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                               </span>
+                                            </li>
+                                            
+                                            <li> 
+                                               <span>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                               </span>
+                                            </li>
+                                            
+                                            <li> 
+                                               <span>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                               </span>
+                                            </li>
+                                         </ul>
+                                     </div>
+                                </div> 
+                                
+                                <div class="col-md-6" style="margin-top:10px;">
+                                       <div class="" style="font-size:9px; display:inline;margin-left:5px;padding-left:5px;">
+                                           <span t-esc="company.name"/>,  <span t-esc="company.phone"/>, <span t-esc="company.street"/>
+                                             <br/>
+                                           <span style="margin-left:5px;padding-left:5px;"> Please keep the library card safely</span>   
+                                       </div>
+                                       
+                                         <div class=""  style="margin-left:145px;font-size:13px;display:inline;">
+                                                    <span>signature</span>
+                                         </div>
+                                </div>    
+                               
+                                    
+                                            
+                              </div>
+                             </article>
+                        </div>         
+               
+            </t>
+        </t>
+    </template>            
+     
+</odoo>

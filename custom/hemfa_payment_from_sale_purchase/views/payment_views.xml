@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_account_payment_form">
+      <field name="name">account.payment</field>
+      <field name="model">account.payment</field>
+      <field name="inherit_id" ref="account.view_account_payment_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='destination_account_id']" position="after">
+          <field name="partner_is_sale_order_payment" invisible="1"/>
+
+          
+          <field name="pay_sale" attrs="{'readonly':[('state','!=','draft')],'invisible':['|','|',('payment_type','!=','inbound'),('partner_is_sale_order_payment','=',False),('is_internal_transfer','=',True)]}" groups="hemfa_payment_from_sale_purchase.group_sale_order_payment_register" />
+          <field name="sale_id" domain="[('is_have_invoice','!=',True),('partner_id','=',partner_id),('state','=','sale'),('register_amount_limit','!=',0)]" 
+          attrs="{'readonly':[('state','!=','draft')],'required':[('pay_sale','=',True)],'invisible':[('pay_sale','=',False)]}" options="{'no_create_edit': True,'no_create': True, 'no_quick_create': True}" groups="hemfa_payment_from_sale_purchase.group_sale_order_payment_register" />
+          <field name="partner_is_purchase_order_payment" invisible="1"/>
+          <field name="pay_purchase" attrs="{'readonly':[('state','!=','draft')], 'invisible':['|','|',('payment_type','!=','outbound'),('partner_is_purchase_order_payment','=',False),('is_internal_transfer','=',True)]}" groups="hemfa_payment_from_sale_purchase.group_purchase_order_payment_register" />
+          <field name="purchase_order_id"
+           domain="[('is_have_invoice','!=',True),('partner_id','=',partner_id),('state','=','purchase'),('register_amount_limit','!=',0)]" 
+           
+           attrs="{'readonly':[('state','!=','draft')],'required':[('pay_purchase','=',True)], 'invisible':[('pay_purchase','=',False)]}" options="{'no_create_edit': True,'no_create': True, 'no_quick_create': True}" groups="hemfa_payment_from_sale_purchase.group_purchase_order_payment_register" />
+
+        </xpath>
+
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

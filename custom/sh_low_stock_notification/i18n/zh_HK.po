@@ -1,0 +1,334 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_low_stock_notification
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-30 05:35+0000\n"
+"PO-Revision-Date: 2020-10-30 05:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_low_stock_notification
+#: model:mail.template,body_html:sh_low_stock_notification.template_product_stock_low_notify_email
+msgid ""
+"\n"
+"            <p>Dear ${object.company_id.notify_user_id.name},\n"
+"            </p>\n"
+"            <p>\n"
+"            \tHere is a list of products whose quantity is lower than minimum quantity \n"
+"            \t% if object.company_id.product_quantity_check == 'global': \n"
+"           \t\t${object.company_id.minimum_quantity} \n"
+"           \t\tGlobally \n"
+"            \t% endif\n"
+"            \t% if object.company_id.product_quantity_check == 'individual':\n"
+"            \tIndividually \n"
+"\t\t\t\t% endif      \n"
+"            \t% if object.company_id.product_quantity_check == 'order_point': \n"
+"           \t\ton Reorder Rules (Order Points) \n"
+"            \t% endif\n"
+"            \tspecified.\n"
+"            </p>\n"
+"            \n"
+"\t\t\t<html>            \t\n"
+"\t\t\t\t<head>Product's List</head>\t\t\t\t\t\t\n"
+"\t\t\t\t\t<table border=\"1\" bgcolor=\"#ffffff\" style=\"border: 1px solid gray;width:100%\" >\n"
+"\t\t\t\t\t\t<thead style=\"background-color:#875A7B;text-decoration: none; color: #fff;font-size: 16px;\">\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Product Name</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Default Code</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">On Hand Qty</th>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Minimum Qty Stock</th>\n"
+"\t\t\t\t\t\t\t\t% endif\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t</thead>\n"
+"\t\t\t\t\t\t<tbody>\n"
+"\t\t\t\t\t\t\t% for row in object.notify_ids :\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.name}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.def_code}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.prod_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.min_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% endif\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t\t%endfor\n"
+"\t\t\t\t\t\t</tbody>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t\t</html>\t\t\n"
+"\t\t\t\t<br/>\n"
+"\t\t\t\t<p>Thank you</p>\t\t\t\t\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"            <p>亲 ${object.company_id.notify_user_id.name},\n"
+"            </p>\n"
+"            <p>\n"
+"            \t以下是数量低于最低数量的产品列表 \n"
+"            \t% if object.company_id.product_quantity_check == 'global': \n"
+"           \t\t${object.company_id.minimum_quantity} \n"
+"           \t\tGlobally \n"
+"            \t% endif\n"
+"            \t% if object.company_id.product_quantity_check == 'individual':\n"
+"            \tIndividually \n"
+"\t\t\t\t% endif      \n"
+"            \t% if object.company_id.product_quantity_check == 'order_point': \n"
+"           \t\ton Reorder Rules (Order Points) \n"
+"            \t% endif\n"
+"            \tspecified.\n"
+"            </p>\n"
+"            \n"
+"\t\t\t<html>            \t\n"
+"\t\t\t\t<head>产品列表</head>\t\t\t\t\t\t\n"
+"\t\t\t\t\t<table border=\"1\" bgcolor=\"#ffffff\" style=\"border: 1px solid gray;width:100%\" >\n"
+"\t\t\t\t\t\t<thead style=\"background-color:#875A7B;text-decoration: none; color: #fff;font-size: 16px;\">\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">产品名称</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">默认代码</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">在数量</th>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">最小数量股票</th>\n"
+"\t\t\t\t\t\t\t\t% endif\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t</thead>\n"
+"\t\t\t\t\t\t<tbody>\n"
+"\t\t\t\t\t\t\t% for row in object.notify_ids :\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.name}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.def_code}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.prod_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.min_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% endif\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t\t%endfor\n"
+"\t\t\t\t\t\t</tbody>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t\t</html>\t\t\n"
+"\t\t\t\t<br/>\n"
+"\t\t\t\t<p>谢谢</p>\t\t\t\t\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t"
+
+
+
+
+#. module: sh_low_stock_notification
+#: model:mail.template,subject:sh_low_stock_notification.template_product_stock_low_notify_email
+msgid "${object.company_id.name} - Low Stock Notification"
+msgstr "${object.company_id.name} - 低库存通知"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__def_code
+msgid "Code"
+msgstr "代码"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__company_id
+msgid "Company Id"
+msgstr "公司ID"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_res_config_settings
+msgid "Config Settings"
+msgstr "由...制作"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__create_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__create_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__create_uid
+msgid "Created by"
+msgstr "创建于"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__create_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__create_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__create_date
+msgid "Created on"
+msgstr "显示名称"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "电子邮件ID"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__email_id
+msgid "Email Id"
+msgstr "全球的"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields.selection,name:sh_low_stock_notification.selection__res_company__product_quantity_check__global
+msgid "Global"
+msgstr "ID"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__id
+msgid "ID"
+msgstr "个人"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields.selection,name:sh_low_stock_notification.selection__res_company__product_quantity_check__individual
+msgid "Individual"
+msgstr "最后修改了"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "最后更新"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__write_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__write_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__write_uid
+msgid "Last Updated by"
+msgstr "上次更新了"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__write_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__write_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__write_date
+msgid "Last Updated on"
+msgstr "低库存通知？"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__low_stock_notification
+msgid "Low Stock Notification ?"
+msgstr "最短的数量更新"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__minimum_qty_updated
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__minimum_qty_updated
+msgid "Minimum Qty Updated"
+msgstr "最小用量"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__min_qty
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__minimum_quantity
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__minimum_quantity
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__minimum_quantity
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__minimum_qty
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__minimum_quantity
+msgid "Minimum Quantity"
+msgstr "低库存的通知用户"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Notification User for Low Stock"
+msgstr "通知ID"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__notify_ids
+msgid "Notify Id"
+msgstr "通知用户"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__notify_user_id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__notify_user_id
+msgid "Notify User"
+msgstr "产品"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_product
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__product_id
+msgid "Product"
+msgstr "产品低库存电子邮件"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__name
+msgid "Product Low Stock Email"
+msgstr "产品低库存通知"
+
+#. module: sh_low_stock_notification
+#: model:ir.actions.server,name:sh_low_stock_notification.product_low_stock_notify_ir_actions_server
+#: model:ir.cron,cron_name:sh_low_stock_notification.product_low_stock_notify
+#: model:ir.cron,name:sh_low_stock_notification.product_low_stock_notify
+msgid "Product Low Stock Notify"
+msgstr "产品通知"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Product Notification"
+msgstr "产品数量检查"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__product_quantity_check
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__product_quantity_check
+msgid "Product Quantity Check"
+msgstr "产品模板"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_template
+msgid "Product Template"
+msgstr "数量"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__prod_qty
+msgid "Quantity"
+msgstr "重新排序规则（订单点）"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields.selection,name:sh_low_stock_notification.selection__res_company__product_quantity_check__order_point
+msgid "Reorder Rules (Order Points)"
+msgstr "设置最小数量"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Set Minimum Quantity"
+msgstr "设置通知模式"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Set Notification Mode"
+msgstr "模型存储以前的数据公司明智"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_res_company_product
+msgid "model to store previous data company wise"
+msgstr "保存数据以在电子邮件中显示"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_low_stock_notify
+msgid "save data to display in email"
+msgstr "发送电子邮件"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_low_stock_email
+msgid "sends email"
+msgstr "发送电子邮件"

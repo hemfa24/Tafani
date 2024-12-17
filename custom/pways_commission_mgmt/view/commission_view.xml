@@ -1,0 +1,313 @@
+<odoo>
+    <record id="sale_commission_tree_view" model="ir.ui.view">
+        <field name="name">sale.commission.tree</field>
+        <field name="model">sale.commission</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Commission">
+                <field name="name"/>
+                <field name="compute_for"/>
+                <field name="comm_type"/>
+                <field name="compute_free"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="uber_company_tree_inherit" model="ir.ui.view">
+        <field name="name">uber.company.tree.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_tree"/>
+        <field name="arch" type="xml">  
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="team_manager"/>
+            </xpath>
+            <xpath expr="//field[@name='team_manager']" position="after">
+                <field name="member_company_ids" invisible='1'/> 
+                <field name="member_ids"/>
+            </xpath>
+        </field>
+    </record>  
+
+    <record id="team_leader_form_inherit" model="ir.ui.view">
+        <field name="name">team.leader.form.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">  
+            <xpath expr="//field[@name='user_id']" position="replace">
+            </xpath>
+            <xpath expr="//page[last()]" position="after">
+                <page string="Commission Configuration">
+                    <form>
+                        <group>
+                            <group>
+                                <field name="team_manager"/>
+                                <field name='company_id' invisible='1'/>
+                                <field name='user_id'/>
+                                <field name="normal_user_ids" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="manager_percentage"/>
+                                <field name="percentage"/>
+                                <field name="members_percentage"/>
+                            </group>
+                        </group>
+                    </form>
+                </page>
+            </xpath>
+        </field>
+    </record>   
+
+    <record id="sale_commission_form_view" model="ir.ui.view">
+        <field name="name">sale.commission.form</field>
+        <field name="model">sale.commission</field>
+        <field name="arch" type="xml">
+            <form string="Sales Commission">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="compute_for" widget="radio"/> 
+                            <field name="compute_on" widget="radio"/> 
+                        </group>
+                        <group>
+                            <field name="comm_type" widget="radio"/>
+                            <field name="compute_free" widget="radio" attrs="{'invisible': ['|', ('comm_type', '=', 'partner'), ('compute_for', '=', 'sales_team')]}"/>
+
+                            <field name="standard_commission" attrs="{'invisible': ['|', '|', ('comm_type', '=', 'partner'), ('compute_free', '!=', 'percentage'), ('compute_for', '=', 'sales_team')], 'required': [('compute_free','=', 'percentage')]}"/>
+
+                            <field name="sale_commission" attrs="{'invisible': ['|', '|',('comm_type', '=', 'partner'), ('compute_free', '!=', 'fix'), ('compute_for', '=', 'sales_team')], 'required': [('compute_free','=', 'fix')]}"/>
+                        </group>
+                    </group>
+
+                    <group attrs="{'invisible': [('comm_type','!=', 'partner')]}">
+                        <group>
+                            <field name="affiliated_partner_commission" attrs="{ 'required': [('comm_type','==', 'partner')]}"/>
+                        </group>
+                        <group>
+                            <field name="nonaffiliated_partner_commission" attrs="{ 'required': [('comm_type','==', 'partner')]}"/>
+                        </group>
+                    </group>
+
+                    <!-- <group attrs="{'invisible': [('compute_for','!=', 'sales_team')]}" colspan='6'> -->
+                        <notebook attrs="{'invisible': [('compute_for','!=', 'sales_team')]}">
+                            <page string="Sales Teams" name='sales_team'>
+                                <field name="sales_team" attrs="{'invisible': [('compute_for','!=', 'sales_team')], 'required': [('compute_for','==', 'sales_team')]}" mode="tree">
+                                   <tree>
+                                        <field name="name"/>
+                                        <field name="user_id"/>
+                                        <field name="percentage"/>
+                                        <field name="team_manager"/>
+                                        <field name="manager_percentage"/>
+                                        <field name="member_ids" widget="many2many_tags"/>
+                                        <field name="members_percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    <!-- </group> -->
+
+                    <!-- <group attrs="{'invisible': [('compute_for','!=', 'sales_person')]}" colspan='6'> -->
+                        <notebook attrs="{'invisible': [('compute_for','!=', 'sales_person')]}">
+                            <page string="Sales Persons">
+                                <field name="user_ids" attrs="{'invisible': [('compute_for','!=', 'sales_person')], 'required': [('compute_for','==', 'sales_person')]}">
+                                   <tree>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    <!-- </group> -->
+
+                    <!-- <group attrs="{'invisible': [('compute_for','!=', 'agents')]}" colspan='6'> -->
+                        <notebook attrs="{'invisible': [('compute_for','!=', 'agents')]}">
+                            <page string="Agents">
+                                <field name="agents" nolabel="1" attrs="{'invisible': [('compute_for','!=', 'agents')], 'required':[('compute_for','==', 'agents')]}" domain="[('agent','=','True')]"/>
+                            </page>
+                        </notebook>
+                    <!-- </group> -->
+
+                     <!-- <group attrs="{'invisible': [('comm_type','not in', ('product','categ'))]}" colspan='6'> -->
+                        <notebook attrs="{'invisible': [('comm_type','not in', ('product','categ'))]}">
+                            <page string="Products &amp; Categories">
+                                <field name="exception_ids" nolabel="1" attrs="{ 'required': [('comm_type','in', ('product', 'categ'))]}"/>
+                            </page>
+                        </notebook>
+                    <!-- </group> -->
+
+                </sheet>
+                <div class="oe_chatter">
+                   <field name="message_follower_ids"/>
+                   <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_commission_exception_tree_view" model="ir.ui.view">
+        <field name="name">sale.commission.exception.tree</field>
+        <field name="model">sale.commission.exception</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Commission Exceptions">
+               <field name="based_on"/>
+               <field name="product_id" attrs="{'invisible': [('based_on','!=', 'products')],'required': [('based_on','==', 'products')]}" />
+               <field name="categ_id" attrs="{'invisible': [('based_on','!=', 'product_categories')],'required': [('based_on','==', 'product_categories')]}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_commission_exception_form_view" model="ir.ui.view">
+        <field name="name">sale.commission.exception.form</field>
+        <field name="model">sale.commission.exception</field>
+        <field name="arch" type="xml">
+            <form string="Sales Commission Exceptions">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="comm_type" invisible='1'/>
+                            <field name="based_on"/>
+                            <field name="categ_id" attrs="{'invisible': [('based_on','!=', 'product_categories')],'required': [('based_on','==', 'product_categories')]}"/>
+                            <field name="product_id" attrs="{'invisible': [('based_on','!=', 'products')],'required': [('based_on','==', 'products')]}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_commission_action" model="ir.actions.act_window">
+        <field name="name">Commission Rules</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.commission</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="sale_commission_tree_view"/>
+    </record>
+   
+    <record id="sale_invoice_commission_lines_action_form" model="ir.actions.act_window">
+        <field name="name">Commission Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.commission.lines</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="create_commission_invoice_form" model="ir.ui.view">
+        <field name="name">create.invoice.commission.form</field>
+        <field name="model">create.invoice.commission</field>
+        <field name="arch" type="xml">
+            <form string="Create Commission Invoice">
+                <group>
+                    <group>
+                        <field name="group_by"/>
+                    </group>
+                    <group>
+                        <field name="date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Create Invoices" name="invoice_create" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_invoice_create" model="ir.actions.act_window">
+        <field name="name">Create Invoice</field>
+        <field name="res_model">create.invoice.commission</field>
+        <field name="binding_model_id" ref="model_sale_commission_lines"/>
+        <field name="target">new</field>
+        <field name='view_mode'>form</field>
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+    <record id="action_invoice_inherit_type" model="ir.actions.act_window">
+        <field name="name">Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('commission', '=', True)]</field>
+        <field name="context">{'default_move_type': 'out_invoice'}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a customer invoice
+          </p><p>
+            Create invoices, register payments and keep track of the discussions with your customers.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="sale_commission_menux" 
+          parent="sale.sale_menu_root"
+          name="Commission"
+          sequence="15"/>
+
+    <menuitem id="sale_commission_action_menu" 
+            action="sale_commission_action" 
+            name="Commission Rules"
+            parent="sale_commission_menux"
+            sequence="1"
+            groups='group_sales_commission_manager'/>
+
+    <menuitem id="menu_sale_commission_lines_action_form" 
+            action="sale_invoice_commission_lines_action_form" 
+            name="Commission Details"
+            parent="sale_commission_menux"
+            sequence="2"/>
+
+    <menuitem action="sale_commission_lines_action" 
+            id="menu_sale_commission_analytic_lines_action" 
+            sequence="3"
+            name="Commission Analysis"
+            groups='group_sales_commission_manager'
+            parent="sale_commission_menux"/>
+
+    <menuitem action="action_commission_report_wizard" 
+            id="menu_action_commission_report_wizard" 
+            sequence="4"
+            name="Commission Report"
+            parent="sale_commission_menux"/>
+
+    <menuitem action="action_invoice_inherit_type" 
+            id="move_out_inherit_invoice_type_menu_1" 
+            sequence="5"
+            name="Commission Bills"
+            parent="sale_commission_menux"/>
+
+
+
+
+
+    <menuitem id="invoice_commission_menu" 
+          parent="account.menu_finance"
+          name="Commission"
+          sequence="2"/>
+
+    <menuitem id="invoice_commission_action_menu" 
+            action="sale_commission_action" 
+            name="Commission Rules"
+            groups='group_sales_commission_manager'
+            parent="invoice_commission_menu"
+            sequence="1"/>
+
+    <menuitem id="menu_invoice_commission_lines_action_form" 
+            action="sale_invoice_commission_lines_action_form" 
+            name="Commission Details"
+            parent="invoice_commission_menu"
+            sequence="2"/>
+
+    <menuitem action="sale_commission_lines_action" 
+            id="menu_invoice_commission_analytic_lines_action" 
+            sequence="3"
+            name="Commission Analysis"
+            groups='group_sales_commission_manager'
+            parent="invoice_commission_menu"/>
+
+    <menuitem action="action_commission_report_wizard" 
+            id="menu_action_commission_invoice_report_wizard" 
+            sequence="4"
+            name="Commission Report"
+            parent="invoice_commission_menu"/>
+
+    <menuitem action="action_invoice_inherit_type" 
+            id="move_out_inherit_invoice_type_menu_2" 
+            sequence="5"
+            name="Commission Bills"
+            parent="invoice_commission_menu"/>
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_balancesheet" model="ir.actions.report">
+            <field name="name">Balance Sheet</field>
+            <field name="model">accounting.report.bi</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_financial_pdf_reports.report_balancesheet</field>
+            <field name="report_file">bi_financial_pdf_reports.report_balancesheet</field>
+        </record>
+
+        <record id="action_report_profit_loss" model="ir.actions.report">
+            <field name="name">Profit and Loss Report</field>
+            <field name="model">accounting.report.bi</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_financial_pdf_reports.report_profit_loss</field>
+            <field name="report_file">bi_financial_pdf_reports.report_profit_loss</field>
+        </record>
+
+        <record id="action_report_trial_balance" model="ir.actions.report">
+            <field name="name">Trial Balance</field>
+            <field name="model">accounting.report.bi</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_financial_pdf_reports.report_trialbalance</field>
+            <field name="report_file">bi_financial_pdf_reports.report_trialbalance</field>
+        </record>
+
+        <record id="action_report_general_ledger" model="ir.actions.report">
+            <field name="name">General Ledger</field>
+            <field name="model">accounting.report.bi</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_financial_pdf_reports.report_generalledger</field>
+            <field name="report_file">bi_financial_pdf_reports.report_generalledger</field>
+        </record>
+    </data>
+</odoo>

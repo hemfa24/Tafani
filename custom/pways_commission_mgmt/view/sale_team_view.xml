@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_crm_sales_tree" model="ir.ui.view">
+        <field name="name">view.crm.sales</field>
+        <field name="model">sale.commission</field>
+        <field name="inherit_id" ref="pways_commission_mgmt.sale_commission_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="team_manager"/>
+            </xpath>
+            <xpath expr="//field[@name='sales_team']/form//field[@name='company_id']" position="before">
+                <field name="team_manager"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

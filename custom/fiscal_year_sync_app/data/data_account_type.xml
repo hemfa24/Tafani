@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="account.account" id="data_account_type_receivable">
+          <field name="name">Receivable</field>
+          <field name="account_type">asset_receivable</field>
+          <field name="internal_group">asset</field>
+          <field name="code">100001</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">unreconciled</field>
+        </record>
+        <record model="account.account" id="data_account_type_payable">
+          <field name="name">Payable</field>
+          <field name="account_type">liability_payable</field>
+          <field name="internal_group">liability</field>
+          <field name="code">100002</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">unreconciled</field>
+        </record>
+        <record model="account.account" id="data_account_type_liquidity">
+          <field name="name">Bank and Cash</field>
+          <field name="account_type">asset_cash</field>
+          <field name="internal_group">asset</field>
+          <field name="code">100003</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_credit_card">
+          <field name="name">Credit Card</field>
+          <field name="account_type">liability_credit_card</field>
+          <field name="internal_group">liability</field>
+          <field name="code">100004</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_current_assets">
+          <field name="name">Current Assets</field>
+          <field name="account_type">asset_current</field>
+          <field name="internal_group">asset</field>
+          <field name="code">100005</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_non_current_assets">
+          <field name="name">Non-current Assets</field>
+          <field name="account_type">asset_non_current</field>
+          <field name="internal_group">asset</field>
+          <field name="code">100006</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_prepayments">
+          <field name="name">Prepayments</field>
+          <field name="account_type">asset_prepayments</field>
+          <field name="internal_group">asset</field>
+          <field name="code">100007</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method"></field>
+        </record>
+        <record model="account.account" id="data_account_type_fixed_assets">
+          <field name="name">Fixed Assets</field>
+          <field name="account_type">asset_fixed</field>
+          <field name="internal_group">asset</field>
+          <field name="code">100008</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_current_liabilities">
+          <field name="name">Current Liabilities</field>
+          <field name="account_type">liability_current</field>
+          <field name="internal_group">liability</field>
+          <field name="code">100009</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_non_current_liabilities">
+          <field name="name">Non-current Liabilities</field>
+          <field name="account_type">liability_non_current</field>
+          <field name="internal_group">liability</field>
+          <field name="code">100010</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_equity">
+          <field name="name">Equity</field>
+          <field name="account_type">equity</field>
+          <field name="internal_group">equity</field>
+          <field name="code">100011</field>
+          <field name="include_initial_balance" eval="True"/>
+          <field name="close_method">balance</field>
+        </record>
+        <!-- <record model="account.account" id="data_unaffected_earnings">
+        	<field name="name">Current Year Earnings</field>
+        	<field name="account_type">equity_unaffected</field>
+        	<field name="code">100012</field>
+        	<field name="include_initial_balance" eval="True"/>
+        	<field name="close_method"></field>
+        </record> -->
+        <record model="account.account" id="data_account_type_other_income">
+          <field name="name">Other Income</field>
+          <field name="account_type">income_other</field>
+          <field name="internal_group">income</field>
+          <field name="code">100013</field>
+          <field name="close_method">none</field>
+        </record>
+        <record model="account.account" id="data_account_type_revenue">
+          <field name="name">Income</field>
+          <field name="account_type">income</field>
+          <field name="internal_group">income</field>
+          <field name="code">100014</field>
+          <field name="close_method">none</field>
+        </record>
+        <record model="account.account" id="data_account_type_depreciation">
+          <field name="name">Depreciation</field>
+          <field name="account_type">expense_depreciation</field>
+          <field name="internal_group">expense</field>
+          <field name="code">100015</field>
+          <field name="close_method">balance</field>
+        </record>
+        <record model="account.account" id="data_account_type_expenses">
+          <field name="name">Expenses</field>
+          <field name="account_type">expense</field>
+          <field name="internal_group">expense</field>
+          <field name="code">100016</field>
+          <field name="close_method">none</field>
+        </record>
+        <record model="account.account" id="data_account_type_direct_costs">
+          <field name="name">Cost of Revenue</field>
+          <field name="account_type">expense_direct_cost</field>
+          <field name="internal_group">expense</field>
+          <field name="code">100017</field>
+          <field name="close_method">none</field>
+        </record>
+    </data>
+</odoo>
+

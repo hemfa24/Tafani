@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ctx_account_asset_category,ctx.account.asset.category user,model_ctx_account_asset_category,account.group_account_user,1,0,0,0
+access_asset_ctx_depreciation_confirmation_wizard,asset.ctx.depreciation.confirmation.wizard,model_asset_ctx_depreciation_confirmation_wizard,,1,1,1,0
+access_ctx_asset_modify,access_ctx_asset_modify,model_ctx_asset_modify,,1,1,1,0
+access_ctx_account_asset,ctx.account.asset user,model_ctx_account_asset,account.group_account_user,1,0,0,0
+access_ctx_account_asset_category_manager,ctx.account.asset.category manager,model_ctx_account_asset_category,account.group_account_manager,1,1,1,1
+access_ctx_account_asset_manager,ctx.account.asset manager,model_ctx_account_asset,account.group_account_manager,1,1,1,1
+access_ctx_account_asset_depreciation_line,ctx_account.asset.depreciation.line user,model_ctx_account_asset_depreciation_line,account.group_account_user,1,0,0,0
+access_ctx_account_asset_depreciation_line_manager,ctx.account.asset.depreciation.line manager,model_ctx_account_asset_depreciation_line,account.group_account_manager,1,1,1,1
+access_ctx_account_asset_report,ctx.account.asset.report user,model_ctx_account_asset_report,account.group_account_user,1,0,0,0
+access_ctx_account_asset_report_manager,ctx.account.asset.report manager,model_ctx_account_asset_report,account.group_account_manager,1,1,1,1
+access_ctx_account_asset_category_invoicing_payment,ctx.account.asset.category inv payment,model_ctx_account_asset_category,account.group_account_invoice,1,0,0,0
+access_ctx_account_asset_invoicing_payment,ctx.account.asset.asset inv payment,model_ctx_account_asset,account.group_account_invoice,1,0,1,0
+access_ctx_account_asset_depreciation_line_invoicing_payment,ctx_account.asset.depreciation.line inv payment,model_ctx_account_asset_depreciation_line,account.group_account_invoice,1,0,1,0
+access_ctx_account_asset_sell,access.ctx.account.asset.sell,model_ctx_account_asset_sell,account.group_account_user,1,1,1,0

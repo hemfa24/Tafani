@@ -1,0 +1,31 @@
+{
+    "name": "CRM Required Field Template",
+    "summary": """Required Field Template,
+                  Create Required Field Template master,
+                  add template on CRM Stage,
+                  Required field check on CRM Stage""",
+    'version': '16.0.0.1',
+    "category": "CRM Management",
+    'sequence': 4,
+    'author': "Evozard",
+    'website': 'http://evozard.com/',
+    'license': 'OPL-1',
+    'price': 20,
+    'currency': 'USD',
+    'support':'support@evozard.com',
+    'description': """
+                   Create Required Field Template master,
+                   add template on CRM Stage,
+                   Required field check on CRM Stage  
+    """,
+    "depends": ["crm",],
+    "data": [
+            'security/ir.model.access.csv',
+            'views/required_field_template.xml',
+            'views/crm_stage.xml',
+        ],
+    'images': ['static/description/banner.png'],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

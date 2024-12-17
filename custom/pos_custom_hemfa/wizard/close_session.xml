@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="wizard_swi_close_session_action_view_id" model="ir.ui.view">
+        <field name="name">Close Session</field>
+        <field name="model">wi.close.session</field>
+        <field name="arch" type="xml">
+            <form string="Close Session">
+                <sheet>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="session_id" invisible="1" />
+                            <h2>Closing Session</h2>
+                        </div>
+
+                        <div class="col-6">
+                            <h4 style="float:right;">Total <field class="oe_inline"
+                                    name="order_count" />orders: <field
+                                    class="oe_inline" name="total_payments_amount" />
+                            </h4>
+                        </div>
+                        <field name="statement_line_ids" invisible="1" />
+                        <field name="bank_payment_ids" invisible="1" />
+                        <field name="order_ids" invisible="1" />
+                        <field name="payment_method_ids" invisible="1" />
+
+                    </div>
+                    <table width="100%" style="margin-top:20px;">
+                        <thead>
+                            <tr width="100%">
+                                <th>
+                                    <strong class="text-right" style="font-size:20px">Payment Method</strong>
+                                </th>
+                                <th>
+                                    <strong class="text-right" style="font-size:20px">Expected</strong>
+                                </th>
+                                <th>
+                                    <strong class="text-right" style="font-size:20px">Counted</strong>
+                                </th>
+                                <th>
+                                    <strong class="text-right" style="font-size:20px">Difference</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <field name="close_custom" readonly="0">
+
+                        <tree editable="bottom" create="0" delete="0"
+                            string="Close Session" class="text-left">
+
+                            <field name="session_id" invisible="1" />
+                            <field name="payment_method" class="text-left" style="width:50%;"
+                                colspan="1" force_save="1" />
+                            <field name="custom_expected" class="text-left" style="width:50%;"
+                                colspan="1" force_save="1" />
+                            <field name="custom_counted" class="text-left" style="width:50%;"
+                                colspan="1" force_save="1" />
+                            <field name="custom_difference" class="text-left"
+                                style="width:50%;" colspan="1" force_save="1" />
+                        </tree>
+
+
+                    </field>
+                    <div
+                        style="margin-top:20px; display: flex; justify-content: space-around width: 100%; padding-top: 1%;">
+                        <div class="opening-notes" t-if="openingNotes">
+                            <field name="opening_notes" />
+                        </div>
+                        <textarea class="closing-notes" placeholder="Add a closing note..."
+                            t-model="state.notes" />
+                    </div>
+
+                    <footer>
+                        <div class="row">
+                            <div class="col-4">
+                                <button name="save_date" string="Close" type="object"
+                                    class="oe_highlight" />
+                            </div>
+                            <div class="col-4">
+                                <button
+                                    string="Discard" class="oe_highlight"
+                                    special="cancel" />
+                            </div>
+
+                            <div class="col-4"
+                                title="Download a report with all the sales of the current PoS Session">
+                                <!-- <i class="fa fa-download" role="img" />
+                                <button name="get_report" type="object"
+                                /> -->
+                                <button name="generate_report_custom"
+                                    type="object"
+                                    icon="fa-download" class="btn-primary" />
+                            </div>
+
+
+                        </div>
+
+
+                    </footer>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <record id="wizard_wi_close_session_action_id" model="ir.actions.act_window">
+        <field name="name">Close Session</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wi.close.session</field>
+        <field name="context">{'default_session_id':active_id }</field>
+        <field name="view_id" ref="wizard_swi_close_session_action_view_id" />
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

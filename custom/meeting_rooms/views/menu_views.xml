@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <menuitem id="menu_meeting_booking" name="Meeting Rooms Bookings" sequence="1" web_icon="meeting_rooms,static/description/icon.png"/>
+
+        <menuitem id="menu_meeting_room" name="Rooms" parent="menu_meeting_booking" sequence="2"/>
+
+        <record id="action_meeting_booking" model="ir.actions.act_window">
+            <field name="name">Bookings</field>
+            <field name="res_model">meeting.booking</field>
+            <field name="view_mode">calendar,gantt,tree,form</field>
+        </record>
+
+        <record id="action_meeting_room" model="ir.actions.act_window">
+            <field name="name">Meeting Rooms</field>
+            <field name="res_model">meeting.room</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem id="menu_meeting_booking_action" name="Bookings" parent="menu_meeting_booking" action="action_meeting_booking"/>
+        <menuitem id="menu_meeting_room_action" name="Rooms" parent="menu_meeting_room" action="action_meeting_room"/>
+    </data>
+</odoo>

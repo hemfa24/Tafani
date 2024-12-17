@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     <record id="product_attribute_view_stock_quant_tree_inventory_editable" model="ir.ui.view">
+        <field name="name">product.attribute.stock.quant.tree.inventory.editable</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='product_id']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+     <record id="product_attribute_view_inventory_adjustments_temp_form_id" model="ir.ui.view">
+        <field name="name">product.attribute.inventory.adjustment.template.form</field>
+        <field name="model">inventory.adjustment.template.new</field>
+        <field name="inherit_id" ref="inventory_adjustment_template.view_inventory_adjustments_temp_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='product_id_new']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_attribute_view_inventory_adjustments_new_line_tree_id" model="ir.ui.view">
+        <field name="name">inventory.adjustment.template.new.line.inherit.tree</field>
+        <field name="model">inventory.adjustment.template.new.line</field>
+        <field name="inherit_id" ref="inventory_adjustment_template.view_inventory_adjustments_temp_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='product_id_new']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_attribute_invoice_form_id" model="ir.ui.view">
+        <field name="name">sh.invoice.barcode.scanner.invoice.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+           
+           
+
+            <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='product_id']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </xpath>
+           
+        </field>
+    </record>
+    <record id="product_attribute_product_pricelist_item_form_view" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pricelist_rule_target']" position="inside">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_attribute_picking_form_id" model="ir.ui.view">
+        <field name="name">product.attribute.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+           
+          
+
+            <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='product_id']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_attribute_stock_move_operations" model="ir.ui.view">
+        <field name="name">stock.move.operations</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_stock_move_operations" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </field>
+        </field>
+    </record>
+       <record id="product_attribute_view_form" model="ir.ui.view">
+        <field name="name">product.attribute.view.form</field>
+        <field name="model">product.attribute</field>
+        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+        <field name="arch" type="xml">
+            <field name="create_variant" position="attributes">
+                <attribute name="attrs">{'readonly': 0}</attribute>           
+            </field>
+        </field>
+    </record>
+
+     <record id="sale_attribute_vaule_view_form_id" model="ir.ui.view">
+        <field name="name">sale.order.attribute.value.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_template_id']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="warehouse_stock_attribute_vaule_view_form_id" model="ir.ui.view">
+        <field name="name">custom.warehouse.stock.reques.inherit.view.form</field>
+        <field name="model">custom.warehouse.stock.request</field>
+        <field name="inherit_id" ref="hemfa_warehouse_stock_request.custom_warehouse_stock_request_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='warehouse_stock_request_line_ids']/tree//field[@name='product_id']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="purchase_attribute_vaule_view_form_id" model="ir.ui.view">
+        <field name="name">purchase.order.attribute.value.view.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+                <field name="product_attribute" readonly="1"  widget="many2many_tags"/>
+                
+            </xpath>
+        </field>
+    </record>
+</odoo>

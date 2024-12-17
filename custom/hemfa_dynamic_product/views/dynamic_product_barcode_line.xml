@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!--Import Dynamic Product Line-->
+        <record id="import_dynamic_procut_barcode_line" model="ir.ui.view">
+            <field name="name">Import Dynamic Product Barcode</field>
+            <field name="model">dynamic.product.barcode.line</field>
+            <field name="arch" type="xml">
+                <form string="Import Dynamic Product Barcode">
+                    <group>
+                        <field name="import_option" wedgit="selection"/>
+                        <field name="file_to_upload"/>
+                    </group>
+                    <footer>
+                        <button string="Import" name="action_import_lines" type="object"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                        <div style="margin-left: auto;margin-right: 0;">
+                            <strong>Download Sample:</strong>
+                            <a role="button"
+                               href="/bi_generic_import_all/static/Sample Files/sample CSV/import_dynamic_barcode.csv"
+                               class="btn-primary"
+                               style="margin: 0 10px; font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;">
+                                <i class="fa fa-download"/>
+                                CSV file
+                            </a>
+                            <a role="button"
+                               href="/bi_generic_import_all/static/Sample Files/Sample XLS/import_dynamic_barcode.xlsx"
+                               class="btn-primary"
+                               style="font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;">
+                                <i class="fa fa-download"/>
+                                Excel file
+                            </a>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_import_dynamic_procut_barcode_line" model="ir.actions.act_window">
+            <field name="name">Import Dynamic Product Barcode</field>
+            <field name="res_model">dynamic.product.barcode.line</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_import_dynamic_procut_barcode_line"
+                  id="menu_import_dynamic_procut_barcode_line"
+                 parent="stock.menu_stock_warehouse_mgmt" 
+                   />
+        <!-- <menuitem action="action_import_dynamic_procut_barcode_line"
+                  id="menu_import_dynamic_procut_barcode_line_im"
+                  parent="bi_generic_import.gen_import_data"/> -->
+
+        <!-- access_dynamic_product_barcode_line,access_dynamic_product_barcode_line,model_dynamic_product_barcode_line,base.group_user,1,1,1,1 -->
+    </data>
+</odoo>
+ 

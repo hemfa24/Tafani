@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+
+    <template id="report_invoice_show_balance" inherit_id="account.report_invoice_document">
+      <!-- <xpath expr="//div[@class='clearfix']/div/div/table/tr/td/strong" position="attributes">
+        <attribute name="style">color:black</attribute>
+</xpath> -->
+
+        <xpath expr="//p[@name='payment_communication']" position="before">
+
+
+          <t t-if="o.move_type not in ['in_refund','in_invoice']">
+ All Customer Invoice Due Amount is : <b>
+            <span t-field="o.credit"/>
+          </b>
+        </t>
+        <t t-else="">
+All Vendor Invoice Due Amount is : <b>
+          <span t-field="o.debit"/>
+        </b>
+      </t>
+    </xpath>
+
+  
+</template>
+<!-- bi_sale_purchase_invoice_discount.report_invoice_discount_inherit -->
+</data>
+</odoo>

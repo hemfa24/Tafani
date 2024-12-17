@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Barcode Lables -->
+
+        <record id="view_barcode_labels" model="ir.ui.view">
+            <field name="name">Barcode Labels</field>
+            <field name="model">barcode.labels.multi</field>
+            <field name="arch" type="xml">
+                <form string="Barcode Labels">
+
+                    <!-- <group string="Products To Print"> -->
+                    <field name="product_get_ids" nolabel="1">
+                        <tree string="Product" editable="bottom">
+                            <field name="wizard_id" invisible="1" />
+                            <field name="product_id"
+                                options='{"no_open": True,"no_create": True, "no_create_edit": True}' />
+
+                            <field name="product_pricelist_item_id"
+                                domain="[('product_id','=',product_id)]" required="1"
+                                options='{"no_open": True,"no_create": True, "no_create_edit": True}'
+                            />
+                            <field name="pricelist_id" readonly="1" force_save="1"
+                                options='{"no_open": True,"no_create": True, "no_create_edit": True}' />
+                            <field name="uom_id" readonly="1" force_save="1"
+                                options='{"no_open": True,"no_create": True, "no_create_edit": True}' />
+                            <field name="price" readonly="1" force_save="1" />
+
+                            <field name="barcode" readonly="1" force_save="1" />
+
+                            <field name="lot_id" invisible="1" />
+                            <field name="qty" />
+                        </tree>
+                    </field>
+                    <!-- </group> default_focus="1"-->
+                    <seperator
+                        string="More information about barcode configuration data, please navigate to inventory > barcode labels > barcode config menu."
+                    />
+                    <footer>
+                        <button name="print_report" string="Print" type="object"
+                            class="oe_highlight" /> or <button string="Cancel"
+                            class="btn btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_barcode_labels_multi" model="ir.actions.act_window">
+            <field name="name">Multi Barcode Product Labels</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">barcode.labels.multi</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_barcode_labels" />
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem action="action_barcode_labels_multi" id="menu_action_barcode_labels_multi"
+            parent="dynamic_barcode_labels.menu_main_barcode_labels" sequence="11"
+            groups="dynamic_barcode_labels.group_barcode_labels" />
+    </data>
+</odoo>

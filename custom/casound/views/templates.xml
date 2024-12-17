@@ -1,0 +1,9 @@
+<odoo>
+  <data>
+    <!--    <menuitem id="casound_menuitem_root" name="Báo cáo" sequence="0" web_icon="casound,static/img/casound.png"/>-->
+    <!-- báo cáo trong module sản xuất-->
+    <menuitem id="casound_bao_cao_xuat_nhap_kho" name="Stock Inventory Report" parent="stock.menu_warehouse_report" action="bao_cao_xuat_nhap_kho_wizard_action" sequence="1" />
+
+
+  </data>
+</odoo>

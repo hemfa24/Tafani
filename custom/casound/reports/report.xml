@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="action_bao_cao_xuat_nhap_kho_report" model="ir.actions.report">
+        <field name="name">Stock Inventory Report</field>
+        <field name="model">casound.bao_cao_xuat_nhap_kho.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">casound.casound_bao_cao_xuat_nhap_kho_report_template</field>
+        <field name="report_file">casound.casound_bao_cao_xuat_nhap_kho_report_template</field>
+    </record>
+
+    <record id="action_bao_cao_gia_thanh_report" model="ir.actions.report">
+        <field name="name">Báo cáo giá thành</field>
+        <field name="model">casound.bao_cao_gia_thanh.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">casound.casound_bao_cao_gia_thanh_report_template</field>
+        <field name="report_file">casound.casound_bao_cao_gia_thanh_report_template</field>
+    </record>
+
+</odoo>

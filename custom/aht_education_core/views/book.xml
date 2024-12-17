@@ -1,0 +1,243 @@
+<odoo>
+  <data>
+       <record model="ir.ui.view" id="inherit_product_product_form_library">
+            <field name="name">Library product product extended</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+
+            <field name="arch" type="xml">
+               <xpath expr="//div[@name='options']/span[2]" position="after">
+                    <span class="d-inline-block">
+                            <field name="is_book"/>
+                            <label for="is_book"/>
+                        </span>
+               </xpath>
+               
+               <xpath expr="//page[@name='general_information']" position="after">
+                  <page name="book_info" string="Book Details" attrs="{'invisible':[('is_book' ,'=', False)]}" >
+                    <group>
+                        <group>
+                            
+                            <field name="book_title" />
+                            <field name="author_id"/>
+                            <field name="book_genre" />
+                            <field name="book_isbn" />
+                            <field name="copy_condition" />
+                            <field name="policy" />
+                        </group>
+                        
+                        <group>
+<!--                             <field name="copy_number" />
+ -->                            <field name="location_id" options="{'no_create_edit': True, 'color_field': 'color'}" />
+                            <field name="status" />
+                            <field name="book_barcode" />
+                            <field name="serial_no" />
+                           
+<!--                             <field name="copy_tag" />
+ -->
+                        </group>
+                        
+                        
+                      
+                     </group>
+                    
+                    
+                    
+                  </page>
+                </xpath> 
+             </field>    
+        </record>
+        
+         <record model="ir.ui.view" id="inherit_product_tmpl_form_library">
+            <field name="name">Library product tmpl extended</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']/span[2]" position="after">
+                    <span class="d-inline-block">
+                        <field name="is_book"/>
+                        <label for="is_book"/>
+                    </span>
+               </xpath>
+                
+                 <xpath expr="//page[@name='general_information']" position="after">
+                      <page name="book_info" string="Book Details" attrs="{'invisible':[('is_book' ,'=', False)]}" >
+                        <group>
+                            <group>
+                                
+                                <field name="book_title" />
+                                <field name="author_id"/>
+                            </group>
+                            
+                            <group>
+                                <field name="book_genre" />
+                                <field name="book_isbn" />
+                            </group>
+                           
+                            
+                          
+                         </group>
+                        </page>
+                        
+                        <page name="book_copy" string="Book Copies" attrs="{'invisible':[('is_book' ,'=', False)]}">
+                             <field name="book_copy_line_ids" widget="one2many" >
+                                <tree string="copy info" editable="bottom">
+                                    <field name="book_barcode" />
+<!--                                     <field name="copy_number" invisible="1"/>
+ -->                                    <field name="location_id" options="{'no_create_edit': True, 'color_field': 'color'}" />
+                                   
+                                    <field name="serial_no" />
+                                    <field name="copy_condition" />
+                                    <field name="policy" />
+<!--                                     <field name="copy_tag"  invisible="1" />
+ -->                                    <field name="status" />
+                                </tree>
+                            </field> 
+                        </page>
+                        <page name="book_issued_history" string="Book Issued History" attrs="{'invisible':[('is_book' ,'=', False)]}">
+                            <field name="issue_book_ids" widget="one2many" >
+                                <tree string="Issued History info" editable="">
+                                    <field name="book_issue_id" invisible="1"  />
+                                    <field name="name" />
+                                    <field name="book_tmpl_id" />
+                                    <field name="partner_id" />
+                                    <field name="book_issue_date" />
+                                    <field name="due_date" />
+                                    <field name="copy_barcode"/>
+                                    <field name="fine_amount"/>
+                                    <field name="renewd_count"/>
+                                    <field name="responsible_id"/>
+                                 </tree>  
+                            </field>
+                        </page>
+                        
+                        
+                        
+                  </xpath>
+                                        
+                    <xpath expr="//page[@name='inventory']" position="attributes">
+                       <attribute name="attrs">{'invisible': [('is_book','=',True)]}</attribute>
+                   </xpath>
+                   
+                    <xpath expr="//page[@name='variants']" position="attributes">
+                       <attribute name="attrs">{'invisible': [('is_book','=',True)]}</attribute>
+                   </xpath>
+                    
+            </field>
+        </record>    
+        
+        
+        
+        <record id="product_book_action" model="ir.actions.act_window">
+            <field name="name">Books</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,form</field>
+            <!-- <field name="view_id" ref="aht_education_core"/>
+            <field name="search_view_id" ref="product.product_template_search_view"/> -->
+            <field name="domain">[('is_book','=',True)]</field>
+            <field name="context">{"default_is_book":True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new rec
+                </p>
+            </field>
+        </record>
+        
+        
+        
+        
+        <!-- book awards -->
+        <record id="awards_form_view" model="ir.ui.view">
+            <field name="name">awards.form_view</field>
+            <field name="model">book.awards</field>
+            <field name="arch" type="xml">
+                <form string="Awards">
+                    <sheet>
+                           <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                        <!-- <field name="image_1920" widget="image" class="oe_avatar m-0" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;avatar_128&quot;}"/> -->
+                        <div class="oe_title">
+                            <h1 class="d-flex flex-row">
+                            
+                                <field name="name" placeholder="Award's Name" required="True" style="font-size: min(4vw, 2.6rem);" class="ms-3"/>
+                            </h1>
+                        </div> 
+                        
+                        
+                        
+                        <group>
+                           <group>
+                               <field name="country_id"/>
+                           </group>
+                        </group>   
+                    </sheet>
+                </form> 
+            </field>
+         </record> 
+         
+         
+    <record id="awards_kanban_view" model="ir.ui.view">
+        <field name="name">awards.kanban</field>
+        <field name="model">book.awards</field>
+        <field name="arch" type="xml">
+            <kanban sample="1" class="o_kanban_product_template">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="country_id"/>
+             
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                             <div class="o_kanban_image me-1">
+                                <img t-att-src="kanban_image('book.awards', 'image_128', record.id.raw_value)" alt="Product" class="o_image_64_contain"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top mb-0">
+                                    <div class="o_kanban_record_headings">
+                                       
+                                    </div>
+                                    
+                                </div>
+                                <t t-if="record.name">
+                                    <strong>
+                                        
+                                        <field name="name"/>
+                                    </strong>    
+                                </t>
+                                <div>
+                                   <t t-if="record.country_id">
+                                      <field name="country_id" /> 
+                                   </t>
+                                </div>
+                                <div class="o_kanban_image" style="width:20px;height:15px;">
+                                <img t-att-src="kanban_image('book.awards', 'image_128', record.id.raw_value)" alt="Product" class=""/>
+                            </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>  
+    
+     <record id="action_book_awards" model="ir.actions.act_window">
+            <field name="name">Awards</field>
+            <field name="res_model">book.awards</field>
+            
+            <field name="view_mode">form,kanban</field>
+            <field name="view_id" ref="awards_kanban_view"/>
+            
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new record
+                </p>
+            </field>
+        </record>  
+        
+        
+                
+    </data> 
+ </odoo> 
+ 
+               

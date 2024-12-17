@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_cheque_book_form_inherit_company" model="ir.ui.view">
+            <field name="name">cheque.book.form.inherit.company</field>
+            <field name="model">cheque.book</field>
+            <field name="inherit_id" ref="hemfa_account_cheque.view_cheque_book_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='note']" position="after">
+                    <field name="company_id" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

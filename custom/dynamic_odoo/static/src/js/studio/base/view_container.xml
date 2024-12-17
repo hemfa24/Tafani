@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="dynamic_odoo.ViewContainer" owl="1">
+      <div class="o_view_studio">
+        <ViewAdapter t-if="isLegacy" Component="info.Component" View="info.View" widget="widget" viewInfo="info.viewInfo" viewParams="info.componentProps" />
+        <t t-if="!isLegacy" t-component="info.Component" t-props="info.componentProps" />
+      </div>
+   </t>
+</templates>

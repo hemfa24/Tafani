@@ -1,0 +1,332 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_low_stock_notification
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-30 05:35+0000\n"
+"PO-Revision-Date: 2020-10-30 05:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_low_stock_notification
+#: model:mail.template,body_html:sh_low_stock_notification.template_product_stock_low_notify_email
+msgid ""
+"\n"
+"            <p>Dear ${object.company_id.notify_user_id.name},\n"
+"            </p>\n"
+"            <p>\n"
+"            \tHere is a list of products whose quantity is lower than minimum quantity \n"
+"            \t% if object.company_id.product_quantity_check == 'global': \n"
+"           \t\t${object.company_id.minimum_quantity} \n"
+"           \t\tGlobally \n"
+"            \t% endif\n"
+"            \t% if object.company_id.product_quantity_check == 'individual':\n"
+"            \tIndividually \n"
+"\t\t\t\t% endif      \n"
+"            \t% if object.company_id.product_quantity_check == 'order_point': \n"
+"           \t\ton Reorder Rules (Order Points) \n"
+"            \t% endif\n"
+"            \tspecified.\n"
+"            </p>\n"
+"            \n"
+"\t\t\t<html>            \t\n"
+"\t\t\t\t<head>Product's List</head>\t\t\t\t\t\t\n"
+"\t\t\t\t\t<table border=\"1\" bgcolor=\"#ffffff\" style=\"border: 1px solid gray;width:100%\" >\n"
+"\t\t\t\t\t\t<thead style=\"background-color:#875A7B;text-decoration: none; color: #fff;font-size: 16px;\">\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Product Name</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Default Code</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">On Hand Qty</th>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Minimum Qty Stock</th>\n"
+"\t\t\t\t\t\t\t\t% endif\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t</thead>\n"
+"\t\t\t\t\t\t<tbody>\n"
+"\t\t\t\t\t\t\t% for row in object.notify_ids :\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.name}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.def_code}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.prod_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.min_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% endif\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t\t%endfor\n"
+"\t\t\t\t\t\t</tbody>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t\t</html>\t\t\n"
+"\t\t\t\t<br/>\n"
+"\t\t\t\t<p>Thank you</p>\t\t\t\t\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"            <p>chère ${object.company_id.notify_user_id.name},\n"
+"            </p>\n"
+"            <p>\n"
+"            \tVoici une liste de produits dont la quantité est inférieure à la quantité minimale \n"
+"            \t% if object.company_id.product_quantity_check == 'global': \n"
+"           \t\t${object.company_id.minimum_quantity} \n"
+"           \t\tGlobally \n"
+"            \t% endif\n"
+"            \t% if object.company_id.product_quantity_check == 'individual':\n"
+"            \tIndividually \n"
+"\t\t\t\t% endif      \n"
+"            \t% if object.company_id.product_quantity_check == 'order_point': \n"
+"           \t\ton Reorder Rules (Order Points) \n"
+"            \t% endif\n"
+"            \tspecified.\n"
+"            </p>\n"
+"            \n"
+"\t\t\t<html>            \t\n"
+"\t\t\t\t<head>Liste de produits</head>\t\t\t\t\t\t\n"
+"\t\t\t\t\t<table border=\"1\" bgcolor=\"#ffffff\" style=\"border: 1px solid gray;width:100%\" >\n"
+"\t\t\t\t\t\t<thead style=\"background-color:#875A7B;text-decoration: none; color: #fff;font-size: 16px;\">\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Nom du produit</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Code par défaut</th>\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Qté à la main</th>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<th align=\"center\">Quantité minimale</th>\n"
+"\t\t\t\t\t\t\t\t% endif\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t</thead>\n"
+"\t\t\t\t\t\t<tbody>\n"
+"\t\t\t\t\t\t\t% for row in object.notify_ids :\n"
+"\t\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.name}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.def_code}</span></td>\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.prod_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% if object.company_id.product_quantity_check == 'individual' or object.company_id.product_quantity_check == 'order_point':\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t<td><span style=\"margin-left:5px\"> ${row.min_qty}</span></td>\n"
+"\t\t\t\t\t\t\t\t% endif\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t\t%endfor\n"
+"\t\t\t\t\t\t</tbody>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t\t</html>\t\t\n"
+"\t\t\t\t<br/>\n"
+"\t\t\t\t<p>Merci</p>\t\t\t\t\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t"
+
+
+#. module: sh_low_stock_notification
+#: model:mail.template,subject:sh_low_stock_notification.template_product_stock_low_notify_email
+msgid "${object.company_id.name} - Low Stock Notification"
+msgstr "${object.company_id.name} - Faible notification de stock"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__def_code
+msgid "Code"
+msgstr "Code"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_res_company
+msgid "Companies"
+msgstr "Entreprises"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__company_id
+msgid "Company Id"
+msgstr "ID de l'entreprise"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_res_config_settings
+msgid "Config Settings"
+msgstr "ID de l'entreprise"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__create_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__create_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__create_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__create_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__display_name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__email_id
+msgid "Email Id"
+msgstr "Identifiant"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields.selection,name:sh_low_stock_notification.selection__res_company__product_quantity_check__global
+msgid "Global"
+msgstr "Global"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields.selection,name:sh_low_stock_notification.selection__res_company__product_quantity_check__individual
+msgid "Individual"
+msgstr "Individuel"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product____last_update
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification sur"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__write_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__write_uid
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__write_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__write_date
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__low_stock_notification
+msgid "Low Stock Notification ?"
+msgstr "Notification de stock bas?"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__minimum_qty_updated
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__minimum_qty_updated
+msgid "Minimum Qty Updated"
+msgstr "Qté minimale mise à jour"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__min_qty
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_product__minimum_quantity
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_template__minimum_quantity
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__minimum_quantity
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__minimum_qty
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__minimum_quantity
+msgid "Minimum Quantity"
+msgstr "Quantité minimum"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Notification User for Low Stock"
+msgstr "Utilisateur de notification pour le stock bas"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__notify_ids
+msgid "Notify Id"
+msgstr "Notifier l'identifiant"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__notify_user_id
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__notify_user_id
+msgid "Notify User"
+msgstr "Notifier l'utilisateur"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_product
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__name
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company_product__product_id
+msgid "Product"
+msgstr "Produit"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_email__name
+msgid "Product Low Stock Email"
+msgstr "Produit bas stock e-mail"
+
+#. module: sh_low_stock_notification
+#: model:ir.actions.server,name:sh_low_stock_notification.product_low_stock_notify_ir_actions_server
+#: model:ir.cron,cron_name:sh_low_stock_notification.product_low_stock_notify
+#: model:ir.cron,name:sh_low_stock_notification.product_low_stock_notify
+msgid "Product Low Stock Notify"
+msgstr "Produit bas stock"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Product Notification"
+msgstr "Notification de produit"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_company__product_quantity_check
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_res_config_settings__product_quantity_check
+msgid "Product Quantity Check"
+msgstr "Vérification de la quantité de produit"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_template
+msgid "Product Template"
+msgstr "Modèle de produit"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields,field_description:sh_low_stock_notification.field_product_low_stock_notify__prod_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: sh_low_stock_notification
+#: model:ir.model.fields.selection,name:sh_low_stock_notification.selection__res_company__product_quantity_check__order_point
+msgid "Reorder Rules (Order Points)"
+msgstr "Règles de réorganisation (points de commande)"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Set Minimum Quantity"
+msgstr "Définir la quantité minimale"
+
+#. module: sh_low_stock_notification
+#: model_terms:ir.ui.view,arch_db:sh_low_stock_notification.sh_stock_config_settings_low_cost_form_view_inherit
+msgid "Set Notification Mode"
+msgstr "Définir le mode de notification"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_res_company_product
+msgid "model to store previous data company wise"
+msgstr "modèle pour stocker la société de données précédente sage"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_low_stock_notify
+msgid "save data to display in email"
+msgstr "Enregistrer les données pour afficher dans l'e-mail"
+
+#. module: sh_low_stock_notification
+#: model:ir.model,name:sh_low_stock_notification.model_product_low_stock_email
+msgid "sends email"
+msgstr "envoie un email"

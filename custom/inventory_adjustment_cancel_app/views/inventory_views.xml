@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="view_stock_quant_tree_inventory_editable_inherit" model="ir.ui.view">
+		<field name="name">stock.quant.view.form</field>
+		<field name="model">stock.quant</field>
+		<field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+		<field name="arch" type="xml">
+	 		<xpath expr="//field[@name='user_id']" position="after">
+	                <button name="cancel_stock_inventory" type="object" icon="fa-close" string="Cancel" class="btn btn-link" attrs="{'invisible': [('inventory_quantity_set', '=', True)]}"/>
+	 		</xpath>
+		</field>
+	</record>
+
+
+</odoo>

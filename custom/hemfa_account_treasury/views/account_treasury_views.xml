@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record model="ir.ui.menu" id="account.menu_action_account_payments_receivable">
+            <field name="active" eval="False"/>
+        </record>
+
+        <record model="ir.ui.menu" id="account.menu_action_account_payments_payable">
+            <field name="active" eval="False"/>
+        </record>
+
+        <!-- Menus : -->
+
+        <menuitem id="menu_account_treasury" name="Treasury Management" parent="account.menu_finance" sequence="4"/>
+        <menuitem id="menu_cash_management" name="Cash Management" parent="menu_account_treasury" sequence="1"/>
+        <menuitem id="menu_bank_transfer_management" name="Bank Transfer Management" parent="menu_account_treasury" sequence="2"/>
+        <menuitem id="menu_check_management" name="Check Management" parent="menu_account_treasury" sequence="3"/>
+
+        <menuitem id="menu_account_cash_payments" name="Receiving Cash" action="action_account_cash_payments" parent="menu_cash_management" sequence="1"/>
+        <menuitem id="menu_account_cash_payments_payable" name="Sending Cash" action="action_account_cash_payments_payable" parent="menu_cash_management" sequence="2"/>
+
+        <menuitem id="menu_account_bank_payments" name="Receiving Bank Transfer" action="action_account_bank_payments" parent="menu_bank_transfer_management" sequence="1"/>
+        <menuitem id="menu_account_bank_payments_payable" name="Sending Bank Transfer" action="action_account_bank_payments_payable" parent="menu_bank_transfer_management" sequence="2"/>
+
+        <!--        <menuitem id="menu_cash_management" name="Cash Management" parent="menu_account_cheque" sequence="1"/>
+            <menuitem id="menu_bank_management" name="Bank Management" parent="menu_account_cheque" sequence="2"/>
+		    <menuitem id="menu_bank_transfer_management" name="Bank Transfer Management" parent="menu_account_cheque" sequence="3"/>
+		 -->
+    </data>
+</odoo>

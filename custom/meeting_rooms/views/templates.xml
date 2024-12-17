@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <template id="accept_template" name="Accept Booking">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1>Booking Accepted</h1>
+                    <p>Thank you, <t t-esc="user.name"/>, for accepting the booking for <t t-esc="booking.name"/>.</p>
+                </div>
+            </t>
+        </template>
+
+        <template id="decline_template" name="Decline Booking">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1>Booking Declined</h1>
+                    <p>Thank you, <t t-esc="user.name"/>, for responding. You have declined the booking for <t t-esc="booking.name"/>.</p>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

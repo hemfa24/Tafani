@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="inherite_view_res_config_setting_form_sale_order" model="ir.ui.view">
+		<field name="name">res.congigration.setting</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="crm.res_config_settings_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[@id='crm_iap_mine_settings']" position="after">
+				<div>
+					<div class="o_setting_left_pane">
+						<field name="opportunity_count"/>
+					</div>
+					<div class="o_setting_right_pane" id="opportunity_count">
+						<label for="opportunity_count" string="Opportunity count"/>
+					</div>
+				</div>
+			</xpath>
+		</field>
+	</record>
+	
+</odoo>

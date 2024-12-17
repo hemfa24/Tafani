@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="wizard_timetable_form_view" model="ir.ui.view">
+        <field name="name">wizard_timetable_form</field>
+        <field name="model">wizard.timetable</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+         
+            <form string="Report">
+                <group>
+                    <group>
+                        <field name="academic_year" />
+                        <field name="type" />
+                   
+                        <field name="class_id" attrs="{'invisible': [('type', '!=', 'class')] ,'required':[('type', '=', 'class')]}" />
+                        <field name="lecturer_id"   attrs="{'invisible': [('type', '!=', 'lecturer')]  ,'required':[('type', '=', 'lecturer')]}"/>
+                        <field name="class_room_id"  attrs="{'invisible': [('type', '!=', 'room')] ,'required':[('type', '=', 'room')]}" />
+                    </group>
+               
+               
+                </group>
+                   
+               
+                <footer>
+                    <button name="print_timetable_report" string="Print" type="object" class="oe_highlight" />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    
+    
+     
+   <record id="action_wizard_timetable" model="ir.actions.act_window">
+            <field name="name">Time Table Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.timetable</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_timetable_form_view"/>
+            <field name="target">new</field>
+        </record>
+        
+      
+    
+</odoo>   
+    

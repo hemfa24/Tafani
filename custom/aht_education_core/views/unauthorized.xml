@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="unauthorized">
+        <t t-call="aht_education_core.page_container_1">
+            <t t-set="title" t-value="'Unauthorized'"/>
+            <t t-set="description" t-value="'This is Student Dashboard'"/>
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class=" text-white card-border bg-danger card">
+                        <div class="card-header">
+                            <i class="header-icon lnr-screen icon-gradient bg-warm-flame"></i>
+                            <b>Unauthorized</b>
+                        </div>
+                        <div class="card-body">
+                            <p>This user is not authorized to view this page.</p>
+                        </div>
+                        <div class="d-block text-end card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

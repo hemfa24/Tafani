@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_sale_discount_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@id='total']/div/table" position="before" >
+                <div class="clearfix">
+                    <div class="row" name="total">
+                        <div t-attf-class="#{'col-12' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto"
+                            >
+                            <table class="table table-sm table-borderless" style="page-break-inside: avoid;">  
+                                <t t-if="doc.apply_discount == True"> 
+                                    <tr class="border-black is-subtotal text-right">
+                                        <td><strong>Amount Before Discount</strong></td>
+                                        <t t-set="total_untaxed" t-value="doc.amount_untaxed + doc.discount_value"/>
+                                        <t t-if="doc.discount_type_id.name == Fixed">
+                                            <td class="text-end">
+                                                <span t-esc="doc.amount_untaxed + doc.discount_value" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td class="text-end">
+                                                <span t-esc="doc.count_sale_total" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    
+                                    <t t-if="doc.discount_type_id">
+                                        <tr class="border-black is-subtotal text-right">
+                                        <td><strong>Discount Type</strong></td>
+                                        <td class="text-end">
+                                            <span t-field="doc.discount_type_id.name" />
+                                        </td>
+                                    </tr>
+                                    </t>
+                                    
+                                    <t t-if="doc.discount_type_id">
+                                        <tr class="border-black is-subtotal text-right">
+                                        <td>
+                                            <strong>Sale Discount</strong>
+                                        </td>
+                                        <t t-if="doc.discount_type_id.name == 'Percent'">
+                                            <td class="text-end">
+                                                <span t-field="doc.discount_value" />
+                                                %
+                                            </td>
+                                        </t>
+                                        <t t-if="doc.discount_type_id.name == 'Fixed'">
+                                            <td class="text-end">
+                                                <span t-field="doc.discount_value" />
+                                            </td>
+                                        </t>
+                                   </tr>
+                                    </t>
+                                </t>   
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

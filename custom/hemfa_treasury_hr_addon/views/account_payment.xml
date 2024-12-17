@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_account_payment_form_inherit">
+            <field name="name">view.account.payment.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page" position="after">
+                    <page name="payslips" string="Payslips">
+                        <field name="payslip_ids"
+                               domain="[('employee_id','=',employee_id), ('state','=','done'),
+                                ('remain_amount','>',0), ('refund_payslip_id', '=', False), ('credit_note', '=', False)]"
+                               attrs="{'invisible':[('partner_type','not in',['employee'])]}">
+                            <tree editable="bottom" create="0" delete="0">
+                                <field name="date" readonly="1"/>
+                                <field name="amount" readonly="1"/>
+                                <field name="check" attrs="{'readonly':[('parent.state','!=','draft')]}"/>
+                                <field name="remain_amount"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page name="loans" string="Loans">
+                        <field name="loan_ids"
+                               domain="[('employee_id','=',employee_id), ('state', '=', 'approve'), ('remain_amount', '>', 0)]"
+                               attrs="{'invisible':[('partner_type','not in',['employee'])]}">
+                            <tree editable="bottom" create="0" delete="0">
+                                <field name="date" readonly="1"/>
+                                <field name="loan_amount" readonly="1"/>
+                                <field name="check" attrs="{'readonly':[('parent.state','!=','draft')]}"/>
+                                <field name="remain_amount"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page name="salary_advance" string="Salary Advance">
+                        <field name="salary_advance_ids"
+                               domain="[('employee_id','=',employee_id), ('state','=','approve'), ('remain_amount','>',0)]"
+                               attrs="{'invisible':[('partner_type','not in',['employee'])]}">
+                            <tree editable="bottom" create="0" delete="0">
+                                <field name="date" readonly="1"/>
+                                <field name="advance" readonly="1"/>
+                                <field name="check" attrs="{'readonly':[('parent.state','!=','draft')]}"/>
+                                <field name="remain_amount"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

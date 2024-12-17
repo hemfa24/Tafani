@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   
+     <record id="product_uom_view_inventory_adjustments_temp_form_id" model="ir.ui.view">
+        <field name="name">product.uom.inventory.adjustment.template.form</field>
+        <field name="model">inventory.adjustment.template.new</field>
+        <field name="inherit_id" ref="inventory_adjustment_template.view_inventory_adjustments_temp_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='product_id_new']" position="after">
+                <field name="product_uom" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+   
+</odoo>

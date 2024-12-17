@@ -1,0 +1,134 @@
+<odoo>
+    <record id="report_timetable_qweb" model="ir.actions.report">
+        <field name="name">Timetable Report</field>
+        <field name="print_report_name">'Timetable'</field>
+        <field name="model">wizard.timetable</field>
+        <field name="binding_model_id" ref="model_wizard_timetable"/>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">aht_education_core.timetable_report_pdf</field>
+        <field name="report_file">aht_education_core.timetable_report_pdf</field>
+    </record>
+    
+     <template id="timetable_report_pdf">
+        <t t-call="web.html_container">
+         
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure" /><br/><br/>
+                        <strong style="text-align: center;"><h4>Timetable</h4></strong><br/>
+                        <div class="row">
+                            <strong>Academic Year =</strong>&#160;<span t-esc="data.academic_year.name"/><br/>
+                            <strong>Type =</strong>By &#160;<span t-esc="data.type"/><br/>
+                        </div>
+                        <br/><br/>
+                        <div class="row" align="center">
+                            <table class="table table-sm o_main_table">
+                                <thead >
+                                    <tr style="">
+                                        <th class="text-center" style="border:1px solid black;"><strong>&#160; &#160;</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>MON</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>TUES</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>WEDS</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>THURS</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>FRI</strong></th>
+                                        <th  class="text-center" style="border:1px solid black;"><strong>SAT</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                    <t t-foreach="time_list" t-as="time">
+                                       <t t-set="str_time" t-value="func_floatToTime(time)"/>
+                                       <tr style="border:1px solid black;">
+                                         
+                                           <td class="text-center" style="border:1px solid black;"><strong><span t-esc="str_time"/></strong></td>
+                                           <!-- monday recs -->
+                                            <t t-set="mon" t-value="getTimeDayRecord('Monday',time,records)" />
+                                            <t t-if="len(mon) == 0">   
+                                                <td  class="text-center" style="border:1px solid black; background-color:#8e918f;"></td>
+                                            </t>
+                                            <t t-if="len(mon) > 0">    
+                                               <td  class="text-center" style="border:1px solid black;">
+                                                   <t t-foreach="mon" t-as="r"> 
+                                                        (<span t-esc="r.course_offered.display_name" />-<span t-esc="r.lecturer_id.name" />-<span t-esc="r.class_room_id.name" />)&#160;<br/>  
+                                                    </t>
+                                               </td>
+                                            </t>   
+                                            <!--Tuesday recs  -->
+                                            <t t-set="tue" t-value="getTimeDayRecord('Tuesday',time,records)" />
+                                            <t t-if="len(tue) == 0">   
+                                                <td  class="text-center" style="border:1px solid black; background-color:#8e918f;"></td>
+                                            </t>
+                                            <t t-if="len(tue) > 0">    
+                                               <td  class="text-center" style="border:1px solid black;">
+                                                   <t t-foreach="tue" t-as="r">
+                                                         (<span t-esc="r.course_offered.display_name" />-<span t-esc="r.lecturer_id.name" />-<span t-esc="r.class_room_id.name" />)&#160;<br/> 
+                                                    </t>
+                                               </td>
+                                            </t>      
+                                            <!--Wednesday recs  -->
+                                            <t t-set="wed" t-value="getTimeDayRecord('Wednesday',time,records)" />
+                                            <t t-if="len(wed) == 0">   
+                                                <td  class="text-center" style="border:1px solid black; background-color:#8e918f;"></td>
+                                            </t>
+                                            <t t-if="len(wed) > 0">    
+                                               <td  class="text-center" style="border:1px solid black;">
+                                                   <t t-foreach="wed" t-as="r">
+                                                        (<span t-esc="r.course_offered.display_name" />-<span t-esc="r.lecturer_id.name" />-<span t-esc="r.class_room_id.name" />)&#160;<br/> 
+                                                    </t>
+                                               </td>
+                                            </t>      
+                                            
+                                            <!--Thursday recs  -->
+                                            <t t-set="thur" t-value="getTimeDayRecord('Thursday',time,records)"/>
+                                            <t t-if="len(thur) == 0">   
+                                                <td  class="text-center" style="border:1px solid black; background-color:#8e918f;"></td>
+                                            </t>
+                                            <t t-if="len(thur) > 0">    
+                                               <td  class="text-center" style="border:1px solid black;">
+                                                   <t t-foreach="thur" t-as="r">
+                                                         (<span t-esc="r.course_offered.display_name" />-<span t-esc="r.lecturer_id.name" />-<span t-esc="r.class_room_id.name" />)&#160;<br/>  
+                                                    </t>
+                                               </td>
+                                            </t>      
+                                             
+                                            <!--Friday recs  -->
+                                            <t t-set="fri" t-value="getTimeDayRecord('Friday',time,records)"/>
+                                            <t t-if="len(fri) == 0">   
+                                                <td  class="text-center" style="border:1px solid black; background-color:#8e918f;"></td>
+                                            </t>
+                                            <t t-if="len(fri) > 0">    
+                                               <td  class="text-center" style="border:1px solid black;">
+                                                   <t t-foreach="fri" t-as="r">
+                                                         (<span t-esc="r.course_offered.display_name" />-<span t-esc="r.lecturer_id.name" />-<span t-esc="r.class_room_id.name" />)&#160;<br/> 
+                                                    </t>
+                                               </td>
+                                            </t>      
+                                             
+                                              <!--Saturday recs  -->
+                                            <t t-set="sat" t-value="getTimeDayRecord('Saturday',time,records)" />
+                                            <t t-if="len(sat) == 0">   
+                                                <td  class="text-center" style="border:1px solid black; background-color:#8e918f;"></td>
+                                            </t>
+                                            <t t-if="len(sat) > 0">    
+                                               <td  class="text-center" style="border:1px solid black;">
+                                                   <t t-foreach="sat" t-as="r">
+                                                        (<span t-esc="r.course_offered.display_name" />-<span t-esc="r.lecturer_id.name" />-<span t-esc="r.class_room_id.name" />)&#160;<br/> 
+                                                    </t>
+                                               </td>
+                                            </t>      
+                                             
+                                               
+                                       </tr>
+                                    </t>
+                                </tbody>
+                                
+                                
+                            </table>
+                        </div>
+                    </div>
+                </t>
+        
+        </t>
+    </template>                
+                   
+    
+</odoo>

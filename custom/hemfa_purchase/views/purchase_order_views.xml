@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/form/group/group/field[@name='product_uom_category_id']" position="after">
+                    <field name="product_uom_id" invisible="1"/>
+                    <field name="product_uom_po_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_category_id']" position="after">
+                    <field name="product_uom_id" invisible="1"/>
+                    <field name="product_uom_po_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom']" position="attributes">
+                                                      <attribute name="domain">[('id', 'in', (product_uom_id, product_uom_po_id))]</attribute>
+
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

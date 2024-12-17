@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_inventory_adjustments_temp_tree" model="ir.ui.view">
+            <field name="name">inventory.adjustment.template.tree</field>
+            <field name="model">inventory.adjustment.template.new</field>
+            <field name="arch" type="xml">
+                <tree string="Inventory Adjustments Template">
+                    <field name="name"/>
+                    <field name="location_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_inventory_adjustments_temp_form" model="ir.ui.view">
+            <field name="name">inventory.adjustment.template.form</field>
+            <field name="model">inventory.adjustment.template.new</field>
+            <field name="arch" type="xml">
+                <form string="Inventory Adjustments Template">
+                    <header>
+                        <button string="Apply Counted" type="object" name="action_apply_counted_to_real" 
+                        confirm="ARE YOU SURE?"
+                        class="btn-primary" />
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button string="Adjustment Lines" type="object" name="action_view_related_move_lines" class="oe_stat_button" icon="fa-exchange" context="{'no_reference': True}"/>
+
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" required="1"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. Annual inventory"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="location_id" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Adjustments Lines">
+                                <button name="%(act_open_select_products_adj_view)d" type="action" string="Select Products" context="{'default_flag_order': 'adj_temp'}" class="btn-primary mb-3"/>
+                                <group>
+                                    <group>
+                                        <field name="barcode"/>
+                                    </group>
+                                    
+                                </group>
+                                <field name="adjst_line_ids" string="Inventory Details" mode="tree">
+                                    <tree string="Adjustments Lines" editable="bottom">
+                                        <field name="inventory_id" invisible="1"/>
+
+                                        <field name="product_id_new" required="1"/>
+                                        <field name="product_template_variant_value_ids" widget="many2many_tags" readonly="1" force_save="1"/>
+                                        <field name="location_id_new"/>
+                                        <field name="counted_qty" readonly="0" required="1" sum="Total"/>
+                                        <field name="product_qty" readonly="1" force_save="1" required="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="action_inventory_adjustments_template" model="ir.actions.act_window">
+            <field name="name">Inventory Adjustments Template</field>
+            <field name="res_model">inventory.adjustment.template.new</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_inventory_adjustments_temp_tree"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Define a new Template
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_action_inventory_templates" name="Inventory Adjustments Template" parent="stock.menu_warehouse_config" action="action_inventory_adjustments_template" sequence="10" groups="stock.group_stock_manager"/>
+        <menuitem id="menu_load_inventory_templates" name="Import Inventory Adjustments Template" parent="stock.menu_stock_warehouse_mgmt" action="inventory_adjustment_template.action_load_template_wizard" sequence="10" groups="stock.group_stock_manager"/>
+
+
+
+
+
+
+
+
+
+        <record id="view_inventory_adjustment_template_new_line_search" model="ir.ui.view">
+            <field name="name">inventory.adjustment.template.new.line.search</field>
+            <field name="model">inventory.adjustment.template.new.line</field>
+            <field name="arch" type="xml">
+                <search string="Adjustment Lines Lists">
+                    <!-- <field name="barcode" string="Barcode" filter_domain="[ ('barcode', 'ilike', self)]"/> -->
+
+                    <field name="product_id_new"/>
+
+                </search>
+            </field>
+        </record>
+
+
+
+        <record id="view_inventory_adjustments_temp_line_tree" model="ir.ui.view">
+            <field name="name">inventory.adjustment.template.tree</field>
+            <field name="model">inventory.adjustment.template.new.line</field>
+            <field name="arch" type="xml">
+
+                <tree string="Adjustments Lines" editable="bottom">
+                    <header>
+
+                        <button name="action_reset" type="object" string="Clear"/>
+
+                    </header>
+                    <field name="inventory_id" invisible="1"/>
+                    <field name="product_id_new" readonly="0" force_save="1"/>
+                    <field name="barcode" readonly="1" invisible="1"/>
+                    <field name="location_id_new" readonly="1" force_save="1"/>
+                    <field name="counted_qty" readonly="0" required="1" sum="Total"/>
+                    <field name="product_qty" readonly="1" force_save="1" required="1" sum="Total"/>
+                </tree>
+
+            </field>
+        </record>
+    </data>
+</odoo>

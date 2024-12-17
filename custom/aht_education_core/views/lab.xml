@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="lab_group_list_view">
+            <field name="name">lab group List</field>
+            <field name="model">lab.group</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="lab_group_form_view">
+            <field name="name">lab_group_form</field>
+            <field name="model">lab.group</field>
+            <field name="arch" type="xml">
+                <form>
+                  
+                    <sheet>
+                       <separator style="color:green;font-size:18px;" string="Lab group" colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                        </group>                      
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="lab_group_action_window">
+            <field name="name">Lab Group</field>
+            <field name="res_model">lab.group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- student lab allocation -->
+        
+         <record model="ir.ui.view" id="lab_allocate_student_list_view">
+            <field name="name">lab allocation list</field>
+            <field name="model">lab.allocate.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="academic_year"/>
+                   <field name="labgroup_id"/>
+                   <field name="department_id"/>
+                   <field name="class_id"/>
+                   <field name="lab_responsible_ids" widget="many2many_tags"/>
+                   <field name="student_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="lab_allocate_student_form_view">
+            <field name="name">lab_allocate_student_form</field>
+            <field name="model">lab.allocate.student</field>
+            <field name="arch" type="xml">
+                <form>
+                  
+                    <sheet>
+                       <separator style="color:green;font-size:18px;" string="Lab Allocation" colspan="4"/>
+                        <group>
+                            <group>
+                                 <field name="academic_year"/>
+                                 <field name="labgroup_id"/>
+                                 <field name="department_id"/>
+                                
+                            </group>
+                            <group>
+                                <field name="lab_responsible_ids" widget="many2many_tags"/>
+                                <field name="course_offered"/>
+                                <field name="student_ids" options="{'no_open': True, 'no_create': True}" domain="[('labgroup_id','=',False),('labgroup_id','!=',labgroup_id)]"  widget="many2many_tags"/>
+                            </group>
+                        </group>                      
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="lab_allocate_student_action_window">
+            <field name="name">Lab allocation</field>
+            <field name="res_model">lab.allocate.student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+        
+        
+       
+    </data>
+</odoo>

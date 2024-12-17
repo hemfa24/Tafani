@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_analytic_payment_account_analytic_payment,account_analytic_payment.account_analytic_payment,model_account_analytic_payment_account_analytic_payment,base.group_user,1,1,1,1
+access_account_analytic_payment_account_analytic_payment1,account.analytic.applicability,analytic.model_account_analytic_applicability,base.group_user,1,1,1,1

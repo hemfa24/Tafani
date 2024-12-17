@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="casound_bao_cao_xuat_nhap_kho_report_template">
+        <t t-call="web.basic_layout">
+            <style>
+                .table tr td,.table tr th{
+                border:solid 1px #000;
+                padding:0px;
+                padding-right: 3px;
+                padding-left: 3px;
+                }
+                body{ font-family: "Times New Roman", Times, serif; }
+
+            </style>
+            <div class="page" style="padding-bottom: 50px;margin-left: 20px;margin-right: 20px;">
+                <div style="position:relative;top:0;width:100%;">
+                    <div>
+                        <h4 style="text-transform: uppercase;text-align: center;font-weight: 600;margin-bottom: 15px; margin-top: 15px">
+                            STOCK INVENTORY REPORT
+                        </h4>
+                    </div>
+                    <div>
+                        <div style="display:flex;">
+                            <b style="font-size: 16px;">Location:</b>
+                            <div style="font-size: 16px; margin-left: 4px;">
+                                <t t-esc="khohang"/>
+                            </div>
+                        </div>
+                        <div style="display:flex;">
+                            <b style="font-size: 16px;">User:</b>
+                            <div style="font-size: 16px; margin-left: 4px;">
+                                <t t-esc="name_user"/>
+                            </div>
+                        </div>
+                        <div style="display:flex;">
+                            <div style="display:flex;">
+                                <b style="font-size: 16px;">Start:</b>
+                                <div style="font-size: 16px; margin-left: 4px;">
+                                    <t t-esc="ngay_ton_start"/>
+                                </div>
+                            </div>
+                            <div style="display:flex;">
+                                <b style="font-size: 16px;margin-left: 20px;">End:</b>
+                                <div style="font-size: 16px; margin-left: 4px;">
+                                    <t t-esc="ngay_ton_end"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br/>
+                <table class="table">
+                    <thead>
+                        <tr style=" height: 20px;  background: #ccc;">
+                            <th class="text-center" rowspan="2" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                STT
+                            </th>
+                            <th class="text-center" rowspan="2" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                Code
+                            </th>
+                            <th class="text-center" rowspan="2" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                Name
+                            </th>
+                            <th class="text-center" colspan="2" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                Beginning inventory
+                            </th>
+                            <th class="text-center" colspan="2" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                Inventory transactions 
+                            </th>
+                            <th class="text-center" colspan="2" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                              Ending inventory
+                            </th>
+                        </tr>
+                        <tr style=" height: 20px;  background: #ccc;">
+                            <th class="text-center" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                            Quantity
+                            </th>
+                            <th class="text-center" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                               Value
+                            </th>
+                            <th class="text-center" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                   Quantity
+                            </th>
+                            <th class="text-center" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                 Value
+                            </th>
+                            <th class="text-center" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                            Quantity
+                            </th>
+                            <th class="text-center" style="padding: 10px !important; vertical-align: inherit;font-size: 18px;" scope="col">
+                                Value
+                            </th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <t t-if="list_san_pham">
+                            <t t-foreach="list_san_pham" t-as="i">
+                                <tr style=" height: 20px;">
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-esc="i_index +1"></t>
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-esc="i['masp']"/>
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-esc="i['name']"/>
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-options='{"widget": "float", "precision": 0}' t-esc="i['tondau']"/>
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-options='{"widget": "float", "precision": 0}' t-esc="i['giatridau']"/>
+
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-options='{"widget": "float", "precision": 0}' t-esc="i['thaydoi']"/>
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-options='{"widget": "float", "precision": 0}' t-esc="i['giatrithaydoi']"/>
+
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-options='{"widget": "float", "precision": 0}' t-esc="i['toncuoi']"/>
+                                    </td>
+                                    <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                        <t t-options='{"widget": "float", "precision": 0}' t-esc="i['giatricuoi']"/>
+
+                                    </td>
+
+                                </tr>
+
+
+                            </t>
+                            <tr style=" height: 20px;">
+
+                                <td colspan="3" style="text-align:center;padding: 10px;font-weight: 600;">
+                                    TOTAL
+                                </td>
+                                <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                    <t t-options='{"widget": "float", "precision": 0}' t-esc="tongtondau"/>
+                                </td>
+                                <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                    <t t-options='{"widget": "float", "precision": 0}' t-esc="tonggiatridau"/>
+
+                                </td>
+                                <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                    <t t-options='{"widget": "float", "precision": 0}' t-esc="tongthaydoi"/>
+                                </td>
+                                <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                    <t t-options='{"widget": "float", "precision": 0}' t-esc="tonggiatrithaydoi"/>
+
+                                </td>
+                                <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                    <t t-options='{"widget": "float", "precision": 0}' t-esc="tongtoncuoi"/>
+                                </td>
+                                <td style="text-align:center;padding: 10px;font-weight: 600;">
+                                    <t t-options='{"widget": "float", "precision": 0}' t-esc="tonggiatricuoi"/>
+
+                                </td>
+
+                            </tr>
+                        </t>
+
+                        <t t-else="">
+                            <p>NO INFO</p>
+                        </t>
+                    </tbody>
+                </table>
+                <br/>
+
+            </div>
+        </t>
+    </template>
+</odoo>

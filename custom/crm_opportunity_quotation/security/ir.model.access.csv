@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_request_quotation_portal,request.quotation.portal,model_request_quotation,base.group_portal,1,0,0,0
+access_request_quotation_employee,request.quotation.employee,model_request_quotation,base.group_user,1,0,0,0
+access_request_quotation_owenlead,request.quotation.ownled,model_request_quotation,sales_team.group_sale_salesman,1,1,1,1

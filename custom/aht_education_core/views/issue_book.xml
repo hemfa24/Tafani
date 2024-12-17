@@ -1,0 +1,94 @@
+<odoo>
+  <data>
+         <record id="aht_book_issue_form_view" model="ir.ui.view">
+            <field name="name">aht_issue.book.form_view</field>
+            <field name="model">aht.issue.book</field>
+            <field name="arch" type="xml">
+                <form string="BooK Issue Form">
+                   <header>
+                        <button name="button_issue" type="object" string="Issue Book" states="Draft" class="oe_highlight"/>
+                        <button name="button_return" type="object" string="Return Book" states="Draft"/>
+                        <button name="btn_openFeeWiz" type="object" string="Lost/Damage"  class="oe_highlight"  attrs="{'invisible': ['|',('inv_flag', '=', True),('state', '!=', 'Issued')]}"/>
+                      
+                       <field options="{'clickable': '1'}" name="state" widget="statusbar" statusbar_visible="Draft,Issued,Returned"/>
+                   </header>
+                   <sheet>
+                   
+                 
+                  
+                        <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                        <h1>
+                           <field name="name" />
+                        </h1>
+                        
+                            
+                      <group>
+                            <group string="">
+                             <field name="inv_flag" invisible="1"/>
+                                 <field name="book_tmpl_id"   domain = "[('is_book','=',True)]" invisible="1" />
+                                 <field name="book_name"   domain = "[('is_book','=',True)]" />
+                                 <field name="partner_id"  domain = "[('is_lib_member','=',True)]" />
+                                 <field name="book_issue_date" />
+                                 <field name="due_date" force_save="1"/>
+                                 <field name="copy_barcode"/>
+                            </group>
+                            
+                            <group string="">
+                                <field name="fine_amount" force_save="1"/>
+                                <field name="renewd_count"/>
+                                <field name="invoice_id"  force_save="1"/>
+                                <field name="responsible_id"/>
+                            </group>
+                        </group>
+                     </sheet>   
+                </form>
+             </field>
+        </record>  
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+         <record id="aht_book_issue_tree_view" model="ir.ui.view">
+            <field name="name">aht_issue_book tree view</field>
+            <field name="model">aht.issue.book</field>
+            <field name="arch" type="xml">
+                <tree string="Issue book list">
+                    <field name="name"/> 
+                      <field name="book_name"/>
+                    <field name="partner_id"/>
+                    <field name="book_issue_date"/>
+                    <field name="due_date"/>
+                    <field name="responsible_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+         <record id="action_aht_book_issue_form" model="ir.actions.act_window">
+            <field name="name">Book Issue Form</field>
+            <field name="res_model">aht.issue.book</field>
+            
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="aht_book_issue_tree_view"/>
+            
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new record
+                </p>
+            </field>
+        </record>  
+        
+        
+ 
+
+                                                                                           
+        
+                   
+  </data>
+</odoo>  

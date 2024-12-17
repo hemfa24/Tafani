@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_purchase_requisition_form_inherit_purchase_requisition_custom" model="ir.ui.view">
+        <field name="name">purchase.requisition.inherit</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="custom_lead_id"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_purchase_requisition_filter_inherit_lead_id_custom" model="ir.ui.view">
+        <field name="name">purchase.requisition.inherit</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="custom_lead_id"/>
+            </xpath>
+            <xpath expr="//search/group" position="inside">
+                <filter name="Opportunity" domain="[]" context="{'group_by':'custom_lead_id'}"/>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

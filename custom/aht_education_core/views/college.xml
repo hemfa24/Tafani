@@ -1,0 +1,103 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="lms_clg_list_view">
+            <field name="name">College</field>
+            <field name="model">aht.college</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="abbreviation"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="lms_clg_form_view">
+            <field name="name">College</field>
+            <field name="model">aht.college</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <table width="100%">
+                            <tbody>
+                                <tr t-attf-style="background-color:white">
+                                    <td width="70%">
+                                        <div>
+                                            <label for="name" string="College Name" class="oe_edit_only"/>
+                                            <h1>
+                                                <field required="1" name="name" default_focus="1"
+                                                       placeholder="e.g. College Of Law ?"/>
+                                            </h1>
+                                        </div>
+                                    </td>
+                                    <td width="30%">
+                                        <field name="title_image" style="border-style: solid;
+                                   border-color: red;width:100px; height:100px;" widget="image" class="oe_right" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <group col="2" colspan="12" class="ums_form_style">
+                            <field name="code" required="True"/>
+                            <field name="abbreviation"/>
+                            <field name="facebook_link" widget="url"/>
+                            <field name="college_email" required="True" widget="email"/>
+
+                        </group>
+                        <notebook>
+                            <page name="about_college" string="About College">
+                                <separator style="color:green;font-size:28px;"
+                                           string="English"
+                                           colspan="4"/>
+                                <field name="about_college_english"/>
+                                <separator style="color:green;font-size:28px;"
+                                           string="Kurdish"
+                                           colspan="4"/>
+                            </page>
+                            <page string="Vision and Mission">
+                                <separator style="color:green;font-size:28px;"
+                                           string="English"
+                                           colspan="4"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Mission"
+                                           colspan="4"/>
+                                <field name="mission_english"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Vision"
+                                           colspan="4"/>
+                                <field name="vision_english"/>
+                                <separator style="color:green;font-size:28px;"
+                                           string="Kurdish"
+                                           colspan="4"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Mission"
+                                           colspan="4"/>
+                                <separator style="color:black;font-size:18px;"
+                                           string="Vision"
+                                           colspan="4"/>
+                            </page>
+                            <page string="Dean's Message">
+                                <separator style="color:green;font-size:28px;"
+                                           string="English"
+                                           colspan="4"/>
+                                <field name="dean_message_english"/>
+                                <separator style="color:green;font-size:28px;"
+                                           string="Kurdish"
+                                           colspan="4"/>
+                            </page>
+                             <page string="Contact">
+                                 <field name="college_contact"/>
+                             </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- actions opening views on models -->
+        <record id="lms_clg_action_window" model="ir.actions.act_window" >
+            <field name="name">College</field>
+            <field name="res_model">aht.college</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+    </data>
+</odoo>

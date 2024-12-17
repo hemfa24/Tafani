@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_asset_category_form_depriciation">
+            <field name="name">account.asset.category.custom.form.depriciation</field>
+            <field name="model">account.asset.category.custom</field>
+            <field name="inherit_id" ref="odoo_account_asset.view_account_asset_category_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group[last()]" position="after">
+                    <group string="Asset Disposal">
+<!--                        <field name="disposal_account_id" domain="[('internal_type','=','other')]"/> -->
+                        <field name="disposal_account_id"/> <!--V16 -->
+                        <field name="disposal_journal_id"/>
+<!--                        <field name="disposal_sale_account_id" domain="[('internal_type','=','other')]"/> -->
+                        <field name="disposal_sale_account_id"/> <!--V16 -->
+                        <field name="disposal_sale_journal_id"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_asset_asset_form_depriciation">
+            <field name="name">account.asset.asset.form.depriciation</field>
+            <field name="model">account.asset.asset.custom</field>
+            <field name="inherit_id" ref="odoo_account_asset.view_account_asset_asset_form"/>
+            <field name="arch" type="xml">
+                <xpath  expr="//button[@name='set_to_close']" position="attributes">
+<!--                    <attribute name="states"></attribute-->
+<!--                    <attribute name="attrs">{'invisible': ['|', ('use_disposal', '=', True), ('state', '!=', 'open')]}</attribute-->
+                    <attribute name="confirm">Are You sure you want to dispose or sell using this button. You may use detail disposer 
+                        using feature given on Asset Disposal Tab.</attribute>
+                </xpath>
+                <xpath  expr="//button[@name='set_to_close']" position="after">
+                    <button type="object"
+                        name="action_asset_force_close" 
+                        string="Set to Close" 
+                        class="oe_highlight"
+                        attrs="{'invisible': ['|',('state', '!=', 'open'), '&amp;', '&amp;',('state', '=', 'open'),('depriciation_move_created', '=', False), ('writeoff_move_created', '=', False)]}"/>
+            </xpath>
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Asset Disposal">
+                        <group>
+                            <group>
+                                <field name="use_disposal"/>
+                            </group>
+                            <group/>
+                        </group>
+                        <group attrs="{'invisible': [('use_disposal', '=', False)]}">
+                            <group>
+                                <field name="diposal_type" attrs="{'readonly': [('state', '=', 'close')]}"/> 
+                                <field name="writeoff_journal_id" attrs="{'invisible':[('diposal_type', '!=', 'write_off')],'readonly': [('state', '=', 'close')]}"/>
+                                <field name="sale_journal_id" attrs="{'invisible':[('diposal_type', '!=', 'sale')],'readonly': [('state', '=', 'close')]}"/> 
+                                <field name="disposal_partner_id" attrs="{'invisible':[('diposal_type', '!=', 'sale')]}"/>
+<!--                                <field name="disposal_invoice_id"-->
+<!--                                 domain="[('type', '=', 'out_invoice'), ('partner_id', '=', disposal_partner_id),('state', 'in', ('open', 'paid'))]"-->
+<!--                                 attrs="{'invisible':[('diposal_type', '!=', 'sale')]}"/> -->
+<!--                                <field name="disposal_invoice_id"-->
+<!--                                 domain="[('type', '=', 'out_invoice'), ('partner_id', '=', disposal_partner_id), ('state', '=', 'posted')]"-->
+<!--                                 attrs="{'invisible':[('diposal_type', '!=', 'sale')]}"/> -->
+                                <field name="disposal_invoice_id"
+                                 domain="[('move_type', '=', 'out_invoice'), ('partner_id', '=', disposal_partner_id), ('state', '=', 'posted')]"
+                                 attrs="{'invisible':[('diposal_type', '!=', 'sale')]}"/> 
+                                 <field name="invoice_amount" attrs="{'invisible':[('diposal_type', '!=', 'sale')]}"/>
+                            </group>
+                            <group> 
+                                <field name="disposal_date" attrs="{'readonly': [('state', '=', 'close')]}"/> 
+<!--                                <field name="writeoff_account_id" attrs="{'invisible':[('diposal_type', '!=', 'write_off')],'readonly': [('state', '=', 'close')]}" domain="[('internal_type','=','other')]"/>-->
+                                <field name="writeoff_account_id" attrs="{'invisible':[('diposal_type', '!=', 'write_off')],'readonly': [('state', '=', 'close')]}"/> <!--V16 -->
+                                <field name="sale_account_id" attrs="{'invisible':[('diposal_type', '!=', 'sale')],'readonly': [('state', '=', 'close')]}"/>
+                                <field name="writeoff_move_id" attrs="{'invisible':[('diposal_type', '!=', 'write_off')]}" /> 
+                            </group>
+                        </group>
+                        <group attrs="{'invisible':[('diposal_type', '!=', 'sale')]}">
+                            <group string="Disposal Gain/Loss Entries">
+                                <field name="depriciation_move_id"/> 
+                                <field name="asset_move_id"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <field name="depriciation_move_created" invisible="True"/> 
+                        <field name="writeoff_move_created" invisible="True"/>
+                        <button type="object" name="create_accounting_entries" 
+                                string="Create Write-Off Entry" 
+                                class="oe_highlight"
+                                attrs="{'invisible': ['|', '|',('state', '!=', 'open'), ('diposal_type', '!=', 'write_off'), ('writeoff_move_created', '=', True)]}"/>
+                        <button type="object" name="disposal_gain_loss" 
+                                string="Create Disposal For Gain/Loss" 
+                                class="oe_highlight" 
+                                attrs="{'invisible': ['|','|', ('state', '!=', 'open'), ('diposal_type', '!=', 'sale'), ('depriciation_move_created', '=', True)]}"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

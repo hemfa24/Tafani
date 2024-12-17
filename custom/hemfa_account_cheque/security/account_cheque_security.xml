@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="user_company_rule" model="ir.rule">
+			<field name="name">Account Cheque</field>
+			<field name="model_id" ref="model_account_cheque"/>
+			<field name="global" eval="True"/>
+			<field name="domain_force">[('company_id' ,'=', user.company_id.id)]</field>
+		</record>
+    
+	</data>
+	<data noupdate="1">
+        <record id="group_cheque_cash_no_accouting_effect" model="res.groups">
+            <field name="name">Cheque/Cash Payment No Accounting Effect</field>
+        </record>
+    </data>
+</openerp>
+

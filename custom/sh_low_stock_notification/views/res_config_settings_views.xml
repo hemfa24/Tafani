@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="sh_stock_config_settings_low_cost_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.config.setting.low.stock.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='stock']//div[1]" position="after">
+                <field name="low_stock_notification" invisible="1" />
+                <div id="product_notification">
+                    <h2>Product Notification</h2>
+                    <div class="row mt16 o_settings_container" id="product_low_stock">
+                        <div class="col-xs-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="low_stock_notification" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="low_stock_notification" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container"
+                        attrs="{'invisible': [('low_stock_notification','=',False)]}">
+                        <div class="col-xs-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane" />
+                            <div class="o_setting_right_pane">
+                                <label for="sh_chouse_qty_type" />
+                                <field name="sh_chouse_qty_type" widget="radio"
+                                    options="{'horizontal':true}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container" id="product_low_stock"
+                        attrs="{'invisible': [('low_stock_notification','=',False)]}">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="product_quantity_check" />
+                                <field name="product_quantity_check" widget="radio"
+                                    options="{'horizontal':true}" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Set Notification Mode
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container" id="low_stock_notify"
+                        attrs="{'invisible': [('low_stock_notification','=',False)]}">
+                        <div class="col-xs-12 col-md-6 o_setting_box"
+                            attrs="{'invisible':[('product_quantity_check','!=','global')]}">
+                            <div class="o_setting_right_pane">
+                                <label for="minimum_quantity" />
+                                <field name="minimum_quantity" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Set Minimum Quantity
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="notify_user_id" />
+                                <field name="notify_user_id" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Notification User for Low Stock
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

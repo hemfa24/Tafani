@@ -1,0 +1,188 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_pos_product_toppings
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-21 05:37+0000\n"
+"PO-Revision-Date: 2022-07-21 05:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_pos_config__sh_add_toppings_on_click_product
+msgid "Add Topping when product add to cart"
+msgstr "當產品添加到購物車時，添加頂部"
+
+#. module: sh_pos_product_toppings
+#: model_terms:ir.ui.view,arch_db:sh_pos_product_toppings.sh_product_tpooings_update_form
+msgid "Confirm"
+msgstr "確認"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__create_uid
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__create_uid
+msgid "Created by"
+msgstr "由...製作"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__create_date
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__create_date
+msgid "Created on"
+msgstr "創建於"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model,name:sh_pos_product_toppings.model_sh_topping_group
+msgid "Define Toppings products"
+msgstr "定義澆頭產品"
+
+#. module: sh_pos_product_toppings
+#: model_terms:ir.actions.act_window,help:sh_pos_product_toppings.sh_pos_toppings_group_action
+msgid "Define a new Topping Group"
+msgstr "定義一個新的澆頭小組"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__display_name
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_pos_config__sh_enable_toppings
+msgid "Enable Toppings"
+msgstr "啟用澆頭"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_product_product__sh_is_global_topping
+msgid "Global Topping"
+msgstr "全球頂級"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__id
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings____last_update
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group____last_update
+msgid "Last Modified on"
+msgstr "最後修改"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__write_uid
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__write_uid
+msgid "Last Updated by"
+msgstr "最後更新"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__write_date
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__write_date
+msgid "Last Updated on"
+msgstr "最後更新"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__name
+msgid "Name"
+msgstr "姓名"
+
+#. module: sh_pos_product_toppings
+#. openerp-web
+#: code:addons/sh_pos_product_toppings/static/src/xml/pos_config.xml:0
+#, python-format
+msgid "Ok"
+msgstr "好的"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model,name:sh_pos_product_toppings.model_pos_category
+msgid "Point of Sale Category"
+msgstr "銷售點類"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model,name:sh_pos_product_toppings.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "銷售點配置"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model,name:sh_pos_product_toppings.model_product_product
+msgid "Product"
+msgstr "產品"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_product_product__sh_topping_group_ids
+#: model_terms:ir.ui.view,arch_db:sh_pos_product_toppings.sh_pos_product_toppings_group_form_view
+msgid "Topping Group"
+msgstr "頂級小組"
+
+#. module: sh_pos_product_toppings
+#: model:ir.actions.act_window,name:sh_pos_product_toppings.sh_pos_toppings_group_action
+#: model:ir.ui.menu,name:sh_pos_product_toppings.toppings_groups_menu
+msgid "Topping Groups"
+msgstr "頂級組"
+
+#. module: sh_pos_product_toppings
+#. openerp-web
+#: code:addons/sh_pos_product_toppings/static/src/xml/pos_config.xml:0
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_pos_category__sh_product_topping_ids
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_product_product__sh_topping_ids
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__sh_topping_product_ids
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_topping_group__toppinds_ids
+#: model_terms:ir.ui.view,arch_db:sh_pos_product_toppings.sh_pos_product_product_inherit_form_view
+#, python-format
+msgid "Toppings"
+msgstr "澆頭"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model.fields,field_description:sh_pos_product_toppings.field_sh_mass_update_topings__sh_topping_group_ids
+msgid "Toppings Groups"
+msgstr "澆頭組"
+
+#. module: sh_pos_product_toppings
+#: model:ir.actions.server,name:sh_pos_product_toppings.sh_mass_update_toppingd_wizard
+#: model_terms:ir.ui.view,arch_db:sh_pos_product_toppings.sh_product_tpooings_update_form
+msgid "Update Toppings"
+msgstr "更新澆頭"
+
+#. module: sh_pos_product_toppings
+#. openerp-web
+#: code:addons/sh_pos_product_toppings/static/src/xml/pos_config.xml:0
+#, python-format
+msgid "at"
+msgstr "在"
+
+#. module: sh_pos_product_toppings
+#: model_terms:ir.ui.view,arch_db:sh_pos_product_toppings.sh_product_tpooings_update_form
+msgid "cancel"
+msgstr "取消"
+
+#. module: sh_pos_product_toppings
+#: model:ir.model,name:sh_pos_product_toppings.model_sh_mass_update_topings
+msgid "mass update topping"
+msgstr "質量更新台"
+
+#. module: sh_pos_product_toppings
+#. openerp-web
+#: code:addons/sh_pos_product_toppings/static/src/xml/pos_config.xml:0
+#, python-format
+msgid "{{ line.is_topping  ? 'sh_is_topping_line ' : '' }}"
+msgstr "{{ line.is_topping  ? 'sh_is_topping_line ' : '' }}"
+
+#. module: sh_pos_product_toppings
+#. openerp-web
+#: code:addons/sh_pos_product_toppings/static/src/xml/pos_config.xml:0
+#, python-format
+msgid "{{ line.is_topping  ? 'sh_is_topping_line sh-line-qty-price' : '' }}"
+msgstr "{{ line.is_topping  ? 'sh_is_topping_line sh-line-qty-price' : '' }}"
+
+#. module: sh_pos_product_toppings
+#. openerp-web
+#: code:addons/sh_pos_product_toppings/static/src/xml/pos_config.xml:0
+#, python-format
+msgid "{{ line.is_topping  ? 'sh_is_topping_line' : '' }}"
+msgstr "{{ line.is_topping  ? 'sh_is_topping_line' : '' }}"

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sh_low_stock_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h3 class="text-center">Low Stock Notification ( <span t-esc="name" /> )
+                        Specified.</h3>
+                    <div class="row col-sm-12" align="center">
+                        <table class="table table-condensed"
+                            style="border: 1px solid black; border-top: 1px solid black;">
+                            <tr>
+                                <th
+                                    style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                    Sr</th>
+                                <th
+                                    style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">Product
+                                    Name</th>
+                                <th
+                                    style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">Default
+                                    Code</th>
+                                <t t-if="company_id.sh_chouse_qty_type == 'on_hand'">
+                                    <th
+                                        style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">On
+                                        Hand Qty</th>
+                                </t>
+                                <t t-else="">
+                                    <th
+                                        style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">Forcasted
+                                        Qty</th>
+                                </t>
+
+                                <th
+                                    style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">Remaining
+                                    Qty</th>
+
+                                <t
+                                    t-if="company_id.product_quantity_check != 'global'">
+                                    <th
+                                        style="text-align: center; border-bottom: 1px solid black; border-top: 1px solid black;">Minimum
+                                        Qty</th>
+                                </t>
+
+                            </tr>
+                            <t t-foreach="sh_doc.values()" t-as="i">
+                                <tr>
+                                    <td>
+                                        <span t-esc="i.get('count')" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="i.get('name')" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="i.get('def_code') or ''" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="i.get('prod_qty') or ''" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="i.get('remaining_qty') or ''" />
+                                    </td>
+                                    <t t-if="company_id.product_quantity_check != 'global'">
+                                        <td>
+                                            <span t-esc="i.get('min_qty') or ''" />
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="report_print_sh_low_stock_action" model="ir.actions.report">
+        <field name="name">Low Stock Report</field>
+        <field name="model">report.sh_low_stock_notification.sh_low_stock_report_template</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_low_stock_notification.sh_low_stock_report_template</field>
+        <field name="print_report_name">'Low Stock Report'</field>
+    </record>
+</odoo>

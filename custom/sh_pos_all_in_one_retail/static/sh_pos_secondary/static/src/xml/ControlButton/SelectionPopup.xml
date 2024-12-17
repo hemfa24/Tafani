@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="SelectionPopup" t-inherit="point_of_sale.SelectionPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-foreach='props.list']" position="replace">
+            <t t-if="props.title == 'Select the UOM'">
+                <table style="width : 100%" class="sh_the_uom_table">
+                    <tr>
+                        <th class="sh_barcode">Barcode</th>
+                        <th class="sh_unit">Unit</th>
+                        <th class="sh_price">Price</th>
+                        <th class="sh_price_list">Price List</th>
+                    </tr>
+                    <t t-foreach="props.list" t-as="item" t-key="item.id">
+                        <tr t-on-click="() => this.selectItem(item.id)">
+                            <td ><t t-esc="item.label"/></td>
+                            <td ><t t-if="item.unit"><t t-esc="item.unit.name"/></t><t t-else=""><t t-esc="item.item.unit[1]"/></t></td>
+                            <td ><t t-esc="item.price"/></td>
+                            <td ><t t-if="item.price_lst" t-esc="item.price_lst.name"/> <t t-else=""><t t-esc="item.item.price_lst[1]"/></t></td>
+                        </tr>
+                    </t>
+                </table>
+            </t>
+            <t t-else="">
+                 <t t-foreach="props.list" t-as="item" t-key="item.id">
+                    <div class="selection-item" t-att-class="{ selected: item.isSelected }"
+                            t-on-click="() => this.selectItem(item.id)">
+                        <t t-esc="item.label" />
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </t>
+</templates>

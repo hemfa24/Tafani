@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+      <field name="name">account.payment.form</field>
+      <field name="model">account.payment</field>
+      <field name="inherit_id" ref="account.view_account_payment_form"/>
+      <field name="arch" type="xml">
+        <!-- <xpath expr="//field[@name='is_internal_transfer']" position="after">
+          <field name="destination_employee_account_id" attrs="{'readonly':[('state','!=','draft')],'invisible':[('partner_type','!=','employee')],'required':[('partner_type','=','employee')]}"/>
+        </xpath> -->
+        <!-- <xpath expr="//field[@name='payment_type']" position="after">
+          <field name="partner_type_all"/>
+        </xpath> -->
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="employee_id" context="{'default_is_company': True}" string="Employee" 
+          options="{'no_quick_create': True}"
+          domain="['|',('user_id','!=',False),('address_home_id','!=',False)]"
+           attrs="{'readonly':[('state', '!=', 'draft')],
+          'required':[('partner_type', '=', 'employee')],
+          'invisible':['|', ('partner_type','!=','employee'),
+           ('is_internal_transfer', '=', True)]}"/>
+           <field name="partner_id" string="Partner Test" readonly="1" force_save="1" invisible="1"/>
+        </xpath>
+
+        <xpath expr="//field[@name='move_ids']" position="before">
+          <field name="cheque_operation_ids" string="Operations" attrs="{'invisible':[('partner_type','!=','employee')],'readonly': [('state','not in','draft')]}">
+            <tree editable="bottom" create="0" delete="0">
+              <field name="name" readonly="1"/>
+              <field name="amount" readonly="1"/>
+              <!-- <field name="payslip_id" readonly="1"/> -->
+              <field name="check" attrs="{'readonly':[('parent.state','!=','draft')]}"/>
+            </tree>
+            <form>
+              <group>
+                <field name="name"/>
+                <field name="amount"/>
+                <!-- <field name="payslip_id"/> -->
+                <field name="check"/>
+              </group>
+            </form>
+          </field>
+        </xpath>
+        <xpath expr="//field[@name='ref']" position="after">
+          <field name="is_no_accounting_effect" groups="hemfa_account_cheque.group_cheque_cash_no_accouting_effect" attrs="{'readonly':[('state','!=','draft')]}"/>
+        </xpath>
+      </field>
+    </record>
+
+
+    <!-- ==================================================================================================================== -->
+
+    <record model="ir.ui.view" id="view_account_payment_journal_cash_form">
+      <field name="name">account.payment.internal.transfere.form</field>
+      <field name="model">account.payment</field>
+      <field name="mode">primary</field>
+      <field name="inherit_id" ref="account.view_account_payment_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='journal_id']" position="after">
+          <field name="is_cheque" invisible="1"/>
+          <field name="cheque_book_id" domain="[('journal_id','=',journal_id)]" attrs="{'invisible':['|','|',('payment_type','!=','outbound'),('is_internal_transfer','=',False),('is_cheque','=',False)],'required':[('payment_type','=','outbound'),('is_internal_transfer','=',True),('is_cheque','=',True)],'readonly': [('state','not in','draft')]}" options="{'no_create_edit': True,'no_create': True, 'no_quick_create': True}"/>
+          <field name="cheque_book_line_id" domain="[('cheque_book_id','=',cheque_book_id),('journal_id','=',journal_id),('is_used','=',False)]" attrs="{'invisible':['|','|',('payment_type','!=','outbound'),('is_internal_transfer','=',False),('is_cheque','=',False)],'required':[('payment_type','=','outbound'),('is_internal_transfer','=',True),('is_cheque','=',True)],'readonly': [('state','not in','draft')]}" options="{'no_create_edit': True,'no_create': True, 'no_quick_create': True}"/>
+        </xpath>
+      </field>
+    </record>
+
+
+
+
+
+    <!-- ==================================================================================================================== -->
+    <!--
+    <record id="action_account_bank_payments" model="ir.actions.act_window">
+      <field name="name">Customer Payments</field>
+      <field name="res_model">account.payment</field>
+      <field name="view_mode">tree,kanban,form,graph</field>
+      <field name="context">{
+                'default_payment_type': 'inbound',
+                'default_partner_type': 'customer',
+                'default_is_cheque': 1,
+                'search_default_inbound_filter': 1,
+                'default_move_journal_types': ('bank', 'cash'),
+            }</field>
+      <field name="domain">[('is_cheque','=',True)]</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('account.view_account_supplier_payment_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_payment_journal_no_cash_form')})]"/>
+
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+                  Register a payment
+        </p>
+        <p>
+                  Payments are used to register liquidity movements. You can process those payments by your own means or by using installed facilities.
+        </p>
+      </field>
+    </record>
+
+
+
+
+    <record id="action_account_bank_payments_payable" model="ir.actions.act_window">
+      <field name="name">Vendor Payments</field>
+      <field name="res_model">account.payment</field>
+      <field name="view_mode">tree,kanban,form,graph</field>
+      <field name="context">{
+                'default_payment_type': 'outbound',
+                'default_partner_type': 'supplier',
+                'default_is_cheque': 1,
+                'search_default_outbound_filter': 1,
+                'default_move_journal_types': ('bank', 'cash'),
+            }</field>
+      <field name="domain">[('is_cheque','=',True)]</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('account.view_account_supplier_payment_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_payment_journal_no_cash_form')})]"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+                  Register a payment
+        </p>
+        <p>
+                  Payments are used to register liquidity movements. You can process those payments by your own means or by using installed facilities.
+        </p>
+      </field>
+    </record>
+
+
+
+
+    <record id="account.action_account_payments" model="ir.actions.act_window">
+      <field name="name">Payments</field>
+      <field name="res_model">account.payment</field>
+      <field name="view_mode">tree,kanban,form,graph</field>
+      <field name="domain">[('is_cheque','=',False)]</field>
+      <field name="context">{
+                'default_payment_type': 'inbound',
+                'default_partner_type': 'customer',
+                'search_default_inbound_filter': 1,
+                'default_move_journal_types': ('bank', 'cash'),
+            }</field>
+      <field name="view_id" ref="account.view_account_payment_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+                  Register a payment
+        </p>
+        <p>
+                  Payments are used to register liquidity movements. You can process those payments by your own means or by using installed facilities.
+        </p>
+      </field>
+    </record>
+
+    <record id="account.action_account_payments_payable" model="ir.actions.act_window">
+      <field name="name">Payments</field>
+      <field name="res_model">account.payment</field>
+      <field name="view_mode">tree,kanban,form,graph</field>
+      <field name="domain">[('is_cheque','=',False)]</field>
+      <field name="context">{
+                'default_payment_type': 'outbound',
+                'default_partner_type': 'supplier',
+                'search_default_outbound_filter': 1,
+                'default_move_journal_types': ('bank', 'cash'),
+            }</field>
+      <field name="view_id" ref="account.view_account_supplier_payment_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+                  Register a payment
+        </p>
+        <p>
+                  Payments are used to register liquidity movements. You can process those payments by your own means or by using installed facilities.
+        </p>
+      </field>
+    </record>
+
+
+    <record id="account.action_account_invoice_from_list" model="ir.actions.server">
+      <field name="name">Register Payment</field>
+      <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/>
+
+      <field name="model_id" ref="account.model_account_move"/>
+
+      <field name="binding_model_id" eval="0"/>
+      <field name="binding_view_types">list</field>
+      <field name="state">code</field>
+      <field name="code">
+                if records:
+                    action = records.action_register_payment()
+      </field>
+    </record>
+    -->
+
+  </data>
+</odoo>

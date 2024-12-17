@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="account_incoming_cheque_form_view" model="ir.ui.view">
+            <field name="name">account.incoming.cheque.form.view</field>
+            <field name="model">account.cheque</field>
+            <field name="inherit_id" ref="hemfa_account_cheque.account_incoming_cheque_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_partial']" position="after">
+                    <field name="manual_currency_rate_active" attrs="{'readonly': [('status1','not in',['draft',])],}"/>
+                    <field name="manual_currency_rate" attrs="{'readonly': [('status1','not in',['draft',])],'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"/>
+                    <field name="currency_id" attrs="{'readonly': [('status1','not in',['draft',])],'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"/>
+
+                </xpath>
+            </field>
+
+        </record>
+
+
+        <!-- Outgoing View -->
+
+        <record id="account_outgoing_cheque_form_view" model="ir.ui.view">
+            <field name="name">account.outgoing.cheque.form.view</field>
+            <field name="model">account.cheque</field>
+            <field name="inherit_id" ref="hemfa_account_cheque.account_outgoing_cheque_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_partial']" position="after">
+                    <field name="manual_currency_rate_active" attrs="{'readonly': [('status','not in',['draft',])],}"/>
+                    <field name="manual_currency_rate" attrs="{'readonly': [('status','not in',['draft',])],'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"/>
+                    <field name="currency_id" attrs="{'readonly': [('status','not in',['draft',])],'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"/>
+
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="sale_commission_lines_form1_view_inherit_cheque_ref" model="ir.ui.view">
+            <field name="name">sale.commission.lines.form.inherit.cheque.ref</field>
+            <field name="model">sale.commission.lines</field>
+            <field name="inherit_id" ref="pways_commission_mgmt.sale_commission_lines_form1_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_id']" position="after">
+                    <field name="cheque_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_commission_lines_tree_view_inherit_cheque_ref" model="ir.ui.view">
+            <field name="name">sale.commission.lines.list.inherit.cheque.ref</field>
+            <field name="model">sale.commission.lines</field>
+            <field name="inherit_id" ref="pways_commission_mgmt.sale_commission_lines_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_id']" position="after">
+                    <field name="cheque_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

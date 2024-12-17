@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="fiscal_year_sync_app.view_account_period_form" model="ir.ui.view">
+            <field name="name">account.period.form</field>
+            <field name="model">account.period</field>
+            <field name="arch" type="xml">
+                <form string="Account Period">
+                    <header>
+                        <button string="Close Period" name="%(fiscal_year_sync_app.action_account_period_close)d" type="action" class="oe_highlight" states="draft"/>
+                        <button name="action_waiting_approval" states="waiting_approval" class="oe_highlight" string="Approve and Close Period" type="object" groups="advance_fiscal_year_sync_approval_app.group_period_approval_closing"/>
+                        <button string="Re-Open Period" name="%(advance_fiscal_year_sync_approval_app.action_account_reopen_period_close)d" type="action" class="oe_highlight" states="done" />
+                        <button name="action_waiting_reopen_approval" states="waiting_reopen_approval" class="oe_highlight" string="Approve and Re-Open Period" type="object" groups="advance_fiscal_year_sync_approval_app.group_period_approval_reopen"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,waiting_approval,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" attrs="{'required': [('state','=','draft')], 'readonly': [('state','!=','draft')]}" />
+                                <field name="fiscalyear_id" widget="selection" attrs="{'required': [('state','=','draft')], 'readonly': [('state','!=','draft')]}" />
+                                <label for="date_start" string="Duration"/>
+                                <div>
+                                    <field name="date_start" class="oe_inline" nolabel="1" attrs="{'required': [('state','=','draft')], 'readonly': [('state','!=','draft')]}" /> -
+                                    <field name="date_stop" nolabel="1" class="oe_inline" attrs="{'required': [('state','=','draft')], 'readonly': [('state','!=','draft')]}" />
+                                </div>
+                            </group>
+                            <group>
+                                <field name="code" attrs="{'readonly': [('state','!=','draft')]}" />
+                                <field name="special" attrs="{'readonly': [('state','!=','draft')]}" />
+                                <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

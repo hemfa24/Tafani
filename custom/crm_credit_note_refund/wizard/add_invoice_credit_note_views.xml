@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_crm_credit_note_view" model="ir.ui.view">
+            <field name="name">Add Credit Note</field>
+            <field name="model">custom.crm.credit.note</field>
+            <field name="arch" type="xml">
+                <form string="Add Credit Note">
+                    <group>
+                        <group>
+                            <field name="custom_invoice_id" domain="[('id', 'in', context.get('custom_domain_invoice_ids')), ('state', '=', 'posted')]"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_reverse" string="Add Credit Note" type="object" class="oe_highlight"/>
+                         or 
+                        <button string="Cancel" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_custom_crm_credit_note" model="ir.actions.act_window">
+            <field name="name">Add Credit Note</field>
+            <field name="res_model">custom.crm.credit.note</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="custom_crm_credit_note_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

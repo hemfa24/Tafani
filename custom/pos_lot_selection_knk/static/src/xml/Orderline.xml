@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+        <t t-name="InhOrderLine" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='props.line.pack_lot_lines']/ul[@class='info-list']/t/li" position="replace">
+            <li>        
+                <t t-if="props.line.get_product().tracking === 'serial'">
+                    SN <t t-esc="<t t-esc="lot.lot_name"/>
+                </t>
+                <t t-else="">
+                    LOT <t t-esc="lot.lot_name"/>
+                </t>
+            </li>
+        </xpath>
+    </t>
+</templates>

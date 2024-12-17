@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+  
+   <!-- Form View of Class Room -->
+    <record id="class_room_form_view" model="ir.ui.view">
+        <field name="name">class.room.form</field>
+        <field name="model">class.room</field>
+        <field name="arch" type="xml">
+            <form string="Class Room Form View">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name" required="1"/>
+                        <field name="number" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Tree view of class Room -->
+    <record id="class_room_tree_view" model="ir.ui.view">
+        <field name="name">class.room.tree</field>
+        <field name="model">class.room</field>
+        <field name="arch" type="xml">
+            <tree string="Class Room Tree View">
+                <field name="name"/>
+                <field name="number"/>
+            </tree>
+       </field>
+    </record>
+
+    <!-- Action of Class Room -->
+    <record id="action_class_room" model="ir.actions.act_window">
+        <field name="name">Class Room</field>
+        <field name="res_model">class.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+  </data>
+</odoo>
+
+
+
+
+
+

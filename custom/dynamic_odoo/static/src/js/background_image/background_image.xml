@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="dynamic_odoo.DemoThoi" owl="1">
+        <div><h1>Hello World</h1></div>
+    </t>
+</templates>

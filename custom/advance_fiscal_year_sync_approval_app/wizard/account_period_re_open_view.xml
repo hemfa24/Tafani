@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_reopen_period_close_form" model="ir.ui.view">
+            <field name="name">account.reopen.period.close.form</field>
+            <field name="model">account.reopen.period.close</field>
+            <field name="arch" type="xml">
+                <form string="Waiting Approval For Re-Open Period">
+                    <group string="Are you sure?">
+                        <field name="sure"/>
+                    </group>
+                    <footer>
+                        <button string="Re-Open Period" name="data_save" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_account_reopen_period_close" model="ir.actions.act_window">
+            <field name="name">Waiting Approval For Re-Open Period</field>
+            <field name="res_model">account.reopen.period.close</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_reopen_period_close_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

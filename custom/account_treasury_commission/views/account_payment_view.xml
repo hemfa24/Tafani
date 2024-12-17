@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_account_payment_form_inherit_hemfa_treasory_commission" model="ir.ui.view">
+            <field name="name">account.payment.inherited_form.hemfa_treasory_commission</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="hemfa_account_treasury.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_type']" position="after">
+                    <!--                    <field name="agents_ids" widget="many2many_tags" invisible="1"/>-->
+                    <!--                </xpath>-->
+                    <!--                <xpath expr="//field[@name='date']" position="after">-->
+                    <!--                    <field name="sale_commission_id" invisible="0"/>-->
+                    <field name="is_create_payment_commission" invisible="1" readonly="0"/>
+                    <field name="is_invoice_checked_with_commission" invisible="1" readonly="0"/>
+                    <!--                    <field name="enrt_team_id"/>-->
+                </xpath>
+                <xpath expr="//button[@name='action_post']" position="attributes">
+                    <attribute name="attrs">
+                      {'invisible': ['|', ('state', '!=', 'draft'), ('is_invoice_checked_with_commission', '=', False)]}
+                    </attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_post']" position="after">
+                    <button name="action_post" string="Confirms" type="object" class="oe_highlight"
+                            attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('is_invoice_checked_with_commission', '!=', False)]}"
+                            data-hotkey="v"
+                            confirm="Payment has not checked invoice, due to it's not calculate commission you may proceed?"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page name="comissions" string="Commissions">
+<!--                        <field name="commission_ids"/>-->
+                        <field name="commission_m2m_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

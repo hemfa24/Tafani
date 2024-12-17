@@ -1,0 +1,20 @@
+<odoo>
+   <data>
+         
+        <record id="seq_issue_book" model="ir.sequence">
+            <field name="name">Sequence issue book</field>
+            <field name="code">aht.book.issue</field>
+            <field name="prefix">REG/%(year)s/%(month)s/%(day)s/</field>
+            <field name="padding">3</field>
+        </record>  
+        
+        
+          
+        <record id="seq_lib_members" model="ir.sequence">
+            <field name="name">Sequence lib_members</field>
+            <field name="code">res.partner</field>
+            <field name="prefix">MB</field>
+            <field name="padding">6</field>
+        </record> 
+    </data>
+</odoo>

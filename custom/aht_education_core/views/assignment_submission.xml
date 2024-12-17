@@ -1,0 +1,69 @@
+<!-- aht_assignment_submission_views.xml -->
+
+<odoo>
+    <record id="view_aht_assignment_submission_tree" model="ir.ui.view">
+        <field name="name">aht.assignment.submission.tree</field>
+        <field name="model">aht.assignment.submission</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student"/>
+                <field name="title"/>
+                <field name="course_offered_id"/>
+                <field name="available_from"/>
+                <field name="available_to"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="view_aht_assignment_submission_form" model="ir.ui.view">
+        <field name="name">aht.assignment.submission.form</field>
+        <field name="model">aht.assignment.submission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Submit" type="object"
+                            class="oe_highlight oe_structure"
+                            attrs="{'invisible':[('state','in',['Submitted'])]}"
+                            name="submit_assignment"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="is_available_to_upload" invisible="1"/>
+                        <field name="is_allowed_solution" invisible="1"/>
+                        <field name="student"/>
+                        <field name="title"/>
+                        <field name="course_offered_id"/>
+                        <field name="available_from"/>
+                        <field name="available_to"/>
+                          <field name="question_file" force_save="1" filename="file_name"
+                        />
+                        <field name="answer_file" force_save="1" filename="file_name"
+                               attrs="{'readonly': [('is_available_to_upload', '!=', True)]}"
+                        />
+                        <field name="solution_file" force_save="1" filename="file_name"
+                               attrs="{'invisible': [('is_allowed_solution', '!=', True)]}"
+                        />
+                        
+                        
+                        
+                        <!-- 
+                        <field name="question_file" force_save="1" filename="q_file_name"
+                        />
+                        <field name="answer_file" force_save="1" filename="a_file_name"
+                               attrs="{'readonly': [('is_available_to_upload', '!=', True)]}"
+                        />
+                        <field name="solution_file" force_save="1" filename="s_file_name"
+                               attrs="{'invisible': [('is_allowed_solution', '!=', True)]}"
+                        /> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_aht_assignment_submission" model="ir.actions.act_window">
+        <field name="name">Assignment Submissions</field>
+        <field name="res_model">aht.assignment.submission</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_day_book_dest_acc_ext" inherit_id="base_accounting_kit.day_book_report_template">
+        <xpath expr="//table//thead//tr//th[last()]" position="before">
+            <th>Destination Account</th>
+        </xpath>
+        <xpath expr="//table//tbody//tr[1]//td[last()]" position="attributes">
+            <attribute name="colspan">2</attribute>
+        </xpath>
+        <xpath expr="//table//tbody//tr[2]//td[last()]" position="before">
+            <td>
+                <t t-set="br_account_id" t-value="env['account.account'].browse(int(line['account_id']))"/>
+                <span t-esc="br_account_id.code"/> <span t-esc="br_account_id.name"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

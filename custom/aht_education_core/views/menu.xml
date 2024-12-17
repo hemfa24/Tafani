@@ -1,0 +1,315 @@
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem name="Education Core" id="education_core" sequence="1"/>
+        
+        <menuitem name="Library Management System" 
+                  id="library_mng"  parent="education_core"
+                  sequence="13"/>
+
+        <menuitem name="Registration" id="stu_registeration"
+                  parent="education_core"
+                  sequence="2"
+        />
+        
+        
+          <menuitem name="Attendance" id="attendance_root"
+                  parent="education_core"
+                  sequence="6"
+        />
+        
+
+        <menuitem name="Configuration" id="config"
+                  parent="education_core"
+                  sequence="14"
+                  groups="base.group_system"/>
+
+        <menuitem name="Reports" id="edu_report"
+                  parent="education_core"
+                  sequence="12"
+                  groups="base.group_system"/>
+
+        <menuitem
+                id="aht_class_timetable"
+                name="Class Time Table"
+                parent="education_core"
+
+                sequence="3"/>
+
+        <menuitem
+                id="class_timetable"
+                name="Class Time Table"
+                parent="aht_class_timetable"
+                action="action_class_timetable"
+                sequence="1"/>
+
+
+        <menuitem
+                id="aht_course"
+                name="Courses"
+                parent="config"
+                action="aht_education_core.subjects_act_action_window"
+                sequence="1"/>
+        <menuitem name="College" id="lms_clg"
+                  parent="config"
+                  sequence="2"
+                  groups="base.group_system" action="aht_education_core.lms_clg_action_window"/>
+        <menuitem name="Department"
+                  id="lms_managmentdep"
+                  parent="config"
+                  groups="base.group_system"
+                  sequence="3"
+                  action="aht_education_core.lms_dept_action_window"/>
+
+        <menuitem name="Academic Year"
+                  id="lms_managmentac"
+                  parent="config"
+                  groups="base.group_system"
+                  sequence="4"
+                  action="aht_education_core.academic_year_act_window"/>
+
+        <menuitem name="Class Group"
+                  id="lms_classdep"
+                  parent="config"
+                  groups="base.group_system"
+                  sequence="5"
+                  action="aht_education_core.action_class_title"/>
+
+        <menuitem name="Semester"
+                  id="lms_semester"
+                  parent="config"
+                  groups="base.group_system"
+                  sequence="6"
+                  action="aht_education_core.action_semester"/>
+
+        <menuitem name="Group"
+                  id="lms_sectiondep"
+                  parent="config"
+                  groups="base.group_system"
+                  sequence="7"
+                  action="aht_education_core.action_section_title"/>
+
+
+        <menuitem name="Class Room"
+                  id="lms_class_room"
+                  parent="config"
+                  groups="base.group_system"
+                  sequence="8"
+                  action="aht_education_core.action_class_room"/>
+
+
+        <menuitem name="Time Slot"
+                  id="lms_time_slot"
+                  parent="aht_class_timetable"
+                  groups="base.group_system"
+                  sequence="2"
+                  action="aht_education_core.action_time_slot"/>
+
+
+        <menuitem name="Time Table Line"
+                  id="time_table_line"
+                  parent="aht_class_timetable"
+                  groups="aht_education_core.group_time_table_manager"
+                  sequence="3"
+                  action="aht_education_core.action_class_timetable_line"/>
+
+        <menuitem
+                id="aht_course_offerings"
+                name="Course Offerings"
+                parent="education_core"
+                action="course_offerings_action_window"
+                sequence="4"/>
+
+        <menuitem
+                id="aht_course_registration"
+                name="Student Registration"
+                parent="stu_registeration"
+                action="course_register_action_window"
+                groups="aht_education_core.group_registration_manager,aht_education_core.group_student_profile_manager,aht_education_core.group_student"
+                sequence="1"/>
+
+
+        <menuitem
+                id="aht_student"
+                name="Student"
+                parent="education_core"
+                action="aht_education_core.aht_student_action"
+                sequence="1"/>
+        <menuitem
+                id="aht_education_lecturer"
+                name="Lecturer"
+                parent="education_core"
+                action="aht_education_core.lecturer_action"
+                sequence="2"/>
+
+
+        <menuitem
+                id="st_attendance_menu"
+                name="Student Attendance"
+                parent="attendance_root"
+                action="st_attendance_action_window"
+                groups="aht_education_core.group_lecturer,base.group_system"
+                sequence="1"/>
+
+        <menuitem
+                id="attendance_correction_request_menu"
+                name="Attendance Correction Request"
+                parent="attendance_root"
+                groups="aht_education_core.group_lecturer"
+                action="attendance_request_action_window"
+                sequence="2"/>
+
+        <menuitem
+                id="lecturer_note_menu"
+                name="Lecturer Note"
+                parent="education_core"
+                action="lecturer_note_action_window"
+                sequence="8"/>
+
+
+        <menuitem
+                id="lab_group_menu"
+                name="Lab group"
+                parent="stu_registeration"
+                action="lab_group_action_window"
+                sequence="2"/>
+
+        <menuitem
+                id="lab_allocate_student_menu"
+                name="Lab allocation"
+                parent="stu_registeration"
+                action="lab_allocate_student_action_window"
+                sequence="3"/>
+
+
+        <menuitem id="menu_wizard_timetable"
+                  action="action_wizard_timetable"
+                  parent="edu_report"
+                  sequence="1"
+        />
+
+        <menuitem id="menu_wizard_report"
+                  action="action_wizard_attendance"
+                  parent="edu_report"
+                  sequence="2"
+        />
+
+        <menuitem name="Scholarship" id="menu_scholarship"
+                  parent="stu_registeration"
+                  sequence="3"
+                  groups="aht_education_core.group_scholarship_manager"
+                  action="scholarship_action_window"/>
+
+        <menuitem name="Scholarship Allocation" id="menu_scholarship_allocation"
+                  parent="stu_registeration"
+                  sequence="4"
+                  action="scholarship_allocation_action_window"/>
+
+
+        <menuitem name="Programs" id="edu_programs"
+                  parent="education_core"
+                  sequence="11"
+        />
+
+
+        <menuitem id="menu_program_title"
+                  parent="edu_programs"
+                  sequence="1"
+                  action="program_title_action_window"/>
+
+
+        <menuitem id="menu_program_level"
+                  parent="edu_programs"
+                  sequence="2"
+                  action="program_level_action_window"/>
+
+        <menuitem id="menu_program_duration"
+                  parent="edu_programs"
+                  sequence="3"
+                  action="program_duration_action_window"/>
+
+        <menuitem id="menu_program_dependency"
+                  parent="edu_programs"
+                  sequence="4"
+                  action="program_dependency_action_window"/>
+
+
+        <menuitem id="menu_degree_abbreviation"
+                  parent="edu_programs"
+                  sequence="5"
+                  action="degree_abbreviation_action_window"/>
+
+
+        <menuitem id="menu_aht_program"
+                  parent="edu_programs"
+                  sequence="6"
+                  action="aht_program_action_window"/>
+
+        <menuitem  id="menu_library_books"
+                    name="Books"
+                    action="product_book_action"
+                    sequence="1"
+                    parent="library_mng"/> 
+        
+        
+                  
+         <menuitem  id="menu_book_author"
+                    name="Authors"
+                    action="action_book_author"
+                    sequence="2"
+                    parent="library_mng"/> 
+                    
+                    
+         <menuitem  id="menu_book_genre"
+                    name="Genre"
+                    action="action_book_genre"
+                    sequence="3"
+                    parent="library_mng"/> 
+        
+        
+         <menuitem  id="menu_book_publisher"
+                    name="Publishers"
+                    sequence="4"
+                    action="action_book_publisher"
+                    parent="library_mng"/>      
+                   
+          <menuitem  id="menu_book_awards"
+                    name="Awards"
+                    sequence="5"
+                    action="action_book_awards"
+                    parent="library_mng"/>     
+                    
+                    
+            <menuitem  id="menu_library_members"
+                    name="Library Members"
+                    sequence="6"
+                    action="action_library_members"
+                    parent="library_mng"/> 
+                    
+                    
+            <menuitem  id="menu_book_issue"
+                    name="Issue Book Transaction"
+                    action="action_aht_book_issue_form"
+                    parent="library_mng"
+                    sequence="7" />   
+                    
+                    
+               <menuitem  id="menu_library_settings"
+                    name="Settings"
+                    action="action_lib_config"
+                    parent="library_mng"
+                    sequence="8" />             
+                    
+                         
+
+             <menuitem id="menu_aht_assignments" name="Assignment" parent="aht_education_core.education_core"
+                      sequence="10"/>
+            <menuitem id="menu_aht_assignment_submission" name="Assignment Submissions"
+                      action="action_aht_assignment_submission" parent="aht_education_core.menu_aht_assignments"/>
+
+                                         
+    </data>
+    
+    
+    
+</odoo>

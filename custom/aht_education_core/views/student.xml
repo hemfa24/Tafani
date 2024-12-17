@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">Student</field>
+            <field name="model">aht.student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <header>
+                        <button name="btn_create_user" string="Create User"
+                                attrs="{'invisible': [('user_created', '=', True)]}" type="object" class="btn-primary"/>
+                        <button name="btn_pass_out" string="Pass Out" states="enrolled" type="object"
+                                class="btn-primary"/>
+                        <button name="btn_drop_out" string="Drop Out" states="enrolled" type="object"
+                                class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,enrolled,pass_out,drop_out"/>
+                    </header>
+                    <sheet>
+                        <field name="image_1920" widget="image" class="oe_left oe_avatar"/>
+                        <br/>
+                        <group style="margin-left:10px;">
+                            <span class="o_form_label o_td_label" name="student_name">
+                                <b style="margin-left:18px;">Name</b>
+                            </span>
+                            <div class="o_address_format">
+                                <!-- <group> -->
+                                <!-- <label for="first_name" string=""/> -->
+                                <!-- <div class="o_address_format"> -->
+
+                                <field name="first_name" class="o_address_zip" style="" placeholder="First Name"/>
+
+                                <field name="middle_name" class="o_address_zip" style="" placeholder="Middle Name"/>
+
+                                <field name="last_name" class="o_address_zip" style="" placeholder="Last Name"/>
+                                <!-- </group>     -->
+                                <!--=======-->
+                                <!--                          <button name="btn_create_user" string="Create User"   attrs="{'invisible': [('user_created', '=', True)]}" type="object" class="btn-primary" />-->
+                                <!--                    </header>-->
+                                <!--                    <sheet>-->
+                                <!--                        <field name="image_1920" widget="image" class="oe_left oe_avatar"/>-->
+                                <!--                        <group>-->
+                                <!--                            <label for="first_name" string=""/>-->
+                                <!--                            <div class="address_format">-->
+                                <!--                                <field name="first_name" style="width: 25%" placeholder="First Name"/>-->
+                                <!--                                <field name="middle_name" style="width: 25%" placeholder="Middle Name"/>-->
+                                <!--                                <field name="last_name" style="width: 25%" placeholder="Last Name"/>-->
+                                <!--&gt;>>>>>> 16.0-->
+                            </div>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="student_id" string="Student ID"/>
+                                <field name="birth_place"/>
+                                <field name="phone"/>
+                                <field name="address"/>
+                                <field name="email"/>
+                                <field name="user_created" invisible="1"/>
+                                <field name="labgroup_id"/>
+                            </group>
+                            <group>
+                                <field name="nationality"/>
+                                <field name="marital_status"/>
+                                <field name="blood_group"/>
+                                <field name="dob"/>
+                                <field name="gender"/>
+                                <field name="user_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Academic Information">
+                                <group>
+                                    <group>
+                                        <field name="academic_year"/>
+                                        <field name="college_id"/>
+                                    </group>
+
+                                    <group>
+                                        <field name="department_id"/>
+                                        <field name="class_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_aht_student_search" model="ir.ui.view">
+            <field name="name">aht.student.search</field>
+            <field name="model">aht.student</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Student">
+                    <searchpanel>
+                        <field name="gender" enable_counters="1"/>
+                        <field name="nationality" enable_counters="1"/>
+                        <field name="marital_status" enable_counters="1"/>
+                    </searchpanel>
+
+                </search>
+            </field>
+        </record>
+
+
+        <record id="view_student_kanban" model="ir.ui.view">
+            <field name="name">Student Kanban</field>
+            <field name="model">aht.student</field>
+            <field name="arch" type="xml">
+                <kanban class="o_hr_employee_kanban" js_class="kanban_view_employee+==" sample="1" quick_create="false"
+                        quick_edit="false" edit="0" delete="0">
+                    <field name="student_id"/>
+                    <field name="image_1920"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                                <field name="image_1920" widget="image" class="o_kanban_image_fill_left"
+                                       options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+
+                                <div class="oe_kanban_details" style="width:70%;float:left;color:black;">
+                                    <h5 style="margin-left:10px;color:black;">
+                                        <a type="open">
+                                            <field name="complete_name"/>
+                                            <!--                                            =======-->
+                                            <!--                                            <field name="first_name"/>-->
+                                            <!--                                            >>>>>>> 16.0-->
+                                        </a>
+                                    </h5>
+                                    <ul style="margin-left:10px;color:black;font-size:10px;">
+                                        <li>
+                                            <field name="address"/>
+                                        </li>
+                                        <li>
+                                            <field name="phone"/>
+                                        </li>
+                                        <li>
+                                            <!--<a type="open">-->
+                                            <field name="email"/>
+                                            <!--</a>-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="aht_student_tree" model="ir.ui.view">
+            <field name="name">Student Tree View</field>
+            <field name="model">aht.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="student_id"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="nationality"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="aht_student_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">aht.student</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+    </data>
+</odoo>

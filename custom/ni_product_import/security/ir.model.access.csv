@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_template_import_wizard,access_product_template_import_wizard,model_product_template_import_wizard,base.group_user,1,1,1,1
+access_pos_product_brand_user,access_pos_product_brand_user,ni_product_import.model_pos_product_brand,base.group_user,1,1,1,1
+access_product_model_user,access_product_model_user,ni_product_import.model_product_model,base.group_user,1,1,1,1
+access_product_sex_user,access_product_sex_user,ni_product_import.model_product_sex,base.group_user,1,1,1,1
+access_product_college_user,access_product_college_user,ni_product_import.model_product_college,base.group_user,1,1,1,1
+access_dynamic_import_data_dynamic_import_data,dynamic_import_data.dynamic_import_data,model_res_division,base.group_user,1,1,1,1
+access_product_collections,access_product_collections,model_product_collections,,1,1,1,1
+access_seasonality_seasonality,access_seasonality_seasonality,model_seasonality_seasonality,,1,1,1,1
+access_product_type_group,access_product_type_group,model_product_type_group,,1,1,1,1
+access_age_group,access_age_group,model_age_group,,1,1,1,1

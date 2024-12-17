@@ -1,0 +1,22 @@
+<odoo>
+<data>
+	
+
+	<record id="kits_group_own_products" model="res.groups">
+        <field name="name">Allow Own Products</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+  
+    <record id="kits_rule_own_product_salesperson" model="ir.rule">
+        <field name="name">View Own Products</field>
+        <field ref="model_product_template" name="model_id"/>
+        <field name="domain_force">[('allow_sales_user_ids','in',user.id)]</field>
+        <field name="groups" eval="[(4, ref('kits_group_own_products'))]"/>
+    </record>
+
+
+
+    </data>
+</odoo>
+
+

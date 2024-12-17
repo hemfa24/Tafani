@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_overtime_request_employee,access.hr.overtime.request.employee,model_hr_overtime_request,,1,1,1,0
+access_hr_overtime_request_officer,access.hr.overtime.request.officer,model_hr_overtime_request,hr.group_hr_user,1,1,1,0
+access_hr_overtime_request_manager,access.hr.overtime.request.manager,model_hr_overtime_request,hr.group_hr_manager,1,1,1,1
+access_hr_overtime_request_department_manager,access.hr.overtime.request.department.manager,model_hr_overtime_request,hr_overtime_department_manager,1,1,1,0
+access_hr_overtime_request_hr_manager,access.hr.overtime.request.hr.manager,model_hr_overtime_request,hr_overtime_hr_manager,1,1,1,1
+
+access_hr_overtime_rate_department_manager,access.hr.overtime.rate.department.manager,model_hr_overtime_rate,hr_overtime_department_manager,1,0,0,0
+access_hr_overtime_rate_hr_manager,access.hr.overtime.rate.hr.manager,model_hr_overtime_rate,hr_overtime_hr_manager,1,1,1,1
+
+access_request_reject_wizard,access.request.reject.wizard,model_request_reject_wizard,,1,1,1,1

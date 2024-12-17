@@ -1,0 +1,22 @@
+<odoo>
+    <record id="check_list_form_view" model="ir.ui.view">
+        <field name="name">crm.checklist.form.view</field>
+        <field name="model">crm.checklist</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_property_lead">
+        <field name="name">Crm Checklist</field>
+        <field name="res_model">crm.checklist</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="checklist_crm" name="Checklist" parent="crm.crm_menu_config"
+              action="action_property_lead"/>
+</odoo>

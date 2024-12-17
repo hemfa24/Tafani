@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_overtime_request_form" model="ir.ui.view">
+            <field name="name">hr.overtime.request.form</field>
+            <field name="model">hr.overtime.request</field>
+            <field name="arch" type="xml">
+                <form string="Overtime Request">
+                    <header>
+                        <button string="Send Request" name="action_confirm" states="draft" type="object"
+                                class="oe_highlight"/>
+                        <button string="Approve Request" name="action_department_approve" states="validate1"
+                                type="object"
+                                groups="employee_overtime_approval_app.hr_overtime_department_manager, employee_overtime_approval_app.hr_overtime_hr_manager"
+                                class="oe_highlight"/>
+                        <button string="Confirm Request" name="action_manager_confirm" states="validate2" type="object"
+                                groups="employee_overtime_approval_app.hr_overtime_hr_manager" class="oe_highlight"/>
+                        <button string="Refuse Request" name="action_refuse" states="validate1,validate2" type="object"
+                                groups="employee_overtime_approval_app.hr_overtime_department_manager,employee_overtime_approval_app.hr_overtime_hr_manager"/>
+                        <button string="Reset to Draft" name="action_draft" type="object" states="refuse"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,validate1,validate2,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name"/></h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="overtime_date_from" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="overtime_date_to" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="number_of_hours"
+                                       attrs="{'readonly': [('state', '!=', 'draft')], 'required': [('state', '=', 'draft')]}"/>
+                            </group>
+
+                            <group groups="employee_overtime_approval_app.hr_overtime_hr_manager">
+                                <field name="points_type"/>
+                                <field name="employee_ids" widget="many2many_tags"
+                                       attrs="{'required': [('points_type', '=', 'employee')],
+                                               'invisible': [('points_type', '!=', 'employee')]}"/>
+                                <field name="category_id"
+                                       attrs="{'required': [('points_type', '=', 'category')],
+                                               'invisible': [('points_type', '!=', 'category')]}"/>
+                                <field name="department_id"
+                                       attrs="{'required': [('points_type', '=', 'department')],
+                                               'invisible': [('points_type', '!=', 'department')]}"/>
+                                <field name="mode_company_id" string="Company"
+                                       attrs="{'required': [('points_type', '=', 'company')],
+                                               'invisible': [('points_type', '!=', 'company')]}"/>
+                                <field name="overtime_type" required="1"
+                                       attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                <field name="hourly_type"
+                                       attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                <field name="hourly_wage"
+                                       attrs="{'invisible': [('hourly_type', '!=', 'fx')],
+                                               'readonly': [('state', '=', 'done')]}"/>
+                            </group>
+
+                            <group groups="employee_overtime_approval_app.hr_overtime_department_manager,!employee_overtime_approval_app.hr_overtime_hr_manager">
+                                <field name="employee_ids" widget="many2many_tags" required="1"/>
+                                <field name="overtime_type" required="1"
+                                       attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                <field name="hourly_type"
+                                       attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                <field name="hourly_wage"
+                                       attrs="{'invisible': [('hourly_type', '!=', 'fx')],
+                                               'readonly': [('state', '=', 'done')]}"/>
+                            </group>
+
+                            <group>
+                                <field name="request_employee_ids" widget="many2many_tags" invisible="True"/>
+                                <field name="company_id" invisible="True"/>
+                            </group>
+
+                        </group>
+                        <field name="notes" placeholder="Other Information ..." colspan="4" required="1"/>
+                        <h2 class="oe_highlight" attrs="{'invisible': [('state', '!=', 'refuse')]}">
+                            Refuse Information
+                        </h2>
+                        <group attrs="{'invisible': [('state', '!=', 'refuse')]}">
+                            <field name="rejected_reason"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_overtime_request_tree" model="ir.ui.view">
+            <field name="name">hr.overtime.request.tree</field>
+            <field name="model">hr.overtime.request</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="state == 'refuse'" decoration-info="state == 'draft'"
+                      string="Overtime Request">
+                    <field name="employee_id"/>
+                    <field name="overtime_date_from"/>
+                    <field name="overtime_date_to"/>
+                    <field name="employee_department_id"/>
+                    <field name="job_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_open_ask_overtimes" model="ir.actions.act_window">
+            <field name="name">Overtime Request</field>
+            <field name="res_model">hr.overtime.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="type">ir.actions.act_window</field>
+        </record>
+
+        <record id="view_hr_overtime_rate_tree" model="ir.ui.view">
+            <field name="name">hr.overtime.rate.tree</field>
+            <field name="model">hr.overtime.rate</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hr_overtime_rate" model="ir.actions.act_window">
+            <field name="name">Overtime Rates</field>
+            <field name="res_model">hr.overtime.rate</field>
+            <field name="view_mode">tree</field>
+            <field name="type">ir.actions.act_window</field>
+        </record>
+
+        <menuitem id="action_hr_overtime_request_root"
+                  name="Overtime"
+                  parent="hr.menu_hr_root"
+                  action="action_open_ask_overtimes"
+                  sequence="91"/>
+        <menuitem id="action_hr_overtime_request_menu"
+                  name="Overtime Request"
+                  parent="action_hr_overtime_request_root"
+                  action="action_open_ask_overtimes"
+                  sequence="1"/>
+        <menuitem id="action_hr_overtime_rate_menu"
+                  name="Overtime Rates"
+                  parent="action_hr_overtime_request_root"
+                  action="action_hr_overtime_rate"
+                  sequence="2"/>
+    </data>
+</odoo>

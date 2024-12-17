@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="sale_commission_lines_form1_view_inherit_payment_ref" model="ir.ui.view">
+            <field name="name">sale.commission.lines.form.inherit.payment.ref</field>
+            <field name="model">sale.commission.lines</field>
+            <field name="inherit_id" ref="pways_commission_mgmt.sale_commission_lines_form1_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_id']" position="after">
+                    <field name="payment_ids" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_commission_lines_tree_view_inherit_payment_ref" model="ir.ui.view">
+            <field name="name">sale.commission.lines.list.inherit.payment.ref</field>
+            <field name="model">sale.commission.lines</field>
+            <field name="inherit_id" ref="pways_commission_mgmt.sale_commission_lines_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_id']" position="after">
+                    <field name="payment_ids" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hemfa_account_treasury.action_account_bank_payments" model="ir.actions.act_window">
+            <field name="context">{
+                'default_payment_type': 'inbound',
+                'default_partner_type': 'customer',
+                'default_move_journal_types': ('bank', 'cash'),
+                'default_is_create_payment_commission': true,
+            }</field>
+        </record>
+
+        <record id="hemfa_account_treasury.action_account_bank_payments_payable" model="ir.actions.act_window">
+            <field name="context">{
+                    'default_payment_type': 'outbound',
+                    'default_partner_type': 'supplier',
+                    'default_move_journal_types': ('bank', 'cash'),
+                    'default_is_create_payment_commission': true,
+                }</field>
+        </record>
+    </data>
+</odoo>

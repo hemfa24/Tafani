@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_custom_hemfa_pos_custom_hemfa,pos_custom_hemfa.pos_custom_hemfa,model_wi_close_session,base.group_user,1,1,1,1
+access_pos_custom_hemfa_close__data_pos_custom_hemfa,pos_custom_hemfa._close__data_pos_custom_hemfa,model_custom_session_close_data,base.group_user,1,1,1,1

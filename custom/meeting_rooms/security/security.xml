@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <record id="model_meeting_room_access" model="ir.model.access">
+            <field name="name">meeting.room.access</field>
+            <field name="model_id" ref="model_meeting_room"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="model_meeting_booking_access" model="ir.model.access">
+            <field name="name">meeting.booking.access</field>
+            <field name="model_id" ref="model_meeting_booking"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="model_meeting_attendee_response_access" model="ir.model.access">
+            <field name="name">meeting.attendee.response.access</field>
+            <field name="model_id" ref="model_meeting_attendee_response"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="meeting_booking_user_rule" model="ir.rule">
+            <field name="name">Meeting Booking User Rule</field>
+            <field name="model_id" ref="model_meeting_booking"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">["|",('user_id','=',user.id),('organizer_id.is_meeting_room_manager','=',True)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="attendee_response_user_rule" model="ir.rule">
+            <field name="name">Attendee Response User Rule</field>
+            <field name="model_id" ref="model_meeting_attendee_response"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">["|",('attendee_id','=',user.id),('booking_id.organizer_id','=',user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo>

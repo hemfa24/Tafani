@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <menuitem id="menu_my_salary_advance_rule" action="action_my_salary_advance_rules" parent="ohrms_salary_advance.parent_menu_salary_advance" name="Salary Advance Rules" sequence="3" />
+
+</odoo>

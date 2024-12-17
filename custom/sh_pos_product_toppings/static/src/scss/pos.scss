@@ -1,0 +1,32 @@
+.sh-pos-topping-products-dialog .body .sh-toppings-products,
+.sh-pos-topping-products-dialog .body .sh-global-toppins {display: flex !important;flex-wrap: wrap;justify-content: center;}
+.sh-pos-topping-products-dialog .body .sh-toppings-products .product,
+.sh-pos-topping-products-dialog .body .sh-global-toppins .product {margin: 5px !important;font-size: 12px;}
+.pos .popups .sh-pos-topping-products-popup {width: 80% !important;max-width: 70% !important;}
+
+@media screen and (max-width:768px) {
+    .pos .popups .sh-pos-topping-products-popup {max-width: 80% !important;}
+    .modal-dialog .popup.popup-alert.sh-pos-topping-products-popup.sh-no-topping.sh-lessthan-5-global-toppings{width: 80% !important;}
+}
+.pos .popups .sh-pos-topping-products-popup .body{background-color: #ededed;margin: 0;max-height: 300px !important; min-height: 300px; overflow: auto;}
+.pos .popups .sh-pos-topping-products-popup.sh-no-global-topping main.body{background-color: #ededed;min-height: 300px !important;max-height: 300px !important;overflow: auto !important;}
+.sh-is-topping {display: none !important;}
+.sh_is_topping_line:not(.price_display) {padding-left: 15px;font-size: 80%;width: 95%;font-style: italic}
+.sh_is_topping_line.sh-line-qty-price{padding-left: 35px !important;}
+.sh_is_topping_line.sh-line-qty-price .pos-receipt-right-align{padding-right: 20px !important;}
+.sh_toppings_description {display: flex;align-items: center;}
+.sh_product_name {font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 120px;} 
+.sh-pos-topping-products-dialog .body .sh-toppings-products{overflow: auto;padding: 16px;}   
+
+// -------------- popup width manage -------------------//
+.popup.popup-alert.sh-pos-topping-products-popup.sh-no-topping.sh-lessthan-5-global-toppings,
+.popup.popup-alert.sh-pos-topping-products-popup.sh-lessthan-5-toppings{width: 40% !important;}
+.sh-return-is-topping .product-name {margin-left: 30px;}
+.sh-return-is-topping ul {margin-left: 30px !important;} 
+.sh-pos-topping-products-dialog .sh-pos-topping-products-popup .body .product{border: 1px solid transparent;}
+.sh-pos-topping-products-dialog .sh-pos-topping-products-popup .body .product:focus{border-color: #017e84 !important;}
+.sh-pos-topping-products-dialog .sh-pos-topping-products-popup .body .product:hover{border-color: #017e84 !important;}
+@media screen and (max-width: 767.98px) {
+    .popup.popup-alert.sh-pos-topping-products-popup.sh-no-topping.sh-lessthan-5-global-toppings,
+    .popup.popup-alert.sh-pos-topping-products-popup.sh-lessthan-5-toppings{width: 80% !important;}
+}

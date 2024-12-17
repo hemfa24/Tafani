@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="module_category_employee_overtime">
+            <field name="name">Employee Overtime Request</field>
+            <field name="sequence">103</field>
+        </record>
+
+        <record id="hr_overtime_department_manager" model="res.groups">
+            <field name="name">Department Manager Approval</field>
+            <field name="category_id" ref="module_category_employee_overtime"/>
+        </record>
+
+        <record id="hr_overtime_hr_manager" model="res.groups">
+            <field name="name">HR Manager Approval</field>
+            <field name="category_id" ref="module_category_employee_overtime"/>
+        </record>
+    </data>
+
+    <record id="rule_user_overtime_access" model="ir.rule">
+        <field name="name">Users Overtime Approval Access</field>
+        <field name="model_id" ref="model_hr_overtime_request"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_department_manager_employee_access" model="ir.rule">
+        <field name="name">Department Manager Overtime Employee Access</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4, ref('hr_overtime_department_manager'))]"/>
+        <field name="domain_force">['|', ('parent_id.user_id', '=', user.id), ('user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_department_manager_overtime_access" model="ir.rule">
+        <field name="name">Department Manager Overtime Approval Access</field>
+        <field name="model_id" ref="model_hr_overtime_request"/>
+        <field name="groups" eval="[(4, ref('hr_overtime_department_manager'))]"/>
+        <field name="domain_force">['|', '|',
+            ('employee_id.user_id', '=',user.id),
+            ('employee_id.parent_id.user_id', '=', user.id),
+            ('employee_ids.parent_id.user_id', 'in', [user.id])]
+        </field>
+    </record>
+
+    <record id="rule_hr_manager_employee_access" model="ir.rule">
+        <field name="name">HR Manager Overtime Employee Access</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4, ref('hr_overtime_hr_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record id="rule_hr_manager_overtime_access" model="ir.rule">
+        <field name="name">HR Manager Overtime Approval Access</field>
+        <field name="model_id" ref="model_hr_overtime_request"/>
+        <field name="groups" eval="[(4, ref('hr_overtime_hr_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+</odoo>
+
+
+
+
+
+
+
+
+

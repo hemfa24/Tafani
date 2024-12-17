@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="res_users_views.xsd"?>
+<odoo>
+
+    <record id="view_users_form_inhert_id" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <group name="preferences" position="inside">
+                <group string="Point Of Sale Direct Login">
+                    <field name="pos_login_direct" />
+                    <field name="pos_logout_direct" />
+                    <field name="close_cash_popup" />
+                    <field name="pos_config_id"
+                        attrs="{'invisible': [('pos_login_direct', '!=', True)], 'required': [('pos_login_direct', '=', True)]}" />
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

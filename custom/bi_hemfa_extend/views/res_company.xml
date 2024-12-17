@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_company_form_extend_001" model="ir.ui.view">
+            <field name="name">res.company</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <notebook  position="inside">
+                    <page string="Treasury Management">
+                        <group>
+                            <field name="treasury_journal_id" 
+                                context="{'show_current_company': id, 'show_type': 'cash'}"
+                                domain="[('type', '=', 'cash')]"/>
+                            <field name="treasury_bank_journal_id" 
+                                context="{'show_current_company': id, 'show_type': 'bank'}"
+                                domain="[('type', '=', 'bank')]"/>
+                        </group>
+                        <group string="Cheque">
+                            <field name="treasury_cheque_journal_id" 
+                                context="{'show_current_company': id, 'show_type': 'bank'}"
+                                domain="[('type', '=', 'bank')]"/>
+                            <!-- <field name="treasury_credit_account_id"/>
+                            <field name="treasury_debit_account_id"/> -->
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+</odoo>

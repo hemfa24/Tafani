@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="asset_transfer_type_view" model="ir.ui.view">
+            <field name="name">asset.transfer.type.form</field>
+            <field name="model">asset.transfer.type</field>
+            <field name="arch" type="xml">
+                <form name="transfer_type_view">
+                    <sheet>
+                        <group name="asset_info">
+                            <group name="">
+                                <field name="code"/>
+                            </group>
+                            <group name="">
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_asset_transfer_type_search" model="ir.ui.view">
+            <field name="name">asset.transfer.type.search</field>
+            <field name="model">asset.transfer.type</field>
+            <field name="arch" type="xml">
+                <search string="Asset Transfer Type">
+                    <field name="code"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="asset_transfer_type_tree" model="ir.ui.view">
+            <field name="name">asset.transfer.type.list</field>
+            <field name="model">asset.transfer.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="act_asset_transfer_type" model="ir.actions.act_window">
+            <field name="name">Asset Transfer Type</field>
+            <field name="res_model">asset.transfer.type</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+<!--                <p class="oe_view_nocontent_create">-->
+                <p class="o_view_nocontent_smiling_face">
+                    Click to create a new Transfer Type.
+                </p>
+            </field>
+        </record>
+
+        <!--<menuitem id="sub_menu_asset_accountability_config" name="Configuration" parent="odoo_asset_transfer.menu_asset_accountability_main" sequence="100"/>
+        <menuitem id="menu_asset_transfer_type" name="Asset Transfer Type" parent="sub_menu_asset_accountability_config" action="act_asset_transfer_type"/>-->
+            
+    </data>
+</odoo>

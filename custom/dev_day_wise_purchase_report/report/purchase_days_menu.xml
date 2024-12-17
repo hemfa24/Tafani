@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <report id="wizard_menu_purchase_day"
+            model="purchase.days.wizard"
+            string="Purchase Days Report"
+            report_type="qweb-pdf"
+            name="dev_day_wise_purchase_report.purchase_report_template"
+            file="dev_day_wise_purchase_report.purchase_report_template"
+            menu="False">
+    </report>
+
+    <record id="paperformat_purchase_days" model="report.paperformat">
+        <field name="name">Purchase Days A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">05</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">30</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="wizard_menu_purchase_day" model="ir.actions.report">
+        <field name="paperformat_id" ref="dev_day_wise_purchase_report.paperformat_purchase_days"/>
+    </record>
+</odoo>

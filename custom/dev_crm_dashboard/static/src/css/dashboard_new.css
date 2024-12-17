@@ -1,0 +1,73 @@
+.td_div_box_1{
+    background: #0aa0de;
+    color:white;
+}
+
+.hover_class:hover{ 
+    box-shadow: 5px 5px 5px 5px #888a85;
+}
+
+.td_div_box_2{
+    background: #a33ebb;
+    color:white;
+/*    background: linear-gradient(to right, #c18181 ,#a55151) !important;*/
+}
+
+.td_div_box_3{
+    background: #00beab;
+    color:white;
+}
+
+.td_div_box_4{
+    background: #955349;
+    color:white;
+}
+.td_div_box_5{
+    background: #00bcd5;
+    color:white;
+}
+.td_div_box_6{
+    background: #8bc24a;
+    color:white;
+}
+.td_div_box_7{
+    background: #1987c6;
+    color:white;
+}
+.td_div_box_8{
+    background: #a665e3;
+    color:white;
+}
+.td_div_box_9{
+    background: #ffc702;
+    color:white;
+}
+
+.count_size{
+    padding:30px;
+    text-align:center;
+    width:"100%";
+    height:"100%";
+    font-size: 22px;
+    font-weight: bold;
+    border-radius:6px;
+}
+.chart_box{
+    padding:30px;
+    width:"100%";
+    height:"100%";
+    background: white;
+}
+
+.div_box_fix_name{
+    color:white;
+    font-size: 15px;
+}
+
+.td_count_box{
+    min-height: 80px;
+    background: white;
+    margin: 100px;
+    padding: 15px;
+}
+

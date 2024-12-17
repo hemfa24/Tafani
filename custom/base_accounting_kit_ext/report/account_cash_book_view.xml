@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_cash_book_dest_acc_ext" inherit_id="base_accounting_kit.report_cash_book">
+        <xpath expr="//table//thead//tr//th[last()]" position="before">
+            <th>Destination Account</th>
+        </xpath>
+        <xpath expr="//table//tbody//tr[1]//td[last()]" position="attributes">
+            <attribute name="colspan">2</attribute>
+        </xpath>
+        <xpath expr="//table//tbody//tr[2]//td[last()]" position="before">
+            <td>
+                <span t-esc="account['code']"/> <span t-esc="account['name']"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

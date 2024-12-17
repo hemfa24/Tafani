@@ -1,0 +1,4 @@
+1. 31 Jan 24
+    - Change below code in Default get method
+        - # user_company_id = self.env.user.company_id
+		- user_company_id = self.env.company

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+       <record id="product_list_inherit_stock_report" model="ir.ui.view">
+        <field name="name">product_list_inherit_stock_report</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree" position="inside">
+               <header>
+                   <button name="print_valuation_report" string="Print PDF" class="oe_highlight" type="object" />
+               </header>
+
+            </xpath>
+
+        </field>
+    </record>
+
+  </data>
+</odoo>

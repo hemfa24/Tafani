@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="tempalte" xml:space="preserve">
+
+    <t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-else='']" position="after">
+            <div class="sh_is_topping_line">
+                <div class="sh_pos_receipt_toppings">
+                    <t t-if="line.is_has_topping">
+                        <t t-if="line.Toppings">
+                            <t t-foreach="line.Toppings" t-as="topping" t-key="topping.id">
+                                <t t-if="topping">
+                                <div class="receipt_toppings" style="display: flex;justify-content: space-between;">
+                                    <t t-if="topping.quantity and 1 > topping.quantity">
+                                        <div class="receipt_topping_name" style="width: 75%;word-break: break-word;text-align: left;">
+                                            <span> - <t t-esc="topping.full_product_name"></t> </span>
+                                        </div>
+                                        <div class="receipt_topping_price" style="width: 25%;word-break: break-word;text-align: right;">
+                                            <span> <t t-esc="topping.price_display"></t> </span>
+                                        </div>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="receipt_topping_name" style="width: 75%;word-break: break-word;text-align: left;">
+                                            <span> - <t t-esc="topping.full_product_name"></t> </span>
+                                            <span style="padding-left: 10
+                                            px;"> <t t-esc="topping.quantity" /> x <t t-esc="topping.price_unit" /> / <t t-esc="topping.product.uom_id[1]" /> </span>
+                                        </div>
+                                        <div class="receipt_topping_price" style="width: 25%;word-break: break-word;text-align: right;">
+                                            <span> <t t-esc="topping.price_display"></t> </span>
+                                        </div>
+                                    </t>
+                                </div>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('responsive-price')]" position="attributes">
+            <attribute name="t-attf-class">{{ line.is_topping  ? 'sh_is_topping_line sh-is-topping' : '' }}</attribute>
+        </xpath>
+       
+        <xpath expr="//div[@t-esc='line.product_name_wrapped[0]']" position="attributes" >
+            <attribute name="t-attf-class">{{ line.is_topping  ? 'sh_is_topping_line sh-is-topping' : '' }}</attribute>
+        </xpath>
+        <xpath expr="//t[@t-if='!line.is_in_unit']/.." position="attributes" >
+            <attribute name="t-attf-class">{{ line.is_topping  ? 'sh_is_topping_line sh-line-qty-price sh-is-topping' : '' }}</attribute>
+        </xpath>  
+    </t>
+
+</templates>

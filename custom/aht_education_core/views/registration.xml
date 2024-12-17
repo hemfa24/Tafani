@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="course_registration_list_view">
+            <field name="name">Course Register</field>
+            <field name="model">course.registration.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="student_id"/>
+                    <field name="current_class_id"/>
+                    <field name="next_class_id"/>
+                    <field name="academic_year"/>
+                    <field name="registration_date"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="course_registration_form_view">
+            <field name="name">Course Register</field>
+            <field name="model">course.registration.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="submit_registration" string="Submit" type="object" class="oe_highlight"
+                                states="draft"/>
+                        <button name="approve_registration" string="Approve" type="object" class="oe_highlight"
+                                states="submitted"/>
+                        <button name="reject_registration" string="Reject" type="object" states="submitted"/>
+                        <button name="select_course" class="oe_highlight"
+                                attrs="{'invisible': [('state', '!=', 'draft')]}" string="Select Courses"
+                                type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,rejected"/>
+                    </header>
+                    <sheet>
+                        <separator style="color:green;font-size:18px;" string="Student Registration" colspan="4"/>
+                        <group>
+                            <field name="academic_year"/>
+                            <field name="student_id"/>
+                            <field name="college_id"/>
+                            <field name="department_id"/>
+                            <field name="current_class_id"/>
+                            <field name="next_class_id"/>
+                            <field name="registration_date"/>
+                        </group>
+                        <notebook>
+                            <page style="color:green;font-size:18px;" string="Courses List"
+                                  colspan="4">
+                                <!--
+                                <separator style="color:green;font-size:18px;" string="Courses List"
+                                          colspan="4"/> -->
+                                <field name="course_ids" options="{'no_quick_create':True, 'no_create_edit':True}"
+                                       force_save="1">
+                                    <tree class="tree_no_open" create="0" editable="bottom">
+                                        <!-- <field name="x_css_header"/> -->
+                                        <field name="x_css" nolabel="1" invisible="0"/>
+                                        <field name="course_offered" readonly="1"/>
+                                        <field name="course_code"/>
+                                        <field name="credit_hours"/>
+                                        <field name="course_charges"/>
+                                        <field name="student_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Fee">
+                                <group>
+                                    <group>
+                                        <field name="fee_total"/>
+                                        <field name="scholarship_alloc_id" force_save="1"/>
+                                        <field name="sd_amount" invisible="1"/>
+                                        <field name="discount"/>
+                                        <field name="discount_amount" force_save="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="course_register_action_window">
+            <field name="name">Course Registration</field>
+            <field name="res_model">course.registration.student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
